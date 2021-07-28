@@ -1,0 +1,761 @@
+\documentclass[letter,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[sfdefault, condensed]{roboto}
+\usepackage[margin=1cm]{geometry}
+\usepackage{multicol,graphicx,fancyhdr,eso-pic,url,float,cite,lmodern,listings,times,textcomp, amsthm,amsmath,amssymb,dsfont,color,colortbl,sidecap,xspace,epic,eepic,anysize,setspace, hyperref, pdflscape,lscape}
+\usepackage{blindtext}
+
+%%%%%%Glosario
+%\usepackage[acronym]{glossaries}
+%\makeglossaries
+%\renewcommand{\glossaryname}{Glosario}
+%\renewcommand{\acronymname}{Acrónimos}
+
+
+%\usepackage{apacite} %bibliografias Bibtex
+
+%Tipos de Letra
+%\renewcommand{\rmdefault}{phv} % Arial
+\usepackage{mathptmx} %Times
+%Margenes
+\marginsize{3cm}{2cm}{2cm}{2cm}
+\spacing{1}%interlineado
+
+  \providecommand{\keywords}[1]{\textbf{\textit{Palabras Clave---}} #1}
+
+\newcommand\BackgroundPic{ \put(-3,0){ \parbox[b][\paperheight]{\paperwidth}{ \vfill \centering \includegraphics[width=\paperwidth,height=\paperheight]{portada.jpg} \vfill }}} 
+  
+  %Definicion de Colores
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+\definecolor{verdeo}{rgb}{0,.5,0.2}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\newcommand\gris[1]{\textcolor[gray]{.35}{\emph{#1}}}
+\newcommand\rojo[1]{\textcolor[rgb]{1,0,0}{#1}}
+\newcommand\blue[1]{\textcolor[rgb]{0,0,1}{{#1}}}
+\newcommand\azul[1]{\textcolor[rgb]{0,0,1}{#1}}
+\newcommand\verde[1]{\textcolor[rgb]{0,.5,0.2}{#1}}
+\newcommand\naranjo[1]{\textcolor[rgb]{1.00,0.36,0.06}{\textbf{#1}}}
+\newcommand\blanco[1]{\textcolor[rgb]{1,1,1}{\textbf{#1}}}
+\newcommand {\red}[1]{\textcolor[rgb]{1.00,0.00,0.00}{#1}}
+\newcommand\cita[1]{{\scriptsize \begin{flushright}\emph{(#1)}\end{flushright}}}
+  
+
+  
+%%%Entornos de desarrollo
+\newtheorem{ejemplo}{Ejemplo}
+\newtheorem{definir}{Definición}
+\newtheorem{prueba}{Prueba}
+\newtheorem{demo}{Demostración}
+\newtheorem{obs}{Observación}
+
+\newcommand{\ignore}[1]{}
+  
+  %%%CODIGOS DE PROGRAMACION
+\lstset{%backgroundcolor=\color{lbcolor},
+	frame=Ltb, framerule=0pt, aboveskip=0.5cm, tabsize=4, rulecolor=, language=C, %%%CAMBIAR POR LENGUAJE DE PREFERENCIA
+ stringstyle=\ttfamily,  %basicstyle=\footnotesize,
+        upquote=true, aboveskip={1.5\baselineskip}, columns=fixed, showstringspaces=false, extendedchars=true,breaklines=true, prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}}, showtabs=false, showspaces=false, showstringspaces=false,
+        %tipos de letra y colores
+        identifierstyle=\ttfamily,
+        keywordstyle=\bfseries  \color[RGB]{0,2,216}, %palabras reservadas
+        commentstyle= \scriptsize\color[rgb]{0,.5,0.2}, %comentarios
+        stringstyle=\color[RGB]{216,0,114},%cadena de texto
+        %numeracion de lineas
+        framextopmargin=3pt, framexbottommargin=3pt, framexleftmargin=0.4cm,
+        framesep=0pt, rulesep=.4pt, rulesepcolor=\color{black}, numbers=left, numbersep=15pt, numberstyle=\tiny, numberfirstline = false, breaklines=true,literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1 {Ñ}{{\~N}}1 {ñ}{{\~n}}1 {¿}{{?`}}1
+}
+%%%%FIN CODIGOS DE PROGRAMACION
+\def\figurename{}
+  
+%%%%%%%%%%ENCABEZADO Y PIE DE PAGINA
+%encabezado de las paginas pares e impares.
+\rhead[PP]{Ingeniería Civil en Informática}
+\renewcommand{\headrulewidth}{0.5pt}
+%pie de pagina de las paginas pares e impares.
+\lfoot[nombre]{Muñoz Viveros}
+\rfoot[rut]{Universidad de los Lagos}
+\renewcommand{\footrulewidth}{0.5pt}
+%encabezado y pie de pagina de la pagina inicial de un capitulo.
+\fancypagestyle{plain}{
+\fancyhead[R]{Ingeniería Civil en Informática}
+\fancyfoot[L]{Muñoz Viveros}
+\fancyfoot[R]{Universidad de los Lagos}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+}
+\pagestyle{fancy} 
+%%%%%%%%%%FIN ENCABEZADO Y PIE DE PAGINA 
+ 
+
+
+\begin{document}
+
+%%%%%%%%%%%PORTADA%%%%%%%%%%%%%%%%%%%%%
+\setlength{\unitlength}{1 cm} %Especificar unidad de trabajo
+\thispagestyle{empty}
+
+\AddToShipoutPicture*{\BackgroundPic}
+
+   \title{\scshape\Huge{Detección de presencia de parásitos en examen
+parasitológico seriado de deposiciones con visión por computadora}\\\vspace{1cm}
+        \Large Departamento de Ciencias de la Ingeniería\\
+        \Large Ingeniería Civil en Informática\\
+        \large \rojo{Sede Chinquihue km 6}, Chile}
+   \author{
+      Diego Ignacio Muñoz Viveros\\
+      diegoignacio.munoz@alumnos.ulagos.cl
+   }
+   \date{Profesor Guía: Joel Sebastian Torres Carrasco\\  Co-guía: Carlos Dupré Alvarado\\
+   \today}
+   \maketitle
+   \ClearShipoutPicture
+
+
+\cleardoublepage
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+%%%%Agradecimientos
+\input{Agradecimientos}
+%%%%%%%%RESUMEN
+\input{Resumen}
+
+
+%%%%%%INDICES
+\tableofcontents
+\listoffigures
+\renewcommand{\listtablename}{Índice de tablas}
+\listoftables
+\renewcommand{\lstlistlistingname}{Índice de algoritmos}
+\lstlistoflistings
+%\addcontentsline
+%%%%%%%%%%%%%FIN PORTADA%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+\cleardoublepage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+
+
+
+
+
+%%%%%%%%COMIENZO
+
+
+
+\chapter{Formulación del Proyecto}\label{formulacion}
+Es lo que comúnmente se conoce como introducción, conduce al lector desde un tema de un área general hacia un campo de investigación específico, describe el contexto, el problema, motiva al lector.
+
+Introduce la terminología, destaca las contribuciones del documento y da una breve descripción de la organización de éste.
+
+Ejemplo de uso de una referencia \cite{001}. Ejemplo de referencia doble \cite{001,002}.
+
+
+Se debe describir en mayor detalle lo que se expone en el resumen (es válido tomar párrafos del resumen y exponerlos en forma detallada).
+
+Exposición general del problema, señalando los enfoques y procedimientos actualmente en uso, así como la fundamentación o justificación del proyecto (existencia de problemas), mención a los objetivos generales y/o específicos (no es necesario que aparezcan los títulos: Objetivo General y Objetivo Específico, sino que se mencionen como parte natural de la descripción), propuesta de solución. Si es necesario (normalmente es muy útil) incluir un diagrama en que se visualiza la arquitectura del sistema y resultados esperados (del punto de vista del producto final).
+
+Igual que en el caso anterior se recomienda comenzar con la misma frase del párrafo anterior referida al objetivo general, después en algún punto de la explicación de la propuesta de solución hacer mención implícita a los contenidos de los objetivos específicos (sin mencionar que son objetivos específicos). Describir además las mejoras a las que la solución conlleva (resultados esperados).
+
+
+\section{Propósito}
+Contextualiza el trabajo respecto de investigaciones previas de otros autores y propias, señala las diferencias con trabajos previos. Algunas veces se incluye en la introducción o bien en la discusión del trabajo (secciones finales). Largo aproximado: 2 páginas.
+
+\section{Marco Teórico}
+
+Provee un \naranjo{marco de referencia} para interpretar los resultados y conectarlos a la literatura existente sobre el fenómeno, orienta sobre cómo se realizará el estudio.
+
+ Ayuda a prevenir errores que se han cometido en otros estudios, conduce al establecimiento de la hipótesis o afirmaciones que se someterán a prueba.
+ 
+ Amplia el horizonte del estudio y centra al investigador en el problema, para evitar desviaciones del planteamiento original.
+
+Considera una \naranjo{revisión bibliográfica} que consiste en detectar, obtener y consultar la bibliografía y otros materiales que pueden ser útiles para los propósitos del estudio.
+
+La revisión bibliográfica debe ser selectiva, se puede realizar a partir de tres fuentes principales:
+
+\begin{itemize}\justifying
+  \item \naranjo{Primarias (directas):} Libros, artículos, antologías, tesis, disertaciones, entre otros.
+  \item \naranjo{Secundarias:} Compilaciones, resúmenes de listados de referencias publicadas en un área en particular, bases de datos.
+  \item \naranjo{Terciarias:} Documentos que reúnen nombres y títulos de revistas y otras publicaciones.
+\end{itemize}
+
+
+\begin{ejemplo}
+\blindtext %reemplazar esta linea
+\end{ejemplo} 
+
+\section{Identificación del Problema}
+
+\section{Alternativas de solución}\label{alternativas}
+
+
+
+
+
+
+\chapter{Fundamentación y Justificación}\label{fundamentacion}
+\section{Justificación y Aporte}
+Justificar la conveniencia del proyecto desde diversos puntos de vista.
+
+Preguntas clave:
+  \begin{itemize}
+  \item ¿Para qué sirve el proyecto?
+  \item ¿Quiénes se benefician con los resultados?
+  \item ¿Ayuda a resolver algún problema práctico?
+  \item ¿Contribuye a aumentar el conocimiento?
+  \item ¿Se podrán generalizar los resultado?
+\end{itemize}
+
+
+\begin{ejemplo}
+\blindtext %reemplazar esta linea
+\end{ejemplo}
+
+
+\section{Objetivos}\label{objetivos}
+
+Se deben abordar desde el principio de la investigación, expresan los fines que se esperan lograr con el estudio del problema planteado, responden a la pregunta \naranjo{¿Para qué se lleva a cabo la investigación?}, por lo general comienzan con un verbo en infinitivo: Determinar, identificar, establecer, distinguir, medir, cuantificar, entre otros.
+
+Deben enunciar un resultado unívoco, preciso, factible y medible. Su formulación debe ser clara, concisa y bien orientada hacia el fin, en función de ellos se plantean los métodos de recolección de datos, pruebas estadísticas, entre otros.
+
+Evitar unir objetivos, idealmente, un objetivo general y varios específicos.
+
+Cada objetivo específico se ``mapea'' a una pregunta de investigación.
+Por ejemplo:
+  \begin{itemize}
+  \item \textbf{\naranjo{Objetivo:}} Optimizar los métodos de acceso a disco.
+  \item \textbf{\naranjo{Preguntas de investigación:}} ¿Cuáles son los métodos de acceso a disco?
+\end{itemize}
+\subsection{General}
+\blindtext %reemplazar esta linea
+
+\subsection{Específicos}
+\begin{enumerate}\justifying
+  \item \blindtext %reemplazar esta linea
+ 
+  \item \blindtext %reemplazar esta linea
+
+\end{enumerate}
+
+\section{Alcance}
+Que se planea realizar y hasta que punto se espera llegar.
+
+Esta subdivisión debe:
+\begin{enumerate}\justifying
+  \item Identifique el producto del software para ser diseñado por el nombre (por ejemplo, Anfitrión DBMS, el Generador del Reporte, etc.);
+  \item Explique eso que el producto (del software hará y que no hará.
+  \item Describe la aplicación del software especificándose los beneficios pertinentes, objetivos, y metas;
+  \item Sea consistente con las declaraciones similares en las especificaciones de niveles superiores (por ejemplo, las especificaciones de los requisitos del sistema), si ellos existen.
+\end{enumerate}
+
+
+
+
+\section{Metodología de Trabajo}
+Esto no es hacer referencia a métodos y herramientas que se usarán en el desarrollo del trabajo. Sino que describir cómo se llevará a cabo el trabajo.
+
+Por lo tanto, nuevamente se puede plantear la solución (el proyecto) en términos explícitos de: los objetivos generales y específicos.
+
+Posteriormente relacionar el cumplimiento de los objetivos específicos con tareas o actividades a desarrollar (al final se debe incluir seguramente actividades de validación y prueba del producto - plan de prueba).
+
+
+
+En la Tabla \ref{t:info} se muestran las características de los sistemas GNU/Linux, obtenidas desde \cite{001}.
+
+
+\begin{table}[hbt]
+\begin{center}
+\begin{tabular}{|l|p{10cm}|}\hline
+\multicolumn{2}{|c|}{\textbf{Información general}}\\
+\hline
+\textbf{Modelo de desarrollo}&desarrollo	Software libre y código abierto\\
+\textbf{Última versión estable}&Kernel: 4.11.3 (info) 25 de mayo de 2017 (10 días)\\
+\textbf{Última versión en pruebas}&	4.12.rc2 (info) 22 de mayo de 2017 (13 días)\\
+\textbf{Escrito en}&	C\\
+\textbf{Núcleo}&	Núcleo Linux\\
+\textbf{Plataformas soportadas}	& DEC Alpha, ARM, AVR32, Blackfin, ETRAX CRIS, FR-V, H8/300, Itanium, M32R, m68k, Microblaze, MIPS, MN103, PA-RISC, PowerPC, s390, S+core, SuperH, SPARC, TILE64, Unicore32, x86, Xtensa\\
+\textbf{Licencia}	&GNU General Public License y otras\\
+\textbf{Estado actual}	&En desarrollo\\
+\textbf{En español}	&Sí\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Información General de GNU/Linux}
+\label{t:info}
+\end{table}
+
+\begin{landscape}
+\subsection{Carta Gantt}\label{gantt}
+\begin{figure}[hbt]
+  \centering
+  %\includegraphics{}
+  \caption{Carta Gantt del Proyecto XYZ}
+  \label{gantt}
+\end{figure}
+\end{landscape}
+
+\subsubsection{Equipo de Trabajo}
+Se describe cada miembro del equipo y sus funciones según la carta gantt.
+
+\subsection{Planificación}
+Se describen las subfunciones ha realizar para cumplir cada punto de la carta gantt y quien es(son) el responsable de cada punto.
+
+\subsection{Desglose de Actividades}\label{PERT}
+En esta sección se describen cada una de las actividades, duración, dependencias, caminos críticos, entre otras y se debe dar una conclusión de lo mismo.
+\begin{figure}[hbt]
+\begin{tabular}{|c|c|c|c|c|}\hline
+  \textbf{Actividad}&\textbf{Duración} &\textbf{Después de} & \textbf{Simultanea} & \textbf{Antes de}\\\hline
+& & &&\\\hline
+
+\end{tabular}
+  \caption{Duración de tareas y dependencias}
+\end{figure}
+
+\begin{landscape}
+\begin{figure}[hbt]
+  \centering
+  %\includegraphics{}
+  \caption{Grafo de Actividades del Proyecto XYZ}
+  \label{CPM}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[hbt]
+  \centering
+  %\includegraphics{}
+  \caption{Grafo de Actividades con duración del Proyecto XYZ}
+  \label{CPMduracion}
+\end{figure}
+\end{landscape}
+
+\begin{figure}[hbt]
+ \begin{tabular}{|c|c|cc|cc|c|c|}\hline
+ & & \multicolumn{2}{|c|}{\textbf{Inicio}} & \multicolumn{2}{|c|}{\textbf{Termino}} & \textbf{Holgura} & \\
+\textbf{Actividad}& \textbf{Duración}& \textbf{Temprano} &\textbf{Tardío} &\textbf{Temprano} &\textbf{Tardío} &\textbf{Total}  &\textbf{Crítico} \\\hline
+& & &   & &   & & \\\hline
+
+\end{tabular}
+  \caption{Cálculo del diagrama de actividades}
+\end{figure}
+
+\begin{landscape}
+\begin{figure}[hbt]
+  \centering
+  %\includegraphics{}
+  \caption{Grafo de Actividades con duración y caminos críticos}
+  \label{CPMcritico}
+\end{figure}
+\end{landscape}
+
+
+
+
+\chapter{Descripción General (\rojo{OPCIONAL})}\label{descripcion}
+\section{Perspectiva del Producto}
+\section{Funciones del Sistema}
+Acá se describen las partes más relevantes que tendrá el sistema.
+\section{Características de los Usuarios}
+\section{Restricciones}
+\section{Suposiciones y Dependencias}
+\subsection{Suposiciones}
+\subsection{Dependencias}
+\section{Metodología de Desarrollo (\rojo{OBLIGATORIO})}
+Explicación completa de la metodología.
+
+\chapter{Análisis Económico (\rojo{OPCIONAL})}\label{economico}
+
+Aquí hay que añadir secciones según materia vista en el curso de formulación y evaluación de proyectos.
+
+\section{Viabilidad}
+Analizar la disponibilidad de recursos financieros, humanos y materiales.
+
+Preguntas clave:
+  \begin{itemize}\justifying
+  \item ¿Puede llevarse a cabo esta investigación?
+  \item ¿Cuánto tiempo tomará realizarla?
+\end{itemize}
+
+deben añadir análisis económico de carta Gantt (Figura \ref{gantt}) y malla CPM (Figura \ref{CPMcritico})
+
+
+
+
+\chapter{Requisitos del Proyecto}\label{requisitos}
+Entre todos los requisitos estos deben ser complementados con los distintos diagramas UML para dar mejor entendimiento.
+\section{Requisitos de Interfaces Externos (\rojo{OPCIONAL})}
+\subsection{Interfaces de Usuario (\rojo{OPCIONAL})}
+\subsection{Interfaces de Hardware (\rojo{OPCIONAL})}
+\subsection{Interfaces de Software (\rojo{OPCIONAL})}
+\subsection{Interfaces de Comunicación (\rojo{OPCIONAL})}
+
+
+\subsection{Modelo de Base de Datos (\rojo{Obligatorio})}
+Descripción del diseño de la base de datos, sus relaciones y correspondencia, entre otros.
+
+\begin{landscape}
+\begin{figure}[hbt]
+  \centering
+  %\includegraphics{}
+  \caption{Modelo Entidad Relación de la Base de Datos}
+  \label{MER}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[hbt]
+  \centering
+  %\includegraphics{}
+  \caption{Modelo Relacional normalizado hasta XX forma normal de la Base de Datos}
+  \label{MRnormalizado}
+\end{figure}
+\end{landscape}
+
+\section{Requisitos Funcionales (\rojo{Obligatorio})}
+\subsection{Requisito funcional x}
+\subsection{Requisito funcional y}
+\section{Requisitos de Rendimiento (\rojo{Opcional})}
+\section{Requisitos de Desarrollo (\rojo{Opcional})}
+\section{Requisitos de Tecnológicos (\rojo{Obligatorio})}
+\section{Seguridad (\rojo{Obligatorio})}
+
+\chapter{Desarrollo}
+\section{Lenguaje de Programación Elegido}
+\subsection{Propiedades}
+\subsection{Ventajas y Desventajas}
+
+\section{Propuesta de Solución}
+
+
+
+\chapter{Aseguramiento de la Calidad (\rojo{Opcional})}\label{calidad}
+\section{Modelo}
+\section{Técnica}
+\section{Implementación}
+
+\chapter{Proceso de Prueba del Software (\rojo{Opcional})}\label{prueba}
+\section{Prueba de Unidad}
+\section{Prueba de Integración}
+\subsection{Integración Descendente}
+\subsection{Integración Ascendente}
+\subsection{Prueba de Regresión}
+\section{Prueba de Sistema}
+\subsection{Prueba de Recuperación}
+\subsection{Prueba de Seguridad}
+\subsection{Prueba de Resistencia}
+\subsection{Prueba de Rendimiento}
+\section{Prueba de Aceptación}
+\section{Criterios de Prueba}
+\subsection{Enfoque de Prueba de Caja Negra}
+\subsection{Enfoque de Prueba de Caja Blanca}
+
+
+
+\chapter{Conclusión}\label{conclusion}
+En las conclusiones se destaca lo mostrado en el trabajo, resaltando los resultados. Se indican los trabajos futuros. Usualmente, luego de las conclusiones se incluye un párrafo de agradecimientos a quienes auspician la investigación.
+\section{Principales aportes}
+\section{Contraste de resultados}
+%\section{Trabajos futuros} Solo si corresponde.
+
+
+
+
+
+%%%%%REFERENCIAS
+\renewcommand{\refname}{Referencias}
+
+%agregar referencias
+%\bibliographystyle{apalike}\bibliography{bibliografia.bib}
+
+\begin{thebibliography}{}
+%Bibliografía Formato APA
+\bibitem {000} Herrán Gascón, A., Cortina Selva, M. y González Sánchez, I. (2006). La muerte y su didáctica: manual para educación infantil, primaria y  secundaria. Madrid: Universitas.
+
+\bibitem {001} Nielsen, M. E. (2010).Notable people in psychology of religion. Recuperado 
+de http://www.psywww.com/psyrelig/psyrelpr.htm
+
+\bibitem {002} Gilmartín, M. A. (2008). Ambientes escolares. En J. A. Aragonés, y M. Amérigo (Eds.), Psicología ambiental (pp. 221-237). Madrid: Pirámide.
+
+\end{thebibliography}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\renewcommand{\appendixname}{Anexos}
+\appendix
+
+\chapter{Definciones, Acronimos y Abreviaturas}\label{definiciones}
+\section{Definiciones}
+\section{Acrónimos}
+\section{Abreviaturas}
+
+
+
+
+\chapter{Configuraciones}\label{configuracion}
+\blindtext %reemplazar esta linea
+
+\chapter{Anexo de Código}\label{codigoA}
+\lstset{language=SQL}
+   \vspace{-0.8cm}
+\begin{lstlisting}
+-- Database: acuario
+
+-- DROP DATABASE acuario;
+
+CREATE DATABASE acuario
+  WITH OWNER = postgres;
+
+
+CREATE TABLE especies(
+    sno integer PRIMARY KEY,
+    nombre character varying(20),
+    alimento character varying(20)
+);
+
+CREATE TABLE tanques(
+    tno integer PRIMARY KEY,
+    nombre_tanque character varying(20),
+    color_tanque character varying(20),
+    volumen  integer NOT NULL
+);
+
+CREATE TABLE peces(
+    pno integer PRIMARY KEY,
+    nombre_peces character varying(20),
+    color_peces character varying(20),
+    tno integer NOT NULL,
+    sno integer NOT NULL,
+    FOREIGN KEY (tno) REFERENCES tanques (tno) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (sno) REFERENCES especies (sno) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE eventos(
+    eno integer PRIMARY KEY,
+    pno integer NOT NULL,
+    fecha date,
+    FOREIGN KEY (pno) REFERENCES peces (pno) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+
+INSERT INTO especies VALUES(17,'delfin','arenque');
+INSERT INTO especies VALUES(22,'tiburon','cualquier cosa');
+INSERT INTO especies VALUES(74,'olomina','gusano');
+INSERT INTO especies VALUES(93,'ballena','mantequilla de mani');
+INSERT INTO especies VALUES(100,'pez espada','gusano');
+INSERT INTO especies VALUES(120,'pez globo','gusano');
+
+-- select * from especies
+
+INSERT INTO tanques VALUES(55,'charco','verde',300);
+INSERT INTO tanques VALUES(42,'letrina','azul',100);
+INSERT INTO tanques VALUES(35,'laguna','rojo',400);
+INSERT INTO tanques VALUES(85,'letrina','azul',100);
+INSERT INTO tanques VALUES(38,'playa','azul',200);
+INSERT INTO tanques VALUES(44,'laguna','verde',200);
+
+-- select * from tanques
+
+
+INSERT INTO peces VALUES (164, 'charlie', 'naranjo', 42, 74);
+INSERT INTO peces VALUES (347, 'flipper', 'negro', 35, 17);
+INSERT INTO peces VALUES (228, 'killer', 'blanco', 42, 22);
+INSERT INTO peces VALUES (281, 'albert', 'rojo', 55, 17);
+INSERT INTO peces VALUES (119, 'bonnie', 'azul', 42, 22);
+INSERT INTO peces VALUES (388, 'cory', 'morado', 35, 93);
+INSERT INTO peces VALUES (700, 'maureen', 'blanco', 44, 100);
+INSERT INTO peces VALUES (800, 'beni', 'rojo', 55, 17);
+INSERT INTO peces VALUES (900, 'nemo', 'rojo', 44, 74);
+INSERT INTO peces VALUES (150, 'vicky', 'rojo', 55, 100);
+INSERT INTO peces VALUES (160, 'mati', 'amarillo', 42, 100);
+INSERT INTO peces VALUES (110, 'rafa', 'azul', 85, 100);
+INSERT INTO peces VALUES (222, 'jimmy', 'amarillo', 38, 100);
+INSERT INTO peces VALUES (144, 'bisho', 'rojo', 42, 93);
+INSERT INTO peces VALUES (125, 'chris', 'azul', 38, 93);
+INSERT INTO peces VALUES (183, 'sable', 'amarillo', 44, 93);
+INSERT INTO peces VALUES (241, 'taz', 'rojo', 55, 93);
+INSERT INTO peces VALUES (300, 'baltazar', 'azul', 85, 100);
+INSERT INTO peces VALUES (200, 'cash', 'azul', 85, 100);
+INSERT INTO peces VALUES (424, 'bandido', 'verde', 35, 100);
+INSERT INTO peces VALUES (454, 'romo', 'blanco', 85, 93);
+
+
+-- select * from peces
+
+INSERT INTO eventos VALUES 
+(3456 , 347 , '2010-01-26'),
+(6653 , 164 , '2010-05-14'),
+(5644 , 347 , '2010-05-15'),
+(5645 , 347 , '2010-05-30'),
+(6789 , 281 , '2010-04-30'),
+(5211 , 228 , '2010-08-20'),
+(6719 , 700 , '2010-10-22'),
+(4555 , 164 , '2011-11-03'),
+(9647 , 281 , '2011-12-06'),
+(5347 , 281 , '2011-01-01');
+
+--INSERT INTO eventos VALUES (3456, 164, '2010-01-26'); 
+--INSERT INTO eventos VALUES (6653, 347, '2010-05-14'); 
+--INSERT INTO eventos VALUES (5644, 347, '2010-05-15'); 
+--INSERT INTO eventos VALUES (5645, 347, '2010-05-30'); 
+--INSERT INTO eventos VALUES (6789, 228, '2010-04-30'); 
+--INSERT INTO eventos VALUES (5211, 119, '2010-08-20'); 
+--INSERT INTO eventos VALUES (6719, 388, '2010-10-22'); 
+--INSERT INTO eventos VALUES (4555, 164, '2011-11-03'); 
+--INSERT INTO eventos VALUES (9647, 281, '2011-12-21'); 
+--INSERT INTO eventos VALUES (5369, 281, '2011-01-01'); 
+
+
+-- ALTER TABLE tanques ADD medida character varying(2); 
+
+-- UPDATE tanques SET medida = 'ml';
+
+-- select * from tanques;
+
+-- ALTER TABLE tanques DROP medida;
+
+-- SELECT * FROM especies;
+-- SELECT * FROM tanques;
+\end{lstlisting}\vspace{-0.3cm}
+
+
+\section{Algoritmos}\label{A:alg}
+\blindtext %reemplazar esta linea
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, como en el Algoritmo \ref{CodC}.
+
+\lstset{language=C}
+\begin{lstlisting}[caption = C\'odigo en C de una sumatoria, label = CodC]
+#include <stdio.h>
+#include <stdlib.h>
+/* Algoritmo para realizar la sumatoria */
+/* S=2+4+6+...+2n */
+
+int main(void){
+	int i,s,n;
+	
+	/* inicializar el valor de la sumatoria en 0 */
+	s=0;
+	printf("ingrese la cantidad de elementos de la sumatoria=");
+	scanf("% d", &n);
+	/* Realiza la iteracion n veces, y el indice "i" lo multiplica por */
+	/* 2 y lo va sumando a s*/
+	for(i=1;i<=n;i++){
+		s = s	+ 2*i;
+	} 
+	printf("el resultado de la sumatoria es=% d\n",s);
+
+	return (0);
+}
+\end{lstlisting}
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod, en el Algoritmo \ref{codL} tempor incididunt ut labore et dolore magna aliqua.
+
+\lstset{language=LISP}
+\begin{lstlisting}[caption= C\'odigo LISP de una Lista, label = codL]
+(define (length x)
+    (if (list? x) (length-aux x)
+        (error "x no es una lista")))
+        
+(define (length-aux x)
+    (if (null? x) 0 (+1 (length-aux (cdr x)))))
+\end{lstlisting}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut, en el Algoritmo \ref{codP} labore et dolore magna aliqua.
+
+
+\lstset{language=PROLOG}
+\begin{lstlisting}[caption= C\'odigo PROLOG de un \'arbol geneal\'ogico, label=codP]
+% Arbol genealogico version 1.
+% padre(A,B) significa que B es el padre de A.
+
+padre(juan,alberto).
+padre(luis,alberto).
+padre(alberto,leoncio). 
+padre(geronimo,leoncio).
+padre(luisa,geronimo). 
+
+% Ahora se define las condiciones para que dos individuos sean hermanos hermano(A,B), significa que A es hermano de B.
+hermano(A,B) :- 
+    padre(A,P), 
+    padre(B,P), 
+    A \== B.
+% Ahora se define el parentesco abuelo-nieto.  nieto(A,B) significa que A es nieto de B.
+nieto(A,B) :- 
+    padre(A,P), 
+    padre(P,B). 
+\end{lstlisting}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+   \lstset{language=java}
+\begin{lstlisting}[caption= C\'odigo JAVA de una clase]
+class <Nombre>{
+   public static void main(String[] args){
+      instrucciones;
+   }
+}
+\end{lstlisting}
+
+
+
+
+
+
+\chapter{OPCIONALES en el documento FORMATO}\label{opcional}
+\textbf{TODOS LOS TEXTOS ESCRITOS EN CADA SECCIÓN SON SOLO REFERENCIALES Y/O DE AYUDA, POR LO QUE NO DEBEN QUEDAR EN EL DOCUMENTO FINAL.}
+
+Todas las secciones y/o capítulos que no se mencionen en este apartado, son obligatorias, entre ellas los Capitulo \ref{formulacion}, \ref{fundamentacion}, \ref{descripcion} \ref{requisitos}, \ref{conclusion}.
+
+Un caso particular pero que igual es obligatorio es la Sección \ref{alternativas} no es opcional si es un producto único y nuevo ya que aquí se debe explicar porque es novedoso y no hay alternativas.
+
+Los Anexos \ref{configuracion} y \ref{codigoA} igualmente son obligatorios.
+
+\textbf{Opcional} solo queda el Anexo \ref{definiciones}.
+
+En el curso de Taller de Ingeniería de Software los alumnos aprenderán los temas para rellenar los Capitulos \ref{economico}, \ref{calidad} y \ref{prueba}.
+
+En el curso Formulación y evaluación de proyectos el alumno aprenderá como complementar la sección \ref{gantt} al igual que la justificación económica de la malla PERT de la sección \ref{PERT}. De igual forma, el alumno tendrá los conocimientos para realizar la justificación económica del Capitulo \ref{economico}.
+
+Lógicamente esta sección hay que eliminarla (Anexo \ref{opcional}).
+
+
+\end{document}
