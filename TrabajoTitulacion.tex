@@ -7,6 +7,13 @@
 \usepackage{multicol,graphicx,fancyhdr,eso-pic,url,float,cite,lmodern,listings,times,textcomp, amsthm,amsmath,amssymb,dsfont,color,colortbl,sidecap,xspace,epic,eepic,anysize,setspace, hyperref, pdflscape,lscape}
 \usepackage{blindtext}
 
+%% Contenido
+% - Titulo
+% - Objetivo General
+% - Definiciones
+% - Estado del Arte (No va)
+%% Contenido
+
 %%%%%%Glosario
 %\usepackage[acronym]{glossaries}
 %\makeglossaries
@@ -174,7 +181,7 @@ Es lo que comúnmente se conoce como introducción, conduce al lector desde un t
 
 Introduce la terminología, destaca las contribuciones del documento y da una breve descripción de la organización de éste.
 
-Ejemplo de uso de una referencia \cite{001}. Ejemplo de referencia doble \cite{001,002}.
+Ejemplo de uso de una referencia \cite{c02}. Ejemplo de referencia doble \cite{c02}.
 
 
 Se debe describir en mayor detalle lo que se expone en el resumen (es válido tomar párrafos del resumen y exponerlos en forma detallada).
@@ -188,36 +195,91 @@ Igual que en el caso anterior se recomienda comenzar con la misma frase del pár
 Contextualiza el trabajo respecto de investigaciones previas de otros autores y propias, señala las diferencias con trabajos previos. Algunas veces se incluye en la introducción o bien en la discusión del trabajo (secciones finales). Largo aproximado: 2 páginas.
 
 \section{Marco Teórico}
+\subsection{Parasitología}
+La parasitología \cite{c02} es la rama de las ciencias biologicas dedicada a el estudio de
+organismos, denominados parásitos, que dependen de otro para poder sobrevivir y que
+ocasionan grandes daños a las especies de las cuales dependen, relación llamada
+parasitismo.
 
-Provee un \naranjo{marco de referencia} para interpretar los resultados y conectarlos a la literatura existente sobre el fenómeno, orienta sobre cómo se realizará el estudio.
+La parasitología es una disciplina con aplicación en campos variados como medicina,
+farmacologia y veterinaria. Es utilizada en la investigación de parásitos que pueden
+producir enfermedades en plantas y animales con objeto de analizar, diagnosticar y
+posteriormente establecer un tratamiento óptimo para poder curarlas y erradicarlas.
 
- Ayuda a prevenir errores que se han cometido en otros estudios, conduce al establecimiento de la hipótesis o afirmaciones que se someterán a prueba.
- 
- Amplia el horizonte del estudio y centra al investigador en el problema, para evitar desviaciones del planteamiento original.
+Gran parte de los parásitos más dificil de tratar son los que se alojan en el
+interior del organismo, lo que puede ingresar por via oral o fluidos y gran parte de
+estos pueden alojarse en el sistema digestivo, principalmente en estomago e
+intestino.
 
-Considera una \naranjo{revisión bibliográfica} que consiste en detectar, obtener y consultar la bibliografía y otros materiales que pueden ser útiles para los propósitos del estudio.
+En el contexto de la medicina, la área de \textbf{Tecnología Médica} en su
+especialización de parasitología esta encargada de la realización y analisis de
+examenes con la finalidad de diagnosticar amenazas relacionadas a la disciplina.
 
-La revisión bibliográfica debe ser selectiva, se puede realizar a partir de tres fuentes principales:
+\subsubsection{Exámenes parasitologicos}
 
-\begin{itemize}\justifying
-  \item \naranjo{Primarias (directas):} Libros, artículos, antologías, tesis, disertaciones, entre otros.
-  \item \naranjo{Secundarias:} Compilaciones, resúmenes de listados de referencias publicadas en un área en particular, bases de datos.
-  \item \naranjo{Terciarias:} Documentos que reúnen nombres y títulos de revistas y otras publicaciones.
+Existen muchos tipos de análisis de laboratorio para diagnosticar enfermedades parasitarias.
+El tipo de análisis que solicite el médico se basará en sus signos y síntomas presentados
+durante la consulta médica, cualquier otra afección médica que pueda tener y sus
+antecedentes de viajes.
+
+El análisis de laboratorio se lleva a cabo con las observaciones de muestras entregadas
+al laboratorio por el médico tratante. Estas muestras dependen de la busqueda de los
+parásitos sospechados y sus posibles ubicaciones, siendo estas muestras de la forma de
+sangre, heces, muestras urogenitales, esputo, aspirados o biopsias. La especificidad de
+los examanes puede variar en la capacidad de detectar diferentes especies o realizar
+busquedas de manera particular.
+
+Estos examenes se pueden dividir en dos categorias:
+
+\begin{itemize}
+    \item Invasivos: la adquisición de la muestra requiere intervención
+        quirurgica algún tipo como las biopsias.
+    \item No invasivos: la toma de la muestra presenta un método de obtención que no
+        involucra una intervención invasiva al paciente como serían muestras de sangre o
+        heces.
 \end{itemize}
 
+\subsubsection{Procedimiento de exámenes}
 
-\begin{ejemplo}
-\blindtext %reemplazar esta linea
-\end{ejemplo} 
+Para la realización de los examenes se procede de las siguientes formas \cite{c01}:
+
+\begin{enumerate}
+    \item \textbf{Exámenes de muestra de sangre}: la muestra es tintada y analizada por
+        goteo grueso y/o fino con un microscopio. El goteo fino es una forma de repartir
+        la muestra en un portaobjeto \footnote{Placa de acrílico trasparente usada para
+        manejo de muestras para microscopio} a manera de dejar una capa delgada y
+        uniforme en la cual realizar observasiones, el goteo grueso por otro lado,
+        consiste en soltar una gota de muestra de forma que la tensión superficial de la
+        muestra mantenga su forma circular para dejar decantar las celulas contenidas en
+        la muestra al fondo.  La tinción es el proceso en el cual se suman compuestos a
+        la muestra que reaccionan a componentes conocidos con el fin de teñir componente
+        para facilitar la visualización.
+    \item \textbf{Endoscopia/Colonoscopia}: Conciste en la insersión en la boca
+        (endoscopia) o el recto (colonoscopia) de una sonda con la cual el médico,
+        normalmente un gastroenterólogo, para una examinación diracta.
+    \item \textbf{Exámenes seriado de deposiciones}: consiste en la observación de tres
+        muestras seriadas \footnote{Muestras tomadas con intervalos de tiempo
+        equidistantes con objetivo de muestrear sin que se pierdan ciclos larvarios
+        evitando excluir avistamientos} por microscopio luego de haber pasado por
+        un centrifugado, utilizado para separar la muestra de liquido concervante, y
+        posteriormente tintado para facilidad de observación. La observación se realiza por
+        goteo fino.
+    \item \textbf{Resonancia Magnetica (RM), Tomografía axial computarizada (TAC)}:
+        Pruebas ralizadas para buscar enfermedades parasitarias que pueden provocar
+        lesiones en los órganos.
+\end{enumerate}
+
+%Aprendizaje Automático
+    %Vision por computadora
+        %Modelos
+        %Conjunto de datos
+    %Métricas de evaluación
+%Estado del Arte
+%% Marco Teorico
 
 \section{Identificación del Problema}
 
 \section{Alternativas de solución}\label{alternativas}
-
-
-
-
-
 
 \chapter{Fundamentación y Justificación}\label{fundamentacion}
 \section{Justificación y Aporte}
@@ -286,7 +348,8 @@ Posteriormente relacionar el cumplimiento de los objetivos específicos con tare
 
 
 
-En la Tabla \ref{t:info} se muestran las características de los sistemas GNU/Linux, obtenidas desde \cite{001}.
+En la Tabla \ref{t:info} se muestran las características de los sistemas GNU/Linux,
+obtenidas desde \cite{c02}.
 
 
 \begin{table}[hbt]
@@ -491,31 +554,7 @@ En las conclusiones se destaca lo mostrado en el trabajo, resaltando los resulta
 \renewcommand{\refname}{Referencias}
 
 %agregar referencias
-%\bibliographystyle{apalike}\bibliography{bibliografia.bib}
-
-\begin{thebibliography}{}
-%Bibliografía Formato APA
-\bibitem {000} Herrán Gascón, A., Cortina Selva, M. y González Sánchez, I. (2006). La muerte y su didáctica: manual para educación infantil, primaria y  secundaria. Madrid: Universitas.
-
-\bibitem {001} Nielsen, M. E. (2010).Notable people in psychology of religion. Recuperado 
-de http://www.psywww.com/psyrelig/psyrelpr.htm
-
-\bibitem {002} Gilmartín, M. A. (2008). Ambientes escolares. En J. A. Aragonés, y M. Amérigo (Eds.), Psicología ambiental (pp. 221-237). Madrid: Pirámide.
-
-\end{thebibliography}  
-
-
-
-
-
-
-
-
-
-
-
-
-
+\bibliographystyle{apalike}\bibliography{document.bib}
 
 \renewcommand{\appendixname}{Anexos}
 \appendix
@@ -734,11 +773,6 @@ class <Nombre>{
    }
 }
 \end{lstlisting}
-
-
-
-
-
 
 \chapter{OPCIONALES en el documento FORMATO}\label{opcional}
 \textbf{TODOS LOS TEXTOS ESCRITOS EN CADA SECCIÓN SON SOLO REFERENCIALES Y/O DE AYUDA, POR LO QUE NO DEBEN QUEDAR EN EL DOCUMENTO FINAL.}
