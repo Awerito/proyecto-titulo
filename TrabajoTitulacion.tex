@@ -7,13 +7,6 @@
 \usepackage{multicol,graphicx,fancyhdr,eso-pic,url,float,cite,lmodern,listings,times,textcomp, amsthm,amsmath,amssymb,dsfont,color,colortbl,sidecap,xspace,epic,eepic,anysize,setspace, hyperref, pdflscape,lscape}
 \usepackage{blindtext}
 
-%% Contenido
-% - Titulo
-% - Objetivo General
-% - Definiciones
-% - Estado del Arte (No va)
-%% Contenido
-
 %%%%%%Glosario
 %\usepackage[acronym]{glossaries}
 %\makeglossaries
@@ -176,7 +169,10 @@ parasitológico seriado de deposiciones con visión por computadora}\\\vspace{1c
 
 
 
-\chapter{Formulación del Proyecto}\label{formulacion}
+\chapter{Introducción}\label{intro}
+\blindtext
+
+\chapter{Marco Teórico}\label{teorico}
 Es lo que comúnmente se conoce como introducción, conduce al lector desde un tema de un área general hacia un campo de investigación específico, describe el contexto, el problema, motiva al lector.
 
 Introduce la terminología, destaca las contribuciones del documento y da una breve descripción de la organización de éste.
@@ -191,10 +187,7 @@ Exposición general del problema, señalando los enfoques y procedimientos actua
 Igual que en el caso anterior se recomienda comenzar con la misma frase del párrafo anterior referida al objetivo general, después en algún punto de la explicación de la propuesta de solución hacer mención implícita a los contenidos de los objetivos específicos (sin mencionar que son objetivos específicos). Describir además las mejoras a las que la solución conlleva (resultados esperados).
 
 
-\section{Propósito}
-Contextualiza el trabajo respecto de investigaciones previas de otros autores y propias, señala las diferencias con trabajos previos. Algunas veces se incluye en la introducción o bien en la discusión del trabajo (secciones finales). Largo aproximado: 2 páginas.
-
-\section{Marco Teórico}
+\section{Marco Conceptual}
 \subsection{Parasitología}
 La parasitología \cite{c02} es la rama de las ciencias biologicas dedicada a el estudio de
 organismos, denominados parásitos, que dependen de otro para poder sobrevivir y que
@@ -215,7 +208,7 @@ En el contexto de la medicina, la área de \textbf{Tecnología Médica} en su
 especialización de parasitología esta encargada de la realización y analisis de
 examenes con la finalidad de diagnosticar amenazas relacionadas a la disciplina.
 
-\subsubsection{Exámenes parasitologicos}
+\subsection{Exámenes parasitologicos}
 
 Existen muchos tipos de análisis de laboratorio para diagnosticar enfermedades parasitarias.
 El tipo de análisis que solicite el médico se basará en sus signos y síntomas presentados
@@ -239,7 +232,7 @@ Estos examenes se pueden dividir en dos categorias:
         heces.
 \end{itemize}
 
-\subsubsection{Procedimiento de exámenes}
+\subsection{Procedimiento de exámenes}
 
 Para la realización de los examenes se procede de las siguientes formas \cite{c01}:
 
@@ -264,68 +257,36 @@ Para la realización de los examenes se procede de las siguientes formas \cite{c
         un centrifugado, utilizado para separar la muestra de liquido concervante, y
         posteriormente tintado para facilidad de observación. La observación se realiza por
         goteo fino.
-    \item \textbf{Resonancia Magnetica (RM), Tomografía axial computarizada (TAC)}:
+    \item \textbf{Resonancia Magnética (RM), Tomografía axial computarizada (TAC)}:
         Pruebas ralizadas para buscar enfermedades parasitarias que pueden provocar
         lesiones en los órganos.
 \end{enumerate}
 
+\section{Estado del Arte}\label{arte}
+
 %Aprendizaje Automático
-    %Vision por computadora
+    %Visión por computadora
         %Modelos
         %Conjunto de datos
     %Métricas de evaluación
 %Estado del Arte
-%% Marco Teorico
+%% Marco Teórico
 
-\section{Identificación del Problema}
-
-\section{Alternativas de solución}\label{alternativas}
-
-\chapter{Fundamentación y Justificación}\label{fundamentacion}
-\section{Justificación y Aporte}
-Justificar la conveniencia del proyecto desde diversos puntos de vista.
-
-Preguntas clave:
-  \begin{itemize}
-  \item ¿Para qué sirve el proyecto?
-  \item ¿Quiénes se benefician con los resultados?
-  \item ¿Ayuda a resolver algún problema práctico?
-  \item ¿Contribuye a aumentar el conocimiento?
-  \item ¿Se podrán generalizar los resultado?
-\end{itemize}
-
-
-\begin{ejemplo}
-\blindtext %reemplazar esta linea
-\end{ejemplo}
-
-
+\chapter{Formulación del Proyecto}\label{formulación}
 \section{Objetivos}\label{objetivos}
 
-Se deben abordar desde el principio de la investigación, expresan los fines que se esperan lograr con el estudio del problema planteado, responden a la pregunta \naranjo{¿Para qué se lleva a cabo la investigación?}, por lo general comienzan con un verbo en infinitivo: Determinar, identificar, establecer, distinguir, medir, cuantificar, entre otros.
-
-Deben enunciar un resultado unívoco, preciso, factible y medible. Su formulación debe ser clara, concisa y bien orientada hacia el fin, en función de ellos se plantean los métodos de recolección de datos, pruebas estadísticas, entre otros.
-
-Evitar unir objetivos, idealmente, un objetivo general y varios específicos.
-
-Cada objetivo específico se ``mapea'' a una pregunta de investigación.
-Por ejemplo:
-  \begin{itemize}
-  \item \textbf{\naranjo{Objetivo:}} Optimizar los métodos de acceso a disco.
-  \item \textbf{\naranjo{Preguntas de investigación:}} ¿Cuáles son los métodos de acceso a disco?
-\end{itemize}
 \subsection{General}
-\blindtext %reemplazar esta linea
+Crear un modelo de aprendizaje de maquinas para la detección de y clasificación de
+parásitos en el análisis parasitológico de seriado de deposiciones.
 
 \subsection{Específicos}
-\begin{enumerate}\justifying
-  \item \blindtext %reemplazar esta linea
- 
-  \item \blindtext %reemplazar esta linea
+\begin{itemize}\justifying
+    \item \textbf{Objetivo específico 1}: Recopilar y estructurar un conjunto de datos de imágenes de muestras para el entrenamiento y testeo del modelo de detección de parásitos.
+  \item \textbf{Objetivo específico 2}: Definir un modelo de detección de parásitos para la automatización de resultados del examen parasitológico seriado de deposiciones basado en visión por computadora.
+  \item \textbf{Objetivo específico 3}: Analizar y validar la calidad de las predicciones de la detección de parásitos en las muestras, a través de experimentación con el conjuntos de datos recopilado y con muestras obtenidas desde procedimientos reales del examen parasitológico seriado de deposiciones, utilizando imagenes microscopicas.
+\end{itemize}
 
-\end{enumerate}
-
-\section{Alcance}
+\section{Justificación}
 Que se planea realizar y hasta que punto se espera llegar.
 
 Esta subdivisión debe:
@@ -336,52 +297,9 @@ Esta subdivisión debe:
   \item Sea consistente con las declaraciones similares en las especificaciones de niveles superiores (por ejemplo, las especificaciones de los requisitos del sistema), si ellos existen.
 \end{enumerate}
 
-
-
-
-\section{Metodología de Trabajo}
-Esto no es hacer referencia a métodos y herramientas que se usarán en el desarrollo del trabajo. Sino que describir cómo se llevará a cabo el trabajo.
-
-Por lo tanto, nuevamente se puede plantear la solución (el proyecto) en términos explícitos de: los objetivos generales y específicos.
-
-Posteriormente relacionar el cumplimiento de los objetivos específicos con tareas o actividades a desarrollar (al final se debe incluir seguramente actividades de validación y prueba del producto - plan de prueba).
-
-
-
-En la Tabla \ref{t:info} se muestran las características de los sistemas GNU/Linux,
-obtenidas desde \cite{c02}.
-
-
-\begin{table}[hbt]
-\begin{center}
-\begin{tabular}{|l|p{10cm}|}\hline
-\multicolumn{2}{|c|}{\textbf{Información general}}\\
-\hline
-\textbf{Modelo de desarrollo}&desarrollo	Software libre y código abierto\\
-\textbf{Última versión estable}&Kernel: 4.11.3 (info) 25 de mayo de 2017 (10 días)\\
-\textbf{Última versión en pruebas}&	4.12.rc2 (info) 22 de mayo de 2017 (13 días)\\
-\textbf{Escrito en}&	C\\
-\textbf{Núcleo}&	Núcleo Linux\\
-\textbf{Plataformas soportadas}	& DEC Alpha, ARM, AVR32, Blackfin, ETRAX CRIS, FR-V, H8/300, Itanium, M32R, m68k, Microblaze, MIPS, MN103, PA-RISC, PowerPC, s390, S+core, SuperH, SPARC, TILE64, Unicore32, x86, Xtensa\\
-\textbf{Licencia}	&GNU General Public License y otras\\
-\textbf{Estado actual}	&En desarrollo\\
-\textbf{En español}	&Sí\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Información General de GNU/Linux}
-\label{t:info}
-\end{table}
-
-\begin{landscape}
-\subsection{Carta Gantt}\label{gantt}
-\begin{figure}[hbt]
-  \centering
-  %\includegraphics{}
-  \caption{Carta Gantt del Proyecto XYZ}
-  \label{gantt}
-\end{figure}
-\end{landscape}
+\section{Metodología}
+A continuación se exponen las actividades a realizar para cumplir los distintos objetivos planteados en \ref{objetivos}.
+%TODO Definir tareas a realizar para cada objetivo
 
 \subsubsection{Equipo de Trabajo}
 Se describe cada miembro del equipo y sus funciones según la carta gantt.
@@ -437,118 +355,11 @@ En esta sección se describen cada una de las actividades, duración, dependenci
 \end{figure}
 \end{landscape}
 
-
-
-
-\chapter{Descripción General (\rojo{OPCIONAL})}\label{descripcion}
-\section{Perspectiva del Producto}
-\section{Funciones del Sistema}
-Acá se describen las partes más relevantes que tendrá el sistema.
-\section{Características de los Usuarios}
-\section{Restricciones}
-\section{Suposiciones y Dependencias}
-\subsection{Suposiciones}
-\subsection{Dependencias}
-\section{Metodología de Desarrollo (\rojo{OBLIGATORIO})}
-Explicación completa de la metodología.
-
-\chapter{Análisis Económico (\rojo{OPCIONAL})}\label{economico}
-
-Aquí hay que añadir secciones según materia vista en el curso de formulación y evaluación de proyectos.
-
-\section{Viabilidad}
-Analizar la disponibilidad de recursos financieros, humanos y materiales.
-
-Preguntas clave:
-  \begin{itemize}\justifying
-  \item ¿Puede llevarse a cabo esta investigación?
-  \item ¿Cuánto tiempo tomará realizarla?
-\end{itemize}
-
-deben añadir análisis económico de carta Gantt (Figura \ref{gantt}) y malla CPM (Figura \ref{CPMcritico})
-
-
-
-
-\chapter{Requisitos del Proyecto}\label{requisitos}
-Entre todos los requisitos estos deben ser complementados con los distintos diagramas UML para dar mejor entendimiento.
-\section{Requisitos de Interfaces Externos (\rojo{OPCIONAL})}
-\subsection{Interfaces de Usuario (\rojo{OPCIONAL})}
-\subsection{Interfaces de Hardware (\rojo{OPCIONAL})}
-\subsection{Interfaces de Software (\rojo{OPCIONAL})}
-\subsection{Interfaces de Comunicación (\rojo{OPCIONAL})}
-
-
-\subsection{Modelo de Base de Datos (\rojo{Obligatorio})}
-Descripción del diseño de la base de datos, sus relaciones y correspondencia, entre otros.
-
-\begin{landscape}
-\begin{figure}[hbt]
-  \centering
-  %\includegraphics{}
-  \caption{Modelo Entidad Relación de la Base de Datos}
-  \label{MER}
-\end{figure}
-\end{landscape}
-
-\begin{landscape}
-\begin{figure}[hbt]
-  \centering
-  %\includegraphics{}
-  \caption{Modelo Relacional normalizado hasta XX forma normal de la Base de Datos}
-  \label{MRnormalizado}
-\end{figure}
-\end{landscape}
-
-\section{Requisitos Funcionales (\rojo{Obligatorio})}
-\subsection{Requisito funcional x}
-\subsection{Requisito funcional y}
-\section{Requisitos de Rendimiento (\rojo{Opcional})}
-\section{Requisitos de Desarrollo (\rojo{Opcional})}
-\section{Requisitos de Tecnológicos (\rojo{Obligatorio})}
-\section{Seguridad (\rojo{Obligatorio})}
-
-\chapter{Desarrollo}
-\section{Lenguaje de Programación Elegido}
-\subsection{Propiedades}
-\subsection{Ventajas y Desventajas}
-
-\section{Propuesta de Solución}
-
-
-
-\chapter{Aseguramiento de la Calidad (\rojo{Opcional})}\label{calidad}
-\section{Modelo}
-\section{Técnica}
-\section{Implementación}
-
-\chapter{Proceso de Prueba del Software (\rojo{Opcional})}\label{prueba}
-\section{Prueba de Unidad}
-\section{Prueba de Integración}
-\subsection{Integración Descendente}
-\subsection{Integración Ascendente}
-\subsection{Prueba de Regresión}
-\section{Prueba de Sistema}
-\subsection{Prueba de Recuperación}
-\subsection{Prueba de Seguridad}
-\subsection{Prueba de Resistencia}
-\subsection{Prueba de Rendimiento}
-\section{Prueba de Aceptación}
-\section{Criterios de Prueba}
-\subsection{Enfoque de Prueba de Caja Negra}
-\subsection{Enfoque de Prueba de Caja Blanca}
-
-
-
 \chapter{Conclusión}\label{conclusion}
 En las conclusiones se destaca lo mostrado en el trabajo, resaltando los resultados. Se indican los trabajos futuros. Usualmente, luego de las conclusiones se incluye un párrafo de agradecimientos a quienes auspician la investigación.
 \section{Principales aportes}
 \section{Contraste de resultados}
 %\section{Trabajos futuros} Solo si corresponde.
-
-
-
-
 
 %%%%%REFERENCIAS
 \renewcommand{\refname}{Referencias}
@@ -563,9 +374,6 @@ En las conclusiones se destaca lo mostrado en el trabajo, resaltando los resulta
 \section{Definiciones}
 \section{Acrónimos}
 \section{Abreviaturas}
-
-
-
 
 \chapter{Configuraciones}\label{configuracion}
 \blindtext %reemplazar esta linea
@@ -790,6 +598,5 @@ En el curso de Taller de Ingeniería de Software los alumnos aprenderán los tem
 En el curso Formulación y evaluación de proyectos el alumno aprenderá como complementar la sección \ref{gantt} al igual que la justificación económica de la malla PERT de la sección \ref{PERT}. De igual forma, el alumno tendrá los conocimientos para realizar la justificación económica del Capitulo \ref{economico}.
 
 Lógicamente esta sección hay que eliminarla (Anexo \ref{opcional}).
-
 
 \end{document}
