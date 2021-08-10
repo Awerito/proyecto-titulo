@@ -143,17 +143,39 @@ parasitológico seriado de deposiciones con visión por computadora}\\\vspace{1c
 
 
 \chapter{Introducción}\label{intro}
-% Partir top down, siendo amplio a especifico
-
 % Todavía hay gran cantidad de exámenes echos a mano
 % Hacer esto a mano no suple la demanda médica
+    En la actualidad en los laboratorios médicos existen gran cantidad de exámenes
+    relacionados a la observación microscopica de muestras, estos exámanes son ralizados
+    bajo observación humana de manera totalmente manual. Normalmente los exámenes que
+    involucran esta observación microscopica suelen demandar bastante tiempo por muestra,
+    esto multiplicado a la demanda habitual en el área de la salud nos da a conocer una
+    problemática relacionada a la incapacidad de suplir la demanda en un tiempo
+    pertinente.
 
 % Sesgo humano
-% Certeza incierta 
+% Certeza incierta
+    Otra característica inerente a la observación está relacionada al error humano
+    introducido en las observaciónes, resultando en observaciones con clasificaciones
+    erroneas, esto concluyendo en el mal diagnostico médico. En ocaciones puede haber una
+    gran diferencia entre las observaciones de distintos tecnólogos médicos sobre la
+    misma muestra, esto en resumen, agrega gran incertidumbre a los análisis que
+    normalmente solo puede ser resuelta con observaciones adicionales o complementarias.
 
 % Introducción del rol de la tecnología médica
 % Intro a nuestro laboratorio clínico cesfam de hornopiren
 % Dentro de los exámenes con mirada experta
+    La tecnología médica en el ámbito del conocimiento abarca el estudio e investigación
+    que tiene como objetivo la aplicación de diferentes tipos de tecnologías para mejorar
+    la salud de las personas durante su diagnóstico, desarrollo de la enfermedad y
+    tratamiento aplicado. En el contexto médico, la tecnología médica es la rama de la
+    salud que involucra a profesionales que se forman en los avances tecnológicos para
+    aplicarlos a la medicina y las ciencias de la salud. %citar acá
+
+%TODO: revisar
+    Para la consultoria de este trabajo se cuenta con la ayuda del laboratorio clínico
+    CESFAM de Hornopiren, con la ayuda del tecnólogo médico y jefe del laboratorio
+    clínico Carlos Dupré Alvarado.
 
     El examen parasitológico seriado de deposiciones es un examen realizado para la
     detección de presencia parasitológica en pacientes. El examen se lleva a cabo con la
@@ -167,13 +189,18 @@ parasitológico seriado de deposiciones con visión por computadora}\\\vspace{1c
 
 % Cual es el problema que tenemos acá
 % Inconsistencia en las mediciones / definición del problema
-% Visión de mejora "En este trabajo se propone una solución inteligente para automatizar
-    % este examen <nombre acá> para poder mejorar la calidad de los resultados y así
-    % mejorar la calidad de vida de las personas.
+    El problema es que dado lo extenuante de la observación y lo altamente susceptible a
+    sesgo del observador el examen es muy sensible a perdida o mala clasificación de
+    avistamientos llevando a malos diagnósticos médicos. En este trabajo se propone una
+    solución inteligente para automatizar el examen parasitológico seriado de
+    deposiciones para poder mejorar la calidad de los resultados y así mejorar la calidad
+    de vida de las personas.
 
-% "Para realizar este proyecto se pretende usar tecnologías que permitan aprovechar la
-    % experiencia de los tecnologos medicos y utilizarla para crear mejores resultados.
-    % Es por ello que se pretended utilizar la tesnology de... Y concadenas de pana
+    Para realizar este proyecto se pretende usar tecnologías que permitan aprovechar la
+    experiencia de los tecnólogos médicos y utilizarla para crear mejores resultados.
+    Es por ello que se pretende utilizar tecnologias de visión por computadora para
+    automatizar la observación de muestras y a su vez reducir el grado de error mientras
+    se apunta a una implementación rápida y simple.
 
     La visión por computadora es la combinación de tecnologías que permite a las
     computadoras generar inferencia respecto a imágenes estáticas o en movimiento
@@ -187,9 +214,10 @@ parasitológico seriado de deposiciones con visión por computadora}\\\vspace{1c
 
 % El gran desafió tésnico
 % Uno de los problemas, existencia de dataset relacionados al examen
-
-    El gran desafió de este trabajo encontrar un conjunto de datos relacionado al examen
-    bla bla que permita obtener resultados de calidad.
+    El desafío técnico encontrado está relacionado a la estructuración de un conjunto de
+    datos de imágenes microscopicas que contengas la información suficiente para generar
+    un modelo robusto y de altas prestación con gran capacidad de generalización para el
+    examen parasitologico seriado de deposiciones.
 
 % Continua que se verá
 
@@ -214,7 +242,7 @@ intestino.
 
 En el contexto de la medicina, la área de \textbf{Tecnología Médica} en su
 especialización de parasitología esta encargada de la realización y analisis de
-examenes con la finalidad de diagnosticar amenazas relacionadas a la disciplina.
+exámenes con la finalidad de diagnosticar amenazas relacionadas a la disciplina.
 
 \subsection{Exámenes parasitologicos}
 
@@ -227,10 +255,10 @@ El análisis de laboratorio se lleva a cabo con las observaciones de muestras en
 al laboratorio por el médico tratante. Estas muestras dependen de la busqueda de los
 parásitos sospechados y sus posibles ubicaciones, siendo estas muestras de la forma de
 sangre, heces, muestras urogenitales, esputo, aspirados o biopsias. La especificidad de
-los examanes puede variar en la capacidad de detectar diferentes especies o realizar
+los exámanes puede variar en la capacidad de detectar diferentes especies o realizar
 busquedas de manera particular.
 
-Estos examenes se pueden dividir en dos categorias:
+Estos exámenes se pueden dividir en dos categorias:
 
 \begin{itemize}
     \item Invasivos: la adquisición de la muestra requiere intervención
@@ -242,7 +270,7 @@ Estos examenes se pueden dividir en dos categorias:
 
 \subsection{Procedimiento de exámenes}
 
-Para la realización de los examenes se procede de las siguientes formas \cite{c01}:
+Para la realización de los exámenes se procede de las siguientes formas \cite{c01}:
 
 \begin{enumerate}
     \item \textbf{Exámenes de muestra de sangre}: la muestra es tintada y analizada por
