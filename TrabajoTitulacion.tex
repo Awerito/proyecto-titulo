@@ -398,7 +398,73 @@ a los conjuntos de datos como lo son el limpieza de datos, aumento de datos y el
 de datos.
 
 \subsubsection{Limpieza de Datos}
+La limpieza de datos es un procedimiento que nos ayuda a filtrar datos erroneos y
+manipular información faltante para no causar una mayor perdida de datos. Este
+procedimiento es descrito como la intuición de los datos, dado que no existen muchas más
+formas de entender un conjunto de datos que analisandolo de manera manual. Generalmente
+el manejo de la limpieza de datos suele ser una de las partes más demandantes en el
+proceso de desarrollo de un modelo de inteligencia artificial.
+
+Los problemas que se presentan en conjuntos de datos que debes ser solbentados son:
+\begin{itemize}
+    \item \textbf{Datos faltantes}: Existen situaciones en las que no todos los datos de una
+        entrada tendran asignados un valor. Si bien es factible eliminar todas las
+        entradas que contengan datos perdidos, en la mayoria de los casos esto termina
+        descartando excesiva cantidades de entradas (hay conjuntos de datos que pueden
+        tener datos perdidos en todas sus entradas).
+
+        Una alternativa para cuando los datos faltantes tienen estar agrupados en su
+        mayoria en un campo en particular es eliminar el campo por completo. Esto valido
+        dado que el campo de por si mostraba no tener mucha utilidad.
+
+        La forma más común de manejar datos faltantes es usar un valor por defecto que en
+        ultima instancia servirá para que el modelo reconozca que existen situaciones
+        donde los datos no se encuentran disponibles. Esto es basicamente porque siempre
+        se puede extraer información del echo de que no existen entradas en un campo en
+        particular.
+    \item \textbf{Distribución de datos inconsistentes}: Esto ocurre cuando la escala o
+        el formato de los datos no esta bien definido en los campos, vale decir, tener
+        números en campos que describen texto o números en rangos que no corresponden.
+
+        Cuando se habla de inconsistencia en tipo de datos solo basta con reconocer el
+        tipo de dato del campo para hacer la corrección del resto de los datos, revisando
+        que la transformación de los datos sea consistente al objetivo final.
+
+        Cuando la inconsistencia corresponde a rangos se implementan dos alternativas,
+        escalado y normalización.
+
+        El escalado corresponde a una transformación en el rango de los datos, esto
+        combierte los datos tomando el mínimo y máximo valor en los campos y escalandolos
+        a valores entre 0 y 1.
+
+        La normalización es una transformación que convierte la distribución de los datos
+        en una distrubución normal Gaussiana. Este método es utilizado en datos
+        destinados a modelos de predicción estadística.
+    \item \textbf{Datos inconsistentes}: Es el tipo de dato que requiere manipulación
+        acorde a las necesidades, estos datos pueden ser desde texto que registra
+        entradas diferentes por tener su versión iniciando con mayusculas y su versión en
+        minusculas hasta tipos de datos diferentes en las mismas columnas.
+
+        Para la reparación de estos datos se debe hacer estudio de los datos y la
+        información que se espera de ellos y es totalmente sujeta a quien manipula los
+        datos.
+\end{itemize}
 \subsubsection{Aumento de Datos}
+Muchos de los desarrollos de modelos actuales presentan una característica en común,
+fueron entrenados con cantidades de datos que pasan el orden de magnitud de los cientos
+milos o millones. Esto es un importante datos a considerar cuando se tienen modelos que
+no cuentan con un conjunto de datos lo suficientemente amplio.
+
+Para esto es que se hacen estudios respecto el aumento artificial de datos, que consisten
+en resumidas cuentas en el uso de datos pre-existentes en el conjunto de datos actual
+para creas nuevas entradas que representen información similar. Hay estudios que muestran
+aumentos de rendimiento sobre el 30\% sobre modelos que no la utiliza.
+
+\subsubsection{Aumento de datos numéricos}
+Las técnicas de aumento utilizadas en las aplicaciones de aprendizaje profundo dependen del tipo de datos. Para aumentar los datos numéricos simples, son populares técnicas como SMOTE o SMOTE NC. Estas técnicas se utilizan generalmente para abordar el problema del desequilibrio de clases en las tareas de clasificación. 
+
+Para los datos no estructurados, como las imágenes y el texto, las técnicas de aumento varían desde simples transformaciones hasta datos generados por redes neuronales, en función de la complejidad de la aplicación.
+
 \subsubsection{Balanceo de Datos}
 
 % Modelos de cv
