@@ -132,11 +132,21 @@ parasitológico seriado de deposiciones con visión por computadora}\\\vspace{1c
 %%%%Agradecimientos
 \input{Agradecimientos}
 %%%%%%%%RESUMEN
+\input{Resumen}
 
+%%%%%%INDICES
 \tableofcontents
+%\listoffigures
+%\renewcommand{\listtablename}{Índice de tablas}
+%\listoftables
+%\renewcommand{\lstlistlistingname}{Índice de algoritmos}
+%\lstlistoflistings
+%\addcontentsline
+%%%%%%%%%%%%%FIN PORTADA%%%%%%%%%%%%%%%%
 
-
-
+\cleardoublepage
+\pagenumbering{arabic}
+\setcounter{page}{1}
 
 %%%%%%%%COMIENZO
 
@@ -225,7 +235,7 @@ parasitológico seriado de deposiciones con visión por computadora}\\\vspace{1c
 
 \section{Parasitología}
 \subsection{Definición}
-La parasitología \cite{c02} es la rama de las ciencias biologicas dedicada a el estudio de
+La parasitología es la rama de las ciencias biologicas dedicada a el estudio de
 organismos, denominados parásitos, que dependen de otro para poder sobrevivir y que
 ocasionan grandes daños a las especies de las cuales dependen, relación llamada
 parasitismo.
@@ -270,7 +280,7 @@ Estos exámenes se pueden dividir en dos categorias:
 
 \subsection{Procedimiento de exámenes}
 
-Para la realización de los exámenes se procede de las siguientes formas \cite{c01}:
+Para la realización de los exámenes se procede de las siguientes formas: %cita acá
 
 \begin{enumerate}
     \item \textbf{Exámenes de muestra de sangre}: la muestra es tintada y analizada por
@@ -285,14 +295,13 @@ Para la realización de los exámenes se procede de las siguientes formas \cite{
         para facilitar la visualización.
     \item \textbf{Endoscopia/Colonoscopia}: Conciste en la insersión en la boca
         (endoscopia) o el recto (colonoscopia) de una sonda con la cual el médico,
-        normalmente un gastroenterólogo, para una examinación diracta.
-    \item \textbf{Exámenes seriado de deposiciones}: consiste en la observación de tres
-        muestras seriadas \footnote{Muestras tomadas con intervalos de tiempo
-        equidistantes con objetivo de muestrear sin que se pierdan ciclos larvarios
-        evitando excluir avistamientos} por microscopio luego de haber pasado por
-        un centrifugado, utilizado para separar la muestra de liquido concervante, y
-        posteriormente tintado para facilidad de observación. La observación se realiza por
-        goteo fino.
+        normalmente un gastroenterólogo, examina las cavidades en busca de presencia
+        parasitaria y/o lesiones de caracter aludible a presencia parasitaria.
+    \item \textbf{Exámenes parasitológico seriado de deposiciones}: consiste en el
+        análisis de tres muestras seriadas \footnote{Muestras tomadas con intervalos de
+        tiempo equidistantes con objetivo de muestrear sin que se pierdan ciclos
+        larvarios evitando excluir avistamientos} de heces tintadas con observación por
+        microscopio . La observación se realiza por goteo fino.
     \item \textbf{Resonancia Magnética (RM), Tomografía axial computarizada (TAC)}:
         Pruebas ralizadas para buscar enfermedades parasitarias que pueden provocar
         lesiones en los órganos.
@@ -301,15 +310,100 @@ Para la realización de los exámenes se procede de las siguientes formas \cite{
 \subsection{Examen Parasitológico Seriado de Deposiciones}
 % Que es, para que, procedimiento
 % Hablar del contexto del tecnologo medico
-\blindtext
+Como se menciona anteriormente, el examen parasitológico seriado de deposiciones es un
+examen que busca estudiar la presencia parasitaria intestinal por medio de observaciones
+de muestras de heces. La realización de este examen es llevado a cabo por un tecnólogo
+médico y su principal objetivo es documentar las observaciones realizadas.
+
+La realización del examen en detalle se muestra a continuación:
+\begin{enumerate}
+    \item Una vez se reconoce la necesidad de la realización del examen, el médico
+        trantante pedirá la preparación de tres frascos de muestras con 10-20 ml de
+        liquido fijador\footnote{Liquido conservantes, normalmente formaldehído}.
+    \item Se hace entrega al paciente de los frascos junto a una nota con las
+        instrucciones para la toma de muestras, conservación de las mismas y precauciones
+        a tomar.
+    \item Cuando se reciben las muestras y se valida su tamaño, los tiempos en los que se
+        tomaron y la forma en que se conservaron, estas pasaran a ser entragadas al
+        laboratorio donde seran almacenadas y/o examinadas.
+    \item Las muestras son retiradas del área de refrigeración, en el caso que se
+        ecuentren en concervación, y se proceden a intruducir una porción de cada frasco
+        en tres probetas diluidas en el liquido fijador.
+    \item Se centrifugan las muestras en orden de separar el material fecal del liquido
+        fijador para poder extraerlo.
+    \item En caso de que el tecnólogo lo considere necesario, tintar la muestras con
+        soluciones reactivas que resalten componentes especificos para facilitar las
+        observaciones.
+    \item Dejar caer una gota de cada una de las muestras en un portaobjeto y esparcir
+        para observación de goteo fino.
+    \item Hacer observación de las muestras con gran detalle en el microscopio y
+        documentar hallazgos en caso de haber.
+    \item En caso de no detectar presencia parasitaria, documentar que no se observa
+        presencia en la muestra.
+\end{enumerate}
+
+Para la correcta realización del examen existen ciertas consideraciones expuestas a
+continuación:
+\begin{itemize}
+    \item La toma de muestras debe avarcar un período mínimo de cinco días.
+    \item La duración de la observación microscópica puede durar al rededor de 45
+        minutos y es dependiente de la habilidad y experiencia del tecnólogo.
+    \item En caso de encontrar alguna anormalidad en la recepción de las muestras por
+        parte del paciente, se debe pedir que este haga la toma nuevamente en frascos
+        diferentes.
+    \item La muestra que no se utilice durante la observación deber ser concervada en
+        refrigeración.
+    \item En caso de existir dudas sobre la observación de las muestras, se puede
+        realizar una segunda observación.
+\end{itemize}
 
 \section{Visión por Computadora}
 % Definición
+La visión por computadora es el campo de la inteligencia artificial (IA) que permite a
+los computadores y sistemas derivados a extraer información util de imagenes digitales,
+videos y otras entradas visuales y tomar actiones o hacer recomendaciones basadas en esta
+información. Si la IA permite a los computadores pensar, la visión por computadora les
+permite ver, observar y entender. %cita acá
+
+La visión por computadora, así como muchas otras ramas de la disciplica de IA, logra la
+tarea de inferir gracias al aprendizaje de máquinas. El aprendizaje de maquinas consiste
+en el entrenamiento de modelos de IA en base a conjuntos de datos que harán que los
+distintos modelos aprendan a reconocer patrones y generen la lógica interna necesaria
+para permitirles inferir de manera correcta.
+
 % Metodología de cs (Data augmentation, Data cleaning, Balancing)
+\subsection{Conjunto de Datos}
+El manejo de los conjuntos de datos es una de las tareas más importantes a la hora de
+diseñar un modelo de IA, ya que la información y como esté clasificada marcará como el
+modelo podrá desempeñarse en un entorno de uso general o específico que no contenga
+información vista con anterioridad.
+
+La estructura general de un conjunto de datos en modelos de visión por computadora suele
+consistir en un conjunto de imagenes o videos junto a etiquetas que muestran la
+información contenida en estas, normalmente en la forma de coordenadas que delimitan el
+área en donde se localiza en la imagen el objeto a identificar y/o clasificar, junto a la
+etiqueta que identifíca que es o que acción esta ocurriendo.
+
+Es importante contar con un conjunto de datos que contenga gran cantidad de ejemplos
+relacionados a la tarea que se espera lograr, esto con objetivo de generalizar los
+patrones e información obtenida por parte del modelo durante el proceso de entrenamiento.
+La cantidad de información que se requiera estará dada por la complejidad en el modelo a
+entrenar y la complejidad de la tarea a desarrollar, y el análisis de estos parámetros
+dependerá del equipo de desarrollo. Cuando en entrenamiento carece de un conjunto de
+datos contundente o el modelo es muy simple para la tarea ocurre \textit{underfiting},
+esto es, cuando el modelo realiza inferencias escazas y/o erroneas.
+
+Para un hacer buen provecho de la información existen diferentes tratamientos realizables
+a los conjuntos de datos como lo son el limpieza de datos, aumento de datos y el balanceo
+de datos.
+
+\subsubsection{Limpieza de Datos}
+\subsubsection{Aumento de Datos}
+\subsubsection{Balanceo de Datos}
+
 % Modelos de cv
 % Segmentación
 % Tipo de imágenes (microscópicas)
-\blindtext
 
 \section{Estado del Arte}\label{arte}
 % Alternativas preexistentes
@@ -343,28 +437,28 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
 \section{Metodología}
 \begin{enumerate}\justifying
     \item Recopilar y estructurar un conjunto de datos de imágenes de muestras para el entrenamiento y testeo del modelo de detección de parásitos.
-        \begin{itemize}
-            \item Revisión de conjunto de datos disponibles relacionados al examen bla
-                bla.
+        \begin{enumerate}
+            \item Revisión de conjunto de datos disponibles relacionados al examen
+                parasitológico seriado de deposiciones.
             \item Definir una estructura estandar para almacenar imagenes microscopicas
-                de examen bla bla.
+                de examen parasitológico seriado deposiciones.
             \item Implementar un procedimiento de extracción y limpieza de imagenes de
-                examen bla bla.
+                examen parasitológico seriado de deposiciones.
             \item Realizar un procedimiento de análisis exploratorio de datos.
-        \end{itemize}
+        \end{enumerate}
 
   \item Definir un modelo de detección de parásitos para la automatización de resultados del examen parasitológico seriado de deposiciones basado en visión por computadora.
-      \begin{itemize}
+      \begin{enumerate}
           \item Adoptar una metodología (elección de experimento, metricas, configuración
               y \textit{kfolds}) de proyectos de visión por computadora para relizar una
               comparación de la calidad de los modelos.
           \item Proponer distintos modelos para la detección de parásitos en imagenes
               microscopicas.
           \item Seleccionar el o los modelos con mejor calidad de resultado.
-      \end{itemize}
+      \end{enumerate}
 
   \item Analizar y validar la calidad de las predicciones de la detección de parásitos en las muestras, a través de experimentación con el conjuntos de datos recopilado y con muestras obtenidas desde procedimientos reales del examen parasitológico seriado de deposiciones, utilizando imagenes microscopicas.
-      \begin{itemize}
+      \begin{enumerate}
           \item Implementar la metodología elegida o adaptada para el tratamiento de
               imagenes microscopicas.
           \item Implementar el procedimiento de predicción de parásitos detectada en las
@@ -373,65 +467,71 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
               través del modelo de visión por computadora.
           \item Recopilación de nuevas muestras, sus resultados, su validación y la
               retroalimentación del tecnologo médico.
-      \end{itemize}
+      \end{enumerate}
 \end{enumerate}
 
-\subsubsection{Equipo de Trabajo}
+%\subsubsection{Equipo de Trabajo}
+%Content ;v
 % Calza esto
 % 1
 % 2-3.5
 % 3-4
 
 \subsection{Planificación}
-Se describen las subfunciones ha realizar para cumplir cada punto de la carta gantt y quien es(son) el responsable de cada punto.
-
-\subsection{Desglose de Actividades}\label{PERT}
-En esta sección se describen cada una de las actividades, duración, dependencias, caminos críticos, entre otras y se debe dar una conclusión de lo mismo.
-\begin{figure}[hbt]
-\begin{tabular}{|c|c|c|c|c|}\hline
-  \textbf{Actividad}&\textbf{Duración} &\textbf{Después de} & \textbf{Simultanea} & \textbf{Antes de}\\\hline
-& & &&\\\hline
-
-\end{tabular}
-  \caption{Duración de tareas y dependencias}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{gantt}
+    \caption{Carta Gantt para desarrollo del proyecto}
+    \label{fig:gantt}
 \end{figure}
 
-\begin{landscape}
-\begin{figure}[hbt]
-  \centering
-  %\includegraphics{}
-  \caption{Grafo de Actividades del Proyecto XYZ}
-  \label{CPM}
-\end{figure}
-\end{landscape}
-
-\begin{landscape}
-\begin{figure}[hbt]
-  \centering
-  %\includegraphics{}
-  \caption{Grafo de Actividades con duración del Proyecto XYZ}
-  \label{CPMduracion}
-\end{figure}
-\end{landscape}
-
-\begin{figure}[hbt]
- \begin{tabular}{|c|c|cc|cc|c|c|}\hline
- & & \multicolumn{2}{|c|}{\textbf{Inicio}} & \multicolumn{2}{|c|}{\textbf{Termino}} & \textbf{Holgura} & \\
-\textbf{Actividad}& \textbf{Duración}& \textbf{Temprano} &\textbf{Tardío} &\textbf{Temprano} &\textbf{Tardío} &\textbf{Total}  &\textbf{Crítico} \\\hline
-& & &   & &   & & \\\hline
-
-\end{tabular}
-  \caption{Cálculo del diagrama de actividades}
-\end{figure}
-
-\begin{landscape}
-\begin{figure}[hbt]
-  \centering
-  %\includegraphics{}
-  \caption{Grafo de Actividades con duración y caminos críticos}
-  \label{CPMcritico}
-\end{figure}
-\end{landscape}
+%\subsection{Desglose de Actividades}\label{PERT}
+%En esta sección se describen cada una de las actividades, duración, dependencias, caminos críticos, entre otras y se debe dar una conclusión de lo mismo.
+%\begin{figure}[hbt]
+%\begin{tabular}{|c|c|c|c|c|}\hline
+  %\textbf{Actividad}&\textbf{Duración} &\textbf{Después de} & \textbf{Simultanea} & \textbf{Antes de}\\\hline
+%& & &&\\\hline
+%
+%\end{tabular}
+  %\caption{Duración de tareas y dependencias}
+%\end{figure}
+%
+%\begin{landscape}
+%\begin{figure}[hbt]
+  %\centering
+  %%\includegraphics{}
+  %\caption{Grafo de Actividades del Proyecto XYZ}
+  %\label{CPM}
+%\end{figure}
+%\end{landscape}
+%
+%\begin{landscape}
+%\begin{figure}[hbt]
+  %\centering
+  %%\includegraphics{}
+  %\caption{Grafo de Actividades con duración del Proyecto XYZ}
+  %\label{CPMduracion}
+%\end{figure}
+%\end{landscape}
+%
+%\begin{figure}[hbt]
+ %\begin{tabular}{|c|c|cc|cc|c|c|}\hline
+ %& & \multicolumn{2}{|c|}{\textbf{Inicio}} & \multicolumn{2}{|c|}{\textbf{Termino}} & \textbf{Holgura} & \\
+%\textbf{Actividad}& \textbf{Duración}& \textbf{Temprano} &\textbf{Tardío} &\textbf{Temprano} &\textbf{Tardío} &\textbf{Total}  &\textbf{Crítico} \\\hline
+%& & &   & &   & & \\\hline
+%
+%\end{tabular}
+  %\caption{Cálculo del diagrama de actividades}
+%\end{figure}
+%
+%\begin{landscape}
+%\begin{figure}[hbt]
+  %\centering
+  %%\includegraphics{}
+  %\caption{Grafo de Actividades con duración y caminos críticos}
+  %\label{CPMcritico}
+%\end{figure}
+%\end{landscape}
 
 \chapter{Conclusión}\label{conclusion}
 En las conclusiones se destaca lo mostrado en el trabajo, resaltando los resultados. Se indican los trabajos futuros. Usualmente, luego de las conclusiones se incluye un párrafo de agradecimientos a quienes auspician la investigación.
