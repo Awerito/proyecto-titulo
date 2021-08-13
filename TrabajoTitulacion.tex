@@ -358,7 +358,7 @@ continuación:
 \end{itemize}
 
 \section{Visión por Computadora}
-% Definición
+\subsection{Definición}
 La visión por computadora es el campo de la inteligencia artificial (IA) que permite a
 los computadores y sistemas derivados a extraer información util de imagenes digitales,
 videos y otras entradas visuales y tomar actiones o hacer recomendaciones basadas en esta
@@ -370,6 +370,59 @@ tarea de inferir gracias al aprendizaje de máquinas. El aprendizaje de maquinas
 en el entrenamiento de modelos de IA en base a conjuntos de datos que harán que los
 distintos modelos aprendan a reconocer patrones y generen la lógica interna necesaria
 para permitirles inferir de manera correcta.
+
+Para definir formalmente el problema de la visión por computadora partimos tomando un
+dato visual $x$ y lo usamos para inferir un estado del mundo $w$. El estado del mundo $w$
+puede ser de naturaleza continua (e.g. la posición tridimencional del modelo de un
+cuerpo) o discreto (e.g. la presencia o ausencia de un objeto particular). Cuando el
+estado es continuo, la inferencia es llamada regresión. Cuando el estado es discreto, la
+inferencia es llamada clasificación. %cita acá
+
+Esta definición nos permite definir el proceso de inferencia como $Pr(w|x)$, es decir, la
+probabilidad de que sierto estado del mundo $w$ siendo que se dió $x$ dato visual. Se
+puede notar rapidamente que a partir de esta definición solo se puede inferir sobre
+estados $w$ conocidos. Esto en práctica se resuelve utilizando un estimador $\hat{w}$ que
+resulte suficientemente cercano.
+
+Para resolver un problema de visión de esta naturaleza se necesitan tres componentes:
+\begin{itemize}
+    \item Un modelo matemático que represente los datos visuales $x$ y los estados del
+        mundo $w$. El modelo representa una familia de posibles relaciones entre $x$, 
+        $w$ y la relación particular es determinada por el modelo de parámetros $\theta$.
+    \item Un algoritmo de aprendizaje que nos permita ajustar los parámetros $\theta$
+        usando ejemplos de pares de entrenamiento $\{x_i, w_i\}$, donde sabemos ambas
+        medidas y el estado relacionado.
+    \item Un algoritmo de inferencia que tome una nueva observación $x$ y use el modelo
+        para calcular $Pr(w|x, \theta)$ sobre el estado del mundo $w$.
+\end{itemize}
+
+Los modelos que relacionan los datos $x$ a el mundo $w$ caen en una de dos categorias:
+\begin{enumerate}
+    \item modelar la contingencia del estado del mundo en los datos $Pr(w|x)$ or
+    \item modelas la contingencia de los datos sobre el estado del mundo $Pr(x|w)$.
+\end{enumerate}
+
+El primer tipo de modelos es denominado discriminativo. El segundo es denominado
+generativo; aquí, construimos un modelo de probabilidad sobre los datos y esto puede ser
+usado para generar nuevas observaciones.
+
+Para efectos de este informe se estudiara el primer tipo de modelo.
+
+\subsection{Modelar contingencia de datos del mundo (Discriminativo)}
+Al modelar $Pr(w|x)$, elegimos uns forma de distribución apropiada para $Pr(w)$ sobre los
+estados del mundo $w$ y hacer la distribución de los parámetros una función de los datos
+$x$. Si el mundo de estados es continuo, lo definimos como una distribución normal con
+media $\mu$ en función de $x$. %cita acá
+
+El valor que nos entrega la función tambien en un conjunto de parámetros definidos,
+$\theta$. Dado que la distribución dependen tanto de los datos $x$ y los parámetros
+$\theta$, escribimos que la función es $Pr(w|x, \theta)$ y nos referimos a ella como
+distribución posterior.
+
+El objetivo del algoritmo de aprendizaje es el de ajustar los parámetros $\theta$ usando
+pares de entrenamiento $\{x_i, w_i\}$. Esto puede hacerse utilizando los enfoques de
+máxima verosimilitud (ML), máximo a posteriori (MAP), o enfoques bayesianos (capítulo
+4).%cita acá
 
 % Metodología de cs (Data augmentation, Data cleaning, Balancing)
 \subsection{Conjunto de Datos}
