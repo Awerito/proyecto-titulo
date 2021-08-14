@@ -398,7 +398,7 @@ Para resolver un problema de visión de esta naturaleza se necesitan tres compon
 
 Los modelos que relacionan los datos $x$ a el mundo $w$ caen en una de dos categorias:
 \begin{enumerate}
-    \item modelar la contingencia del estado del mundo en los datos $Pr(w|x)$ or
+    \item modelar la contingencia del estado del mundo en los datos $Pr(w|x)$ o
     \item modelas la contingencia de los datos sobre el estado del mundo $Pr(x|w)$.
 \end{enumerate}
 
@@ -408,7 +408,7 @@ usado para generar nuevas observaciones.
 
 Para efectos de este informe se estudiara el primer tipo de modelo.
 
-\subsection{Modelar contingencia de datos del mundo (Discriminativo)}
+\subsection{Modelo Discriminativo}
 Al modelar $Pr(w|x)$, elegimos uns forma de distribución apropiada para $Pr(w)$ sobre los
 estados del mundo $w$ y hacer la distribución de los parámetros una función de los datos
 $x$. Si el mundo de estados es continuo, lo definimos como una distribución normal con
@@ -421,8 +421,85 @@ distribución posterior.
 
 El objetivo del algoritmo de aprendizaje es el de ajustar los parámetros $\theta$ usando
 pares de entrenamiento $\{x_i, w_i\}$. Esto puede hacerse utilizando los enfoques de
-máxima verosimilitud (ML), máximo a posteriori (MAP), o enfoques bayesianos (capítulo
-4).%cita acá
+máxima verosimilitud, máximo a posteriori, o enfoques bayesianos .%cita acá
+
+\subsection{Ajuste del Modelo Probabilístico}
+Nos referimos como aprendizaje al proceso de ajustar el modelo probabilístico al conjunto
+de datos $\{x_i\}$ ajustando los parámetros $\theta$ y es de vital importancia que el
+modelo pueda calcular la probabilidad de un nuevo dato $x*$.
+
+\subsubsection{Máxima Verosimilitud}
+Como le nombre sugiere, el método de máxima verosimilitud busca un conjunto de
+parámetros $\hat{\theta}$ donde cada dato $\{x_i\}_{i=1}^I$ es más probable. Para
+calcular la función de verosimilitud $Pr(x_i|\theta)$ en un solo punto $x_i$,
+simplemente evaluamos la función en ese punto. Asumiendo que cada punto es
+independiente para la distribución, la función de verosimilitud
+$Pr(x_{1...I}|\theta)$ para un conjunto de datos es el producto de las
+verosimilitudes individuales. Así la máxima verosimilitud estimada es 
+$$\hat{\theta}=argmax_\theta[Pr(x_{1...I}|\theta)]$$
+$$=argmax_\theta[\Pi_{i=1}^IPr(x_i|\theta)]$$ %change
+donde $argmax[f(\theta)]$ de vuelve el valor de $\theta$ que maximiza el argumento
+$f(\theta)$. Para determinar la predicción de distribución de un nuevo punto $x*$
+(calcular la probabilidad bajo el modelo ajustado), solo evaluamos la fución de densidad
+de probabilidad $Pr(x*|\hat{\theta})$ usando el modelo con parámetros ajustados
+$\hat\theta$.
+
+\subsubsection{Máximo a posteriori}
+En el ajuste de máximo a posteriori, introducimos información posterior sobre los
+parámetros $\theta$. De experiencias anteriores podriamos saber algo respecto al
+posible valor de los parámetros. Por ejemplo, en una sequencia temporal el valor de los
+parámetros a un tiempo $t$ nos puede decir el posible valor de un tiempo $t+1$ y esta
+información quedará codificada en la distribución a priori.
+
+Como el nombre sujuere, la estimación máximo a posteriori maximiza la probabilidad
+posterior $Pr(\theta|x_{1...I})$ de los parámetros
+$$\hat\theta=argmax_\theta[Pr(\theta|x_{1...I})]$$
+$$=argmax_\theta\left[\frac{Pr(x_{1...I}|\theta)Pr(\theta)}{Pr(x_{1...I})}\right]$$
+$$=argmax_\theta\left[\frac{\Pi_{i=1}^IPr(x_i|\theta)Pr(\theta)}{Pr(x_{1...I})}\right]$$
+
+donde aplicamos teorema de Bayes entre las dos primeras lineas y acto seguido asumimos
+independencia de datos. Luego se puede descartar denominador dado que es constante
+relativo a los parámetros lo cual no afecta a la posición del máximo, obteniendo
+$$=argmax_\theta\left[\Pi_{i=1}^IPr(x_i|\theta)Pr(\theta)\right]$$
+Comparando con el método de la máxima verosimilitud, podemos apreciar que la máxima
+verosimilitud es un caso particular de máximo posteriori donde el termino máximo
+posterior $Pr(\theta)$ no aporta información.
+
+Nuevamente la probabilidad de un nuevo dato $x*$ es calculado como $Pr(x*|\hat\theta)$.
+
+\subsubsection{Método Bayesiano}
+En el método bayesiano dejamos de intentar estimar un solo valor de los parámetros
+$\theta$ y aceptamos lo obvio; abrán muchos valores de parámetros que serán
+compatibles con los datos. Calculamos la distribución de probabilidad
+$Pr(\theta|x_{1...I})$ sobre los parámetros $\theta$ basados en los datos
+$\{x_i\}_{i=1}^I$ usando el teorema de Bayes
+$$Pr(\theta|x_{1...I})=\frac{\Pi_{i=1}^I
+Pr(x_i|\theta)Pr(\theta)}{Pr(x_{1...I})}$$
+
+Evaluando la distribución predictiva es más dificil para el caso bayesiano dado que no
+tenemos ningún modelo estimado pero en su lugar encontramos una distribución de
+probabilidad sobre posibles modelos. Así, calculamos
+$$Pr(x*|x_{1...I})=\int Pr(x*|\theta) Pr(\theta|x_{1...I})d\theta,$$
+esto puede ser interpretado como: el termino $Pr(x*|\theta)$ es la predicción para un
+valor dado de $\theta$. Así, la integral puede entenderse como la suma ponderada de los
+diferentes parámetros $\theta$, donde la ponderación está dada por la distribución de
+probabilidad posterior $Pr(\theta|x_{1...I})$ sobre los parámetros (asumiendo que
+los parámetros son diferentes).
+
+Los calculos de densidad predictiva para el bayesiano, máximo a posteriori u máxima
+verosimilitud puede unificarse si consideramos que estos dos últimos son distribuciones
+de probabilidades especiales sobre los parámentros donde toda la densidad está en
+$\hat\theta$. Más formalmente, los consideramos funciones delta centradas en
+$\hat\theta$. Una función delta $\delta(z)$ es una función que integra a uno, y retorna
+cero en todo su dominio excepto $z=0$.
+
+Entonces escribrimos
+$$Pr(x*|x_{1...I})=\int Pr(x*|\theta) \delta[\theta - \hat\theta]d\theta,$$
+$$=Pr(x*|\theta),$$
+
+finalmente vemos que es exactamente como calculabamos las probabilidades anteriores:
+evaluamos la probabilidad de los datos bajo el modelo con el que estimamos los
+parámetros.
 
 % Metodología de cs (Data augmentation, Data cleaning, Balancing)
 \subsection{Conjunto de Datos}
