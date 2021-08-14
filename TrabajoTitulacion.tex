@@ -408,7 +408,7 @@ usado para generar nuevas observaciones.
 
 Para efectos de este informe se estudiara el primer tipo de modelo.
 
-\subsection{Modelo Discriminativo}
+\subsection{Modelos de Clasificación}
 Al modelar $Pr(w|x)$, elegimos uns forma de distribución apropiada para $Pr(w)$ sobre los
 estados del mundo $w$ y hacer la distribución de los parámetros una función de los datos
 $x$. Si el mundo de estados es continuo, lo definimos como una distribución normal con
@@ -428,44 +428,33 @@ Nos referimos como aprendizaje al proceso de ajustar el modelo probabilístico a
 de datos $\{x_i\}$ ajustando los parámetros $\theta$ y es de vital importancia que el
 modelo pueda calcular la probabilidad de un nuevo dato $x*$.
 
-\subsubsection{Máxima Verosimilitud}
-Como le nombre sugiere, el método de máxima verosimilitud busca un conjunto de
-parámetros $\hat{\theta}$ donde cada dato $\{x_i\}_{i=1}^I$ es más probable. Para
-calcular la función de verosimilitud $Pr(x_i|\theta)$ en un solo punto $x_i$,
-simplemente evaluamos la función en ese punto. Asumiendo que cada punto es
-independiente para la distribución, la función de verosimilitud
-$Pr(x_{1...I}|\theta)$ para un conjunto de datos es el producto de las
-verosimilitudes individuales. Así la máxima verosimilitud estimada es 
-$$\hat{\theta}=argmax_\theta[Pr(x_{1...I}|\theta)]$$
-$$=argmax_\theta[\Pi_{i=1}^IPr(x_i|\theta)]$$ %change
-donde $argmax[f(\theta)]$ de vuelve el valor de $\theta$ que maximiza el argumento
-$f(\theta)$. Para determinar la predicción de distribución de un nuevo punto $x*$
-(calcular la probabilidad bajo el modelo ajustado), solo evaluamos la fución de densidad
-de probabilidad $Pr(x*|\hat{\theta})$ usando el modelo con parámetros ajustados
-$\hat\theta$.
+\subsubsection{Regresión Logística}
+Para los modelos de clasificación consideraremos la regresión logística, la cual
+independientemente de su nombre es un modelo que puede ser aplicado a clasificación. La
+regresión logística es un modelo  discriminativo; nosotros seleccionamos una distribución
+de probabilidad sobre un estado del mundo $w \in \{0, 1\}$ y hacemos estos parámetros
+concistentes en los datos observados $x$. Como los estados del mundo son binarios,
+lo describimos con una distribución de Bernoulli y hacemos el parámetro $\lambda$ (que
+indica la probabilidad de que el estado del mundo tome el valor $w=1$) una medida en
+función de $x$.
 
-\subsubsection{Máximo a posteriori}
-En el ajuste de máximo a posteriori, introducimos información posterior sobre los
-parámetros $\theta$. De experiencias anteriores podriamos saber algo respecto al
-posible valor de los parámetros. Por ejemplo, en una sequencia temporal el valor de los
-parámetros a un tiempo $t$ nos puede decir el posible valor de un tiempo $t+1$ y esta
-información quedará codificada en la distribución a priori.
+Es importante destacar, no podemos simplemente hacer el parámetro $\lambda$ una función
+linear $\phi_0+\phi^Tx$ de las medidas; una función linear puede retornar cualquier
+valor, pero el parámetro $\lambda$ debe caer entre 0 y 1. Consecuentemente, primero
+debemos calcular la función linear y luego pasarla a través de la función sigmoidea que
+mapea el rango $[-\infty,\infty]$ a $[0, 1]$. El modelo final queda
+$$Pr(\omega|\phi_0, \phi, x)=Bern_\omega [sig[\alpha]],$$
+donde $\alpha$ es denominado la activación y es dado por la función linear
+$$\alpha=\phi_0+\phi^Tx$$
+y donde la función sigmoidea es de la forma 
+$$sig(x)=\frac{1}{1 + e^{-x}}$$
 
-Como el nombre sujuere, la estimación máximo a posteriori maximiza la probabilidad
-posterior $Pr(\theta|x_{1...I})$ de los parámetros
-$$\hat\theta=argmax_\theta[Pr(\theta|x_{1...I})]$$
-$$=argmax_\theta\left[\frac{Pr(x_{1...I}|\theta)Pr(\theta)}{Pr(x_{1...I})}\right]$$
-$$=argmax_\theta\left[\frac{\Pi_{i=1}^IPr(x_i|\theta)Pr(\theta)}{Pr(x_{1...I})}\right]$$
-
-donde aplicamos teorema de Bayes entre las dos primeras lineas y acto seguido asumimos
-independencia de datos. Luego se puede descartar denominador dado que es constante
-relativo a los parámetros lo cual no afecta a la posición del máximo, obteniendo
-$$=argmax_\theta\left[\Pi_{i=1}^IPr(x_i|\theta)Pr(\theta)\right]$$
-Comparando con el método de la máxima verosimilitud, podemos apreciar que la máxima
-verosimilitud es un caso particular de máximo posteriori donde el termino máximo
-posterior $Pr(\theta)$ no aporta información.
-
-Nuevamente la probabilidad de un nuevo dato $x*$ es calculado como $Pr(x*|\hat\theta)$.
+Así como la activación $\alpha$ tiene a infinito esta función tiende a uno. Y así como
+tiende a menos infinito tiende a cero. Cuando $\alpha$ es cero, la función logística
+sigmoidea retorna un valor de un medio. Para datos unidimencionales de $x$, el conjunto
+de efectos de esta transformación es la de describir una curva sigmoidea relacionando $x$
+con $\lambda$. La posición horizontal de la sigmoidea es determinada por el lugar donde
+la función linear $\alpha$ cruza cero y su pendiente depende del gradiente $\phi_1$.
 
 \subsubsection{Método Bayesiano}
 En el método bayesiano dejamos de intentar estimar un solo valor de los parámetros
@@ -497,9 +486,66 @@ Entonces escribrimos
 $$Pr(x*|x_{1...I})=\int Pr(x*|\theta) \delta[\theta - \hat\theta]d\theta,$$
 $$=Pr(x*|\theta),$$
 
-finalmente vemos que es exactamente como calculabamos las probabilidades anteriores:
-evaluamos la probabilidad de los datos bajo el modelo con el que estimamos los
-parámetros.
+finalmente vemos calculamos las probabilidades evaluando la probabilidad de los datos
+bajo el modelo con el que estimamos los parámetros.
+
+\subsubsection{Árboles de Decisión}
+Para implementar ese modelo comenzamos particionando es espacio de datos en distintas
+regiones y aplicamos diferentes clasificaciones a cada región.
+
+El modelo de regresión ramificada logística tiene activaciones,
+$$\alpha_i=(1-g[x_i,\omega])\phi_0^T x_i+g[x_i,\omega]\phi_1^T x_i$$
+
+El término $g[x,\omega]$ es una función de activación que retorna un número entre 0 y 1.
+Si esta función de activación retorna 0, entonces la activación será $\phi_0x_i$, por
+otro lado si retorna 1, la activación será $\phi_1x_i$. Si la activación retorna un valor
+intermedio, entonces la activación será la suma ponderada de los dos componentes. La
+propia función de activacion depende de los datos $x_i$ y toma parámetros $\omega$. Este
+modelo induce un complejo límite de decisión no linear donde las dos funciónes lineares
+$\phi_0x_i$ y $\phi_1x_i$ son especializadas en diferentes regiones del espacio de datos.
+
+La función de activación puede tomar muchas formas, pero una obvia posibilidad es la de
+usar un segundo modelo de regresión linear. Vale decir, calculamos una función linear
+$\omega^Tx_i$ de los datos que son pasados a través de una sigmoidea logística, es decir,
+$$g[x_i,\omega]=sig[\omega^Tx_i]$$
+
+Para que este modelo aprenda debemos maximizar $L = \Sigma_i \log[Pr(w_i|x_i)]$ una
+probabilidad logaritmica de los pares de datos de entrenamiento $\{x_i,w_i\}_{i=1}^I$ con
+respecto a todos los parámetros $\theta=\{\phi_0,\phi_1,w\}$. Normalmente esto puede
+lograr usando métodos de optimización no linear.
+
+Podemos extender esta idea para crear una estructura de árbol jerárquica anidando
+funciones de activación. Por ejemplo,
+
+\begin{equation}
+    \begin{split}
+        \alpha_i = (1-g[x_i, w]) \left[\phi_0^Tx_i+(1 - g[x_i,
+        w_0])\phi_{00}^Tx_i+g[x_i,w_0]\phi_{01}^Tx_i\right] \\
+        + g[x_i,w]\left[\phi_1^T + (1 -
+        g[x_i, w_1])\phi_{01}^Tx_i + g[x_i, w_1]\phi_{11}^Tx_i\right]
+    \end{split}
+\end{equation}
+
+
+Esto es un ejemplo de árbol de clasificación.
+
+Para aprender los parámetros $\theta = \{\phi_0, \phi_1, \phi_{00}, \phi_{01}, \phi_{10},
+\phi_{11}, w, w_0, w_1\}$ podemos tomar una aproximación incremental. En la primera etapa
+ajustamos la parte superior del árbol, ajustando los parámetros $w, \phi_0, \phi_1$.
+Luego ajustamos la rama de la izquierda, ajustando los parámetros $w_0, \phi_{00},
+\phi_{01}$ y así con la rama de la derecha, ajustando $w_1, \phi_{01}, \phi_{11}$ y así
+sucesivamente.
+
+\subsubsection{Bosque de Árboles Aleatorio}
+Esta idea se volvió popular en la problemas de clasificación multiclase usando la idea
+de árbol de decisión definida anteriormente.
+
+Un bosque aleatorio es una colección de árboles aleatorios, cada uno de estos usa un
+conjunto de funciónes elegidas de manera aleatoria. Cuando se promedian todas las
+probabilidades de cada árbol, es decir, $Pr(w*|w*)$ predicha por cada árbol, se produce
+una clasificación mucho más robusta. Una forma de pensarlo es aproximarlo al método
+bayesiano; donde construimos una respuesta final tomando una suma ponderada de las
+predicciones propuestas por los distintos conjuntos de parámetros.
 
 % Metodología de cs (Data augmentation, Data cleaning, Balancing)
 \subsection{Conjunto de Datos}
@@ -597,9 +643,41 @@ Para los datos no estructurados, como las imágenes y el texto, las técnicas de
 
 \subsubsection{Balanceo de Datos}
 
+En cierto tipo de conjuntos de datos ocurre que cierta concentración de datos sobrepasa
+de sobre manera a otra, causando desbalanceo de datos. Una forma de sobre llevar esto es
+particionando el segmento de datos más abundante para poder representar toda la
+información con el mismo nivel de importancia.
+
+Es importante reconocer las desventajas a lo que esto puede con llevar; esto hace dejar
+de lado gran cantidad de datos, esto es proporcional al conjunto que represente la
+minoria de datos en el conjunto, esto culminando en \textit{underfiting}.
 % Modelos de cv
 % Segmentación
 % Tipo de imágenes (microscópicas)
+\subsection{Procesamiento de Imágenes y Extracción de Características}
+Es importante saber reducir la complejidad del análisis de imagenes sabiendo reconocer
+que tipo de solución necesitamos para nuetro problema. Para ello existen multiples
+transformaciónes que permiten simplificar la entrada visual que recibirá el modelo en
+orden de facilitar la tarea de extracción de características claves.
+
+\subsubsection{Transformación por Pixel}
+Es la transformación más directa de imagenes, consisten en la modificación de pixeles
+individuales asumiendo la estructura bidimensional. Se dice que la transformación
+modifica el pixel $p_{ij}$ donde $i, j$ son las coordenadas del pixel en el arreglo de la
+imagen $P$.
+
+\subsubsection{Escala de Grises}
+Es convertir la imagen de entrada a color a su versión a escala de grises. Este filtro es
+especialmente util para reducir el arreglo de pixeles de valores rgb a un simple valor
+que representa el nivel de blanco del pixel, esto es útil en los casos donde los colores
+no son relevantes en la extracción de caracteristicas.
+
+\subsubsection{Filtros Lineales}
+Son transformaciónes de pixeles $x_{ij}$ que consideran una suma ponderada del valor de
+los pixeles abyacentes, es decir, siendo una imagen $P$ a la cual se  aplicará un filtro
+denominado \textit{kernel} $F$, el cual tendrá entradas $f_{mn}$ donde $m\in\{-M,M\}$ y
+$n\in\{-N,N\}$. Finalmente quedamos con un filtro de la forma
+$$x_{ij}=\Sigma_{m=-M}^M\Sigma_{n=-N}^Np_{i-m,j-n}f_{m,n}$$
 
 \section{Estado del Arte}\label{arte}
 % Alternativas preexistentes
