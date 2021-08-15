@@ -363,7 +363,7 @@ La visión por computadora es el campo de la inteligencia artificial (IA) que pe
 los computadores y sistemas derivados a extraer información util de imagenes digitales,
 videos y otras entradas visuales y tomar actiones o hacer recomendaciones basadas en esta
 información. Si la IA permite a los computadores pensar, la visión por computadora les
-permite ver, observar y entender. %cita acá
+permite ver, observar y entender\cite{IBM}.
 
 La visión por computadora, así como muchas otras ramas de la disciplica de IA, logra la
 tarea de inferir gracias al aprendizaje de máquinas. El aprendizaje de maquinas consiste
@@ -371,12 +371,12 @@ en el entrenamiento de modelos de IA en base a conjuntos de datos que harán que
 distintos modelos aprendan a reconocer patrones y generen la lógica interna necesaria
 para permitirles inferir de manera correcta.
 
-Para definir formalmente el problema de la visión por computadora partimos tomando un
+Para definir formalmente el problema de la visión por computadora\cite{Prince} partimos tomando un
 dato visual $x$ y lo usamos para inferir un estado del mundo $w$. El estado del mundo $w$
 puede ser de naturaleza continua (e.g. la posición tridimencional del modelo de un
 cuerpo) o discreto (e.g. la presencia o ausencia de un objeto particular). Cuando el
 estado es continuo, la inferencia es llamada regresión. Cuando el estado es discreto, la
-inferencia es llamada clasificación. %cita acá
+inferencia es llamada clasificación.
 
 Esta definición nos permite definir el proceso de inferencia como $Pr(w|x)$, es decir, la
 probabilidad de que sierto estado del mundo $w$ siendo que se dió $x$ dato visual. Se
@@ -412,7 +412,7 @@ Para efectos de este informe se estudiara el primer tipo de modelo.
 Al modelar $Pr(w|x)$, elegimos uns forma de distribución apropiada para $Pr(w)$ sobre los
 estados del mundo $w$ y hacer la distribución de los parámetros una función de los datos
 $x$. Si el mundo de estados es continuo, lo definimos como una distribución normal con
-media $\mu$ en función de $x$. %cita acá
+media $\mu$ en función de $x$\cite{MLClass}.
 
 El valor que nos entrega la función tambien en un conjunto de parámetros definidos,
 $\theta$. Dado que la distribución dependen tanto de los datos $x$ y los parámetros
@@ -426,10 +426,10 @@ máxima verosimilitud, máximo a posteriori, o enfoques bayesianos .%cita acá
 \subsection{Ajuste del Modelo Probabilístico}
 Nos referimos como aprendizaje al proceso de ajustar el modelo probabilístico al conjunto
 de datos $\{x_i\}$ ajustando los parámetros $\theta$ y es de vital importancia que el
-modelo pueda calcular la probabilidad de un nuevo dato $x*$.
+modelo pueda calcular la probabilidad de un nuevo dato $x*$\cite{Probab}.
 
 \subsubsection{Regresión Logística}
-Para los modelos de clasificación consideraremos la regresión logística, la cual
+Para los modelos de clasificación consideraremos la regresión logística\cite{LogicR}, la cual
 independientemente de su nombre es un modelo que puede ser aplicado a clasificación. La
 regresión logística es un modelo  discriminativo; nosotros seleccionamos una distribución
 de probabilidad sobre un estado del mundo $w \in \{0, 1\}$ y hacemos estos parámetros
@@ -446,7 +446,7 @@ mapea el rango $[-\infty,\infty]$ a $[0, 1]$. El modelo final queda
 $$Pr(\omega|\phi_0, \phi, x)=Bern_\omega [sig[\alpha]],$$
 donde $\alpha$ es denominado la activación y es dado por la función linear
 $$\alpha=\phi_0+\phi^Tx$$
-y donde la función sigmoidea es de la forma 
+y donde la función sigmoidea\cite{Sigmoid} es de la forma 
 $$sig(x)=\frac{1}{1 + e^{-x}}$$
 
 Así como la activación $\alpha$ tiene a infinito esta función tiende a uno. Y así como
@@ -457,7 +457,7 @@ con $\lambda$. La posición horizontal de la sigmoidea es determinada por el lug
 la función linear $\alpha$ cruza cero y su pendiente depende del gradiente $\phi_1$.
 
 \subsubsection{Método Bayesiano}
-En el método bayesiano dejamos de intentar estimar un solo valor de los parámetros
+En el método bayesiano\cite{Bayes, Bayes2} dejamos de intentar estimar un solo valor de los parámetros
 $\theta$ y aceptamos lo obvio; abrán muchos valores de parámetros que serán
 compatibles con los datos. Calculamos la distribución de probabilidad
 $Pr(\theta|x_{1...I})$ sobre los parámetros $\theta$ basados en los datos
@@ -490,7 +490,7 @@ finalmente vemos calculamos las probabilidades evaluando la probabilidad de los 
 bajo el modelo con el que estimamos los parámetros.
 
 \subsubsection{Árboles de Decisión}
-Para implementar ese modelo comenzamos particionando es espacio de datos en distintas
+Para implementar ese modelo\cite{Trees} comenzamos particionando es espacio de datos en distintas
 regiones y aplicamos diferentes clasificaciones a cada región.
 
 El modelo de regresión ramificada logística tiene activaciones,
@@ -540,16 +540,16 @@ sucesivamente.
 Esta idea se volvió popular en la problemas de clasificación multiclase usando la idea
 de árbol de decisión definida anteriormente.
 
-Un bosque aleatorio es una colección de árboles aleatorios, cada uno de estos usa un
-conjunto de funciónes elegidas de manera aleatoria. Cuando se promedian todas las
-probabilidades de cada árbol, es decir, $Pr(w*|w*)$ predicha por cada árbol, se produce
-una clasificación mucho más robusta. Una forma de pensarlo es aproximarlo al método
-bayesiano; donde construimos una respuesta final tomando una suma ponderada de las
+Un bosque aleatorio\cite{Forest} es una colección de árboles aleatorios, cada uno de
+estos usa un conjunto de funciónes elegidas de manera aleatoria. Cuando se promedian
+todas las probabilidades de cada árbol, es decir, $Pr(w*|w*)$ predicha por cada árbol, se
+produce una clasificación mucho más robusta. Una forma de pensarlo es aproximarlo al
+método bayesiano; donde construimos una respuesta final tomando una suma ponderada de las
 predicciones propuestas por los distintos conjuntos de parámetros.
 
 % Metodología de cs (Data augmentation, Data cleaning, Balancing)
 \subsection{Conjunto de Datos}
-El manejo de los conjuntos de datos es una de las tareas más importantes a la hora de
+El manejo de los conjuntos de datos\cite{Manage} es una de las tareas más importantes a la hora de
 diseñar un modelo de IA, ya que la información y como esté clasificada marcará como el
 modelo podrá desempeñarse en un entorno de uso general o específico que no contenga
 información vista con anterioridad.
@@ -575,11 +575,11 @@ de datos.
 
 \subsubsection{Limpieza de Datos}
 La limpieza de datos es un procedimiento que nos ayuda a filtrar datos erroneos y
-manipular información faltante para no causar una mayor perdida de datos. Este
-procedimiento es descrito como la intuición de los datos, dado que no existen muchas más
-formas de entender un conjunto de datos que analisandolo de manera manual. Generalmente
-el manejo de la limpieza de datos suele ser una de las partes más demandantes en el
-proceso de desarrollo de un modelo de inteligencia artificial.
+manipular información faltante para no causar una mayor perdida de datos\cite{Clean}.
+Este procedimiento es descrito como la intuición de los datos, dado que no existen muchas
+más formas de entender un conjunto de datos que analisandolo de manera manual.
+Generalmente el manejo de la limpieza de datos suele ser una de las partes más
+demandantes en el proceso de desarrollo de un modelo de inteligencia artificial.
 
 Los problemas que se presentan en conjuntos de datos que debes ser solbentados son:
 \begin{itemize}
@@ -597,7 +597,7 @@ Los problemas que se presentan en conjuntos de datos que debes ser solbentados s
         ultima instancia servirá para que el modelo reconozca que existen situaciones
         donde los datos no se encuentran disponibles. Esto es basicamente porque siempre
         se puede extraer información del echo de que no existen entradas en un campo en
-        particular.
+        particular\cite{Miss}.
     \item \textbf{Distribución de datos inconsistentes}: Esto ocurre cuando la escala o
         el formato de los datos no esta bien definido en los campos, vale decir, tener
         números en campos que describen texto o números en rangos que no corresponden.
@@ -615,7 +615,7 @@ Los problemas que se presentan en conjuntos de datos que debes ser solbentados s
 
         La normalización es una transformación que convierte la distribución de los datos
         en una distrubución normal Gaussiana. Este método es utilizado en datos
-        destinados a modelos de predicción estadística.
+        destinados a modelos de predicción estadística\cite{Scal}.
     \item \textbf{Datos inconsistentes}: Es el tipo de dato que requiere manipulación
         acorde a las necesidades, estos datos pueden ser desde texto que registra
         entradas diferentes por tener su versión iniciando con mayusculas y su versión en
@@ -623,23 +623,28 @@ Los problemas que se presentan en conjuntos de datos que debes ser solbentados s
 
         Para la reparación de estos datos se debe hacer estudio de los datos y la
         información que se espera de ellos y es totalmente sujeta a quien manipula los
-        datos.
+        datos\cite{Ingsoc}.
 \end{itemize}
 \subsubsection{Aumento de Datos}
 Muchos de los desarrollos de modelos actuales presentan una característica en común,
 fueron entrenados con cantidades de datos que pasan el orden de magnitud de los cientos
-milos o millones. Esto es un importante datos a considerar cuando se tienen modelos que
+milos o millones. Esto es un importante dato a considerar cuando se tienen modelos que
 no cuentan con un conjunto de datos lo suficientemente amplio.
 
 Para esto es que se hacen estudios respecto el aumento artificial de datos, que consisten
 en resumidas cuentas en el uso de datos pre-existentes en el conjunto de datos actual
 para creas nuevas entradas que representen información similar. Hay estudios que muestran
-aumentos de rendimiento sobre el 30\% sobre modelos que no la utiliza.
+aumentos de rendimiento sobre el 30\%\cite{Augment} sobre modelos que no la utiliza.
 
 \subsubsection{Aumento de datos numéricos}
-Las técnicas de aumento utilizadas en las aplicaciones de aprendizaje profundo dependen del tipo de datos. Para aumentar los datos numéricos simples, son populares técnicas como SMOTE o SMOTE NC. Estas técnicas se utilizan generalmente para abordar el problema del desequilibrio de clases en las tareas de clasificación. 
+Las técnicas de aumento utilizadas\cite{Augment2} en las aplicaciones de aprendizaje
+profundo dependen del tipo de datos. Para aumentar los datos numéricos simples, son
+populares técnicas como SMOTE o SMOTE NC. Estas técnicas se utilizan generalmente para
+abordar el problema del desequilibrio de clases en las tareas de clasificación. 
 
-Para los datos no estructurados, como las imágenes y el texto, las técnicas de aumento varían desde simples transformaciones hasta datos generados por redes neuronales, en función de la complejidad de la aplicación.
+Para los datos no estructurados, como las imágenes y el texto, las técnicas de aumento
+varían desde simples transformaciones hasta datos generados por redes neuronales, en
+función de la complejidad de la aplicación\cite{Augment3}.
 
 \subsubsection{Balanceo de Datos}
 
@@ -658,11 +663,11 @@ minoria de datos en el conjunto, esto culminando en \textit{underfiting}.
 Es importante saber reducir la complejidad del análisis de imagenes sabiendo reconocer
 que tipo de solución necesitamos para nuetro problema. Para ello existen multiples
 transformaciónes que permiten simplificar la entrada visual que recibirá el modelo en
-orden de facilitar la tarea de extracción de características claves.
+orden de facilitar la tarea de extracción de características claves\cite{Prince}.
 
 \subsubsection{Transformación por Pixel}
-Es la transformación más directa de imagenes, consisten en la modificación de pixeles
-individuales asumiendo la estructura bidimensional. Se dice que la transformación
+Es la transformación más directa de imagenes\cite{Pixel}, consisten en la modificación de
+pixeles individuales asumiendo la estructura bidimensional. Se dice que la transformación
 modifica el pixel $p_{ij}$ donde $i, j$ son las coordenadas del pixel en el arreglo de la
 imagen $P$.
 
@@ -670,20 +675,20 @@ imagen $P$.
 Es convertir la imagen de entrada a color a su versión a escala de grises. Este filtro es
 especialmente util para reducir el arreglo de pixeles de valores rgb a un simple valor
 que representa el nivel de blanco del pixel, esto es útil en los casos donde los colores
-no son relevantes en la extracción de caracteristicas.
+no son relevantes en la extracción de caracteristicas\cite{Pixel}.
 
 \subsubsection{Filtros Lineales}
 Son transformaciónes de pixeles $x_{ij}$ que consideran una suma ponderada del valor de
-los pixeles abyacentes, es decir, siendo una imagen $P$ a la cual se  aplicará un filtro
-denominado \textit{kernel} $F$, el cual tendrá entradas $f_{mn}$ donde $m\in\{-M,M\}$ y
-$n\in\{-N,N\}$. Finalmente quedamos con un filtro de la forma
+los pixeles abyacentes\cite{Conv}, es decir, siendo una imagen $P$ a la cual se  aplicará
+un filtro denominado \textit{kernel} $F$, el cual tendrá entradas $f_{mn}$ donde
+$m\in\{-M,M\}$ y $n\in\{-N,N\}$. Finalmente quedamos con un filtro de la forma
 $$x_{ij}=\Sigma_{m=-M}^M\Sigma_{n=-N}^Np_{i-m,j-n}f_{m,n}$$
 
 \section{Estado del Arte}\label{arte}
 % Alternativas preexistentes
 % Conjuntos de datos preexistentes
 
-\chapter{Formulación del Proyecto}\label{formulación}
+%\chapter{Formulación del Proyecto}\label{formulación}
 
 \section{Objetivo General}
 Crear un modelo de aprendizaje de maquinas para la detección de y clasificación de
@@ -696,7 +701,7 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
   \item Analizar y validar la calidad de las predicciones de la detección de parásitos en las muestras, a través de experimentación con el conjuntos de datos recopilado y con muestras obtenidas desde procedimientos reales del examen parasitológico seriado de deposiciones, utilizando imagenes microscopicas.
 \end{enumerate}
 
-\section{Justificación}
+%\section{Justificación}
 %Que se planea realizar y hasta que punto se espera llegar.
 %
 %Esta subdivisión debe:
@@ -706,7 +711,7 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
   %\item Describe la aplicación del software especificándose los beneficios pertinentes, objetivos, y metas;
   %\item Sea consistente con las declaraciones similares en las especificaciones de niveles superiores (por ejemplo, las especificaciones de los requisitos del sistema), si ellos existen.
 %\end{enumerate}
-\blindtext
+%\blindtext
 
 \section{Metodología}
 \begin{enumerate}\justifying
@@ -807,10 +812,10 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
 %\end{figure}
 %\end{landscape}
 
-\chapter{Conclusión}\label{conclusion}
-En las conclusiones se destaca lo mostrado en el trabajo, resaltando los resultados. Se indican los trabajos futuros. Usualmente, luego de las conclusiones se incluye un párrafo de agradecimientos a quienes auspician la investigación.
-\section{Principales aportes}
-\section{Contraste de resultados}
+%\chapter{Conclusión}\label{conclusion}
+%En las conclusiones se destaca lo mostrado en el trabajo, resaltando los resultados. Se indican los trabajos futuros. Usualmente, luego de las conclusiones se incluye un párrafo de agradecimientos a quienes auspician la investigación.
+%\section{Principales aportes}
+%\section{Contraste de resultados}
 %\section{Trabajos futuros} Solo si corresponde.
 
 %%%%%REFERENCIAS
@@ -819,236 +824,37 @@ En las conclusiones se destaca lo mostrado en el trabajo, resaltando los resulta
 %agregar referencias
 \bibliographystyle{apalike}\bibliography{document.bib}
 
-\renewcommand{\appendixname}{Anexos}
-\appendix
+%\renewcommand{\appendixname}{Anexos}
+%\appendix
+%
+%\chapter{Definciones, Acronimos y Abreviaturas}\label{definiciones}
+%\section{Definiciones}
+%\section{Acrónimos}
+%\section{Abreviaturas}
+%
+%\chapter{Configuraciones}\label{configuracion}
+%\blindtext %reemplazar esta linea
 
-\chapter{Definciones, Acronimos y Abreviaturas}\label{definiciones}
-\section{Definiciones}
-\section{Acrónimos}
-\section{Abreviaturas}
+%\chapter{Anexo de Código}\label{codigoA}
 
-\chapter{Configuraciones}\label{configuracion}
-\blindtext %reemplazar esta linea
+%\section{Algoritmos}\label{A:alg}
+%\blindtext %reemplazar esta linea
 
-\chapter{Anexo de Código}\label{codigoA}
-\lstset{language=SQL}
-   \vspace{-0.8cm}
-\begin{lstlisting}
--- Database: acuario
-
--- DROP DATABASE acuario;
-
-CREATE DATABASE acuario
-  WITH OWNER = postgres;
-
-
-CREATE TABLE especies(
-    sno integer PRIMARY KEY,
-    nombre character varying(20),
-    alimento character varying(20)
-);
-
-CREATE TABLE tanques(
-    tno integer PRIMARY KEY,
-    nombre_tanque character varying(20),
-    color_tanque character varying(20),
-    volumen  integer NOT NULL
-);
-
-CREATE TABLE peces(
-    pno integer PRIMARY KEY,
-    nombre_peces character varying(20),
-    color_peces character varying(20),
-    tno integer NOT NULL,
-    sno integer NOT NULL,
-    FOREIGN KEY (tno) REFERENCES tanques (tno) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (sno) REFERENCES especies (sno) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-CREATE TABLE eventos(
-    eno integer PRIMARY KEY,
-    pno integer NOT NULL,
-    fecha date,
-    FOREIGN KEY (pno) REFERENCES peces (pno) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-
-
-INSERT INTO especies VALUES(17,'delfin','arenque');
-INSERT INTO especies VALUES(22,'tiburon','cualquier cosa');
-INSERT INTO especies VALUES(74,'olomina','gusano');
-INSERT INTO especies VALUES(93,'ballena','mantequilla de mani');
-INSERT INTO especies VALUES(100,'pez espada','gusano');
-INSERT INTO especies VALUES(120,'pez globo','gusano');
-
--- select * from especies
-
-INSERT INTO tanques VALUES(55,'charco','verde',300);
-INSERT INTO tanques VALUES(42,'letrina','azul',100);
-INSERT INTO tanques VALUES(35,'laguna','rojo',400);
-INSERT INTO tanques VALUES(85,'letrina','azul',100);
-INSERT INTO tanques VALUES(38,'playa','azul',200);
-INSERT INTO tanques VALUES(44,'laguna','verde',200);
-
--- select * from tanques
-
-
-INSERT INTO peces VALUES (164, 'charlie', 'naranjo', 42, 74);
-INSERT INTO peces VALUES (347, 'flipper', 'negro', 35, 17);
-INSERT INTO peces VALUES (228, 'killer', 'blanco', 42, 22);
-INSERT INTO peces VALUES (281, 'albert', 'rojo', 55, 17);
-INSERT INTO peces VALUES (119, 'bonnie', 'azul', 42, 22);
-INSERT INTO peces VALUES (388, 'cory', 'morado', 35, 93);
-INSERT INTO peces VALUES (700, 'maureen', 'blanco', 44, 100);
-INSERT INTO peces VALUES (800, 'beni', 'rojo', 55, 17);
-INSERT INTO peces VALUES (900, 'nemo', 'rojo', 44, 74);
-INSERT INTO peces VALUES (150, 'vicky', 'rojo', 55, 100);
-INSERT INTO peces VALUES (160, 'mati', 'amarillo', 42, 100);
-INSERT INTO peces VALUES (110, 'rafa', 'azul', 85, 100);
-INSERT INTO peces VALUES (222, 'jimmy', 'amarillo', 38, 100);
-INSERT INTO peces VALUES (144, 'bisho', 'rojo', 42, 93);
-INSERT INTO peces VALUES (125, 'chris', 'azul', 38, 93);
-INSERT INTO peces VALUES (183, 'sable', 'amarillo', 44, 93);
-INSERT INTO peces VALUES (241, 'taz', 'rojo', 55, 93);
-INSERT INTO peces VALUES (300, 'baltazar', 'azul', 85, 100);
-INSERT INTO peces VALUES (200, 'cash', 'azul', 85, 100);
-INSERT INTO peces VALUES (424, 'bandido', 'verde', 35, 100);
-INSERT INTO peces VALUES (454, 'romo', 'blanco', 85, 93);
-
-
--- select * from peces
-
-INSERT INTO eventos VALUES 
-(3456 , 347 , '2010-01-26'),
-(6653 , 164 , '2010-05-14'),
-(5644 , 347 , '2010-05-15'),
-(5645 , 347 , '2010-05-30'),
-(6789 , 281 , '2010-04-30'),
-(5211 , 228 , '2010-08-20'),
-(6719 , 700 , '2010-10-22'),
-(4555 , 164 , '2011-11-03'),
-(9647 , 281 , '2011-12-06'),
-(5347 , 281 , '2011-01-01');
-
---INSERT INTO eventos VALUES (3456, 164, '2010-01-26'); 
---INSERT INTO eventos VALUES (6653, 347, '2010-05-14'); 
---INSERT INTO eventos VALUES (5644, 347, '2010-05-15'); 
---INSERT INTO eventos VALUES (5645, 347, '2010-05-30'); 
---INSERT INTO eventos VALUES (6789, 228, '2010-04-30'); 
---INSERT INTO eventos VALUES (5211, 119, '2010-08-20'); 
---INSERT INTO eventos VALUES (6719, 388, '2010-10-22'); 
---INSERT INTO eventos VALUES (4555, 164, '2011-11-03'); 
---INSERT INTO eventos VALUES (9647, 281, '2011-12-21'); 
---INSERT INTO eventos VALUES (5369, 281, '2011-01-01'); 
-
-
--- ALTER TABLE tanques ADD medida character varying(2); 
-
--- UPDATE tanques SET medida = 'ml';
-
--- select * from tanques;
-
--- ALTER TABLE tanques DROP medida;
-
--- SELECT * FROM especies;
--- SELECT * FROM tanques;
-\end{lstlisting}\vspace{-0.3cm}
-
-
-\section{Algoritmos}\label{A:alg}
-\blindtext %reemplazar esta linea
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, como en el Algoritmo \ref{CodC}.
-
-\lstset{language=C}
-\begin{lstlisting}[caption = C\'odigo en C de una sumatoria, label = CodC]
-#include <stdio.h>
-#include <stdlib.h>
-/* Algoritmo para realizar la sumatoria */
-/* S=2+4+6+...+2n */
-
-int main(void){
-	int i,s,n;
-	
-	/* inicializar el valor de la sumatoria en 0 */
-	s=0;
-	printf("ingrese la cantidad de elementos de la sumatoria=");
-	scanf("% d", &n);
-	/* Realiza la iteracion n veces, y el indice "i" lo multiplica por */
-	/* 2 y lo va sumando a s*/
-	for(i=1;i<=n;i++){
-		s = s	+ 2*i;
-	} 
-	printf("el resultado de la sumatoria es=% d\n",s);
-
-	return (0);
-}
-\end{lstlisting}
-
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod, en el Algoritmo \ref{codL} tempor incididunt ut labore et dolore magna aliqua.
-
-\lstset{language=LISP}
-\begin{lstlisting}[caption= C\'odigo LISP de una Lista, label = codL]
-(define (length x)
-    (if (list? x) (length-aux x)
-        (error "x no es una lista")))
-        
-(define (length-aux x)
-    (if (null? x) 0 (+1 (length-aux (cdr x)))))
-\end{lstlisting}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut, en el Algoritmo \ref{codP} labore et dolore magna aliqua.
-
-
-\lstset{language=PROLOG}
-\begin{lstlisting}[caption= C\'odigo PROLOG de un \'arbol geneal\'ogico, label=codP]
-% Arbol genealogico version 1.
-% padre(A,B) significa que B es el padre de A.
-
-padre(juan,alberto).
-padre(luis,alberto).
-padre(alberto,leoncio). 
-padre(geronimo,leoncio).
-padre(luisa,geronimo). 
-
-% Ahora se define las condiciones para que dos individuos sean hermanos hermano(A,B), significa que A es hermano de B.
-hermano(A,B) :- 
-    padre(A,P), 
-    padre(B,P), 
-    A \== B.
-% Ahora se define el parentesco abuelo-nieto.  nieto(A,B) significa que A es nieto de B.
-nieto(A,B) :- 
-    padre(A,P), 
-    padre(P,B). 
-\end{lstlisting}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-   \lstset{language=java}
-\begin{lstlisting}[caption= C\'odigo JAVA de una clase]
-class <Nombre>{
-   public static void main(String[] args){
-      instrucciones;
-   }
-}
-\end{lstlisting}
-
-\chapter{OPCIONALES en el documento FORMATO}\label{opcional}
-\textbf{TODOS LOS TEXTOS ESCRITOS EN CADA SECCIÓN SON SOLO REFERENCIALES Y/O DE AYUDA, POR LO QUE NO DEBEN QUEDAR EN EL DOCUMENTO FINAL.}
-
-Todas las secciones y/o capítulos que no se mencionen en este apartado, son obligatorias, entre ellas los Capitulo \ref{formulacion}, \ref{fundamentacion}, \ref{descripcion} \ref{requisitos}, \ref{conclusion}.
-
-Un caso particular pero que igual es obligatorio es la Sección \ref{alternativas} no es opcional si es un producto único y nuevo ya que aquí se debe explicar porque es novedoso y no hay alternativas.
-
-Los Anexos \ref{configuracion} y \ref{codigoA} igualmente son obligatorios.
-
-\textbf{Opcional} solo queda el Anexo \ref{definiciones}.
-
-En el curso de Taller de Ingeniería de Software los alumnos aprenderán los temas para rellenar los Capitulos \ref{economico}, \ref{calidad} y \ref{prueba}.
-
-En el curso Formulación y evaluación de proyectos el alumno aprenderá como complementar la sección \ref{gantt} al igual que la justificación económica de la malla PERT de la sección \ref{PERT}. De igual forma, el alumno tendrá los conocimientos para realizar la justificación económica del Capitulo \ref{economico}.
-
-Lógicamente esta sección hay que eliminarla (Anexo \ref{opcional}).
-
+%\chapter{OPCIONALES en el documento FORMATO}\label{opcional}
+%\textbf{TODOS LOS TEXTOS ESCRITOS EN CADA SECCIÓN SON SOLO REFERENCIALES Y/O DE AYUDA, POR LO QUE NO DEBEN QUEDAR EN EL DOCUMENTO FINAL.}
+%
+%Todas las secciones y/o capítulos que no se mencionen en este apartado, son obligatorias, entre ellas los Capitulo \ref{formulacion}, \ref{fundamentacion}, \ref{descripcion} \ref{requisitos}, \ref{conclusion}.
+%
+%Un caso particular pero que igual es obligatorio es la Sección \ref{alternativas} no es opcional si es un producto único y nuevo ya que aquí se debe explicar porque es novedoso y no hay alternativas.
+%
+%Los Anexos \ref{configuracion} y \ref{codigoA} igualmente son obligatorios.
+%
+%\textbf{Opcional} solo queda el Anexo \ref{definiciones}.
+%
+%En el curso de Taller de Ingeniería de Software los alumnos aprenderán los temas para rellenar los Capitulos \ref{economico}, \ref{calidad} y \ref{prueba}.
+%
+%En el curso Formulación y evaluación de proyectos el alumno aprenderá como complementar la sección \ref{gantt} al igual que la justificación económica de la malla PERT de la sección \ref{PERT}. De igual forma, el alumno tendrá los conocimientos para realizar la justificación económica del Capitulo \ref{economico}.
+%
+%Lógicamente esta sección hay que eliminarla (Anexo \ref{opcional}).
+%
 \end{document}
