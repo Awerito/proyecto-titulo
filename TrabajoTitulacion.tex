@@ -4,8 +4,9 @@
 \usepackage[spanish, es-tabla]{babel}
 \usepackage[sfdefault, condensed]{roboto}
 \usepackage[margin=1cm]{geometry}
-\usepackage{multicol,graphicx,fancyhdr,eso-pic,url,float,cite,lmodern,listings,times,textcomp, amsthm,amsmath,amssymb,dsfont,color,colortbl,sidecap,xspace,epic,eepic,anysize,setspace, hyperref, pdflscape,lscape}
-\usepackage{blindtext}
+\usepackage{multicol,fancyhdr,eso-pic,url,float,cite,lmodern,listings,times,textcomp, amsthm,amsmath,amssymb,dsfont,color,colortbl,sidecap,xspace,epic,eepic,anysize,setspace, hyperref, pdflscape,lscape}
+\usepackage{blindtext, subcaption}
+\usepackage[demo]{graphicx}
 
 %%%%%%Glosario
 %\usepackage[acronym]{glossaries}
@@ -324,7 +325,14 @@ La realización del examen en detalle se muestra a continuación:\cite{Serial, S
         liquido fijador\footnote{Liquido conservantes, normalmente formaldehído}.
     \item Se hace entrega al paciente de los frascos junto a una nota con las
         instrucciones para la toma de muestras, conservación de las mismas y precauciones
-        a tomar.
+        a tomar \ref{fig:frascos}.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.4\textwidth]{frascos}
+            \caption{Frascos para almacenamiento de muestras de deposiciones}
+            \label{fig:frascos}
+        \end{figure}
+
     \item Cuando se reciben las muestras y se valida su tamaño, los tiempos en los que se
         tomaron y la forma en que se conservaron, estas pasaran a ser entragadas al
         laboratorio donde seran almacenadas y/o examinadas.
@@ -332,7 +340,13 @@ La realización del examen en detalle se muestra a continuación:\cite{Serial, S
         ecuentren en concervación, y se proceden a intruducir una porción de cada frasco
         en tres probetas diluidas en el liquido fijador.
     \item Se centrifugan las muestras en orden de separar el material fecal del liquido
-        fijador para poder extraerlo.
+        fijador para poder extraerlo \ref{fig:sample}.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\textwidth]{sample}
+            \caption{Muestra centrifugada de deposiciones}
+            \label{fig:sample}
+        \end{figure}
     \item En caso de que el tecnólogo lo considere necesario, tintar la muestras con
         soluciones reactivas que resalten componentes especificos para facilitar las
         observaciones.
@@ -373,18 +387,34 @@ en el entrenamiento de modelos de IA en base a conjuntos de datos que harán que
 distintos modelos aprendan a reconocer patrones y generen la lógica interna necesaria
 para permitirles inferir de manera correcta.
 
-Para definir formalmente el problema de la visión por computadora\cite{Prince} partimos tomando un
-dato visual $x$ y lo usamos para inferir un estado del mundo $w$. El estado del mundo $w$
-puede ser de naturaleza continua (e.g. la posición tridimencional del modelo de un
-cuerpo) o discreto (e.g. la presencia o ausencia de un objeto particular). Cuando el
-estado es continuo, la inferencia es llamada regresión. Cuando el estado es discreto, la
-inferencia es llamada clasificación.
+Para definir formalmente el problema de la visión por computadora\cite{Prince} partimos
+tomando un dato visual $x$ y lo usamos para inferir un estado del mundo $w$. El estado
+del mundo $w$ puede ser de naturaleza continua (e.g. la posición tridimencional del
+modelo de un cuerpo \ref{fig:body}) o discreto (e.g. la presencia o ausencia de un objeto
+particular \ref{fig:obclass}).  Cuando el estado es continuo, la inferencia es llamada
+regresión. Cuando el estado es discreto, la inferencia es llamada clasificación.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{body}
+    \caption{Sistema de seguimiento corporal para dibujar el contorno de la persona en la
+    imagen}
+    \label{fig:body}
+\end{figure}
 
 Esta definición nos permite definir el proceso de inferencia como $Pr(w|x)$, es decir, la
 probabilidad de que sierto estado del mundo $w$ siendo que se dió $x$ dato visual. Se
 puede notar rapidamente que a partir de esta definición solo se puede inferir sobre
 estados $w$ conocidos. Esto en práctica se resuelve utilizando un estimador $\hat{w}$ que
 resulte suficientemente cercano.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{obclass}
+    \caption{Tipos de clasificadores de objetos; clasificación, clasificación +
+    localización, detección de objetos y segmentación intensa}
+    \label{fig:obclass}
+\end{figure}
 
 Para resolver un problema de visión de esta naturaleza se necesitan tres componentes:
 \begin{itemize}
@@ -422,8 +452,7 @@ $\theta$, escribimos que la función es $Pr(w|x, \theta)$ y nos referimos a ella
 distribución posterior.
 
 El objetivo del algoritmo de aprendizaje es el de ajustar los parámetros $\theta$ usando
-pares de entrenamiento $\{x_i, w_i\}$. Esto puede hacerse utilizando los enfoques de
-máxima verosimilitud, máximo a posteriori, o enfoques bayesianos .%cita acá
+pares de entrenamiento $\{x_i, w_i\}$.
 
 \subsection{Ajuste del Modelo Probabilístico}
 Nos referimos como aprendizaje al proceso de ajustar el modelo probabilístico al conjunto
@@ -444,12 +473,20 @@ Es importante destacar, no podemos simplemente hacer el parámetro $\lambda$ una
 linear $\phi_0+\phi^Tx$ de las medidas; una función linear puede retornar cualquier
 valor, pero el parámetro $\lambda$ debe caer entre 0 y 1. Consecuentemente, primero
 debemos calcular la función linear y luego pasarla a través de la función sigmoidea que
-mapea el rango $[-\infty,\infty]$ a $[0, 1]$. El modelo final queda
+mapea el rango $[-\infty,\infty]$ a $[0, 1]$. El modelo final queda \ref{fig:logistic}
 $$Pr(\omega|\phi_0, \phi, x)=Bern_\omega [sig[\alpha]],$$
 donde $\alpha$ es denominado la activación y es dado por la función linear
 $$\alpha=\phi_0+\phi^Tx$$
-y donde la función sigmoidea\cite{Sigmoid} es de la forma 
+y donde la función sigmoidea\cite{Sigmoid} es de la forma \ref{fig:sigmoid}
 $$sig(x)=\frac{1}{1 + e^{-x}}$$
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{sigmoid}
+\caption{Gráfica de función sigmoidea donde los valores de $c_i$ controlan la pendiente
+de la función en $c_2$}
+    \label{fig:sigmoid}
+\end{figure}
 
 Así como la activación $\alpha$ tiene a infinito esta función tiende a uno. Y así como
 tiende a menos infinito tiende a cero. Cuando $\alpha$ es cero, la función logística
@@ -457,6 +494,16 @@ sigmoidea retorna un valor de un medio. Para datos unidimencionales de $x$, el c
 de efectos de esta transformación es la de describir una curva sigmoidea relacionando $x$
 con $\lambda$. La posición horizontal de la sigmoidea es determinada por el lugar donde
 la función linear $\alpha$ cruza cero y su pendiente depende del gradiente $\phi_1$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{logistic}
+    \caption{a) representación de la probabilidad de un estado del mundo $w$ y su
+    conjugado, b) función lineal de la distribución y c) función sigmoidea sobre la
+función lineal representando como los factores de la suma ponderada se anulan en torno a
+punto de diferenciación haciendo que la función defina áreas donde trabajan}
+    \label{fig:logistic}
+\end{figure}
 
 \subsubsection{Método Bayesiano}
 En el método bayesiano\cite{Bayes, Bayes2} dejamos de intentar estimar un solo valor de los parámetros
@@ -486,10 +533,19 @@ cero en todo su dominio excepto $z=0$.
 
 Entonces escribrimos
 $$Pr(x*|x_{1...I})=\int Pr(x*|\theta) \delta[\theta - \hat\theta]d\theta,$$
-$$=Pr(x*|\theta),$$
+$$=Pr(x*|\theta),$$ 
 
 finalmente vemos calculamos las probabilidades evaluando la probabilidad de los datos
-bajo el modelo con el que estimamos los parámetros.
+bajo el modelo con el que estimamos los parámetros\ref{fig:bayes}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{bayes}
+    \caption{Gráfico de funciones de datos repartidos en dos estados del mundo $w$, y el
+    área delimitante de la función $Pr(x*|\theta)$ para dos estimadores (circulos en rojo
+y azul).}
+    \label{fig:bayes}
+\end{figure}
 
 \subsubsection{Árboles de Decisión}
 Para implementar ese modelo\cite{Trees} comenzamos particionando es espacio de datos en distintas
@@ -529,7 +585,7 @@ funciones de activación. Por ejemplo,
 \end{equation}
 
 
-Esto es un ejemplo de árbol de clasificación.
+Esto es un ejemplo de árbol de clasificación\ref{fig:tree}.
 
 Para aprender los parámetros $\theta = \{\phi_0, \phi_1, \phi_{00}, \phi_{01}, \phi_{10},
 \phi_{11}, w, w_0, w_1\}$ podemos tomar una aproximación incremental. En la primera etapa
@@ -537,6 +593,15 @@ ajustamos la parte superior del árbol, ajustando los parámetros $w, \phi_0, \p
 Luego ajustamos la rama de la izquierda, ajustando los parámetros $w_0, \phi_{00},
 \phi_{01}$ y así con la rama de la derecha, ajustando $w_1, \phi_{01}, \phi_{11}$ y así
 sucesivamente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{tree}
+    \caption{Árbol de clasificación definido para el ejemplo donde los datos fluyen desde
+    la raíz hasta las hojas. El área en gris representa el área de las variables que
+pueden ser desarrolladas juntas en un entrenamiento incremental.}
+    \label{fig:tree}
+\end{figure}
 
 \subsubsection{Bosque de Árboles Aleatorio}
 Esta idea se volvió popular en la problemas de clasificación multiclase usando la idea
@@ -547,7 +612,15 @@ estos usa un conjunto de funciónes elegidas de manera aleatoria. Cuando se prom
 todas las probabilidades de cada árbol, es decir, $Pr(w*|w*)$ predicha por cada árbol, se
 produce una clasificación mucho más robusta. Una forma de pensarlo es aproximarlo al
 método bayesiano; donde construimos una respuesta final tomando una suma ponderada de las
-predicciones propuestas por los distintos conjuntos de parámetros.
+predicciones propuestas por los distintos conjuntos de parámetros\ref{fig:forest}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{forest}
+    \caption{N instancias de árboles generando inferencia sobre un dato $x$ y ponderando
+    su resultado en una votación para generar la predicción final.}
+    \label{fig:forest}
+\end{figure}
 
 % Metodología de cs (Data augmentation, Data cleaning, Balancing)
 \subsection{Conjunto de Datos}
@@ -612,16 +685,16 @@ Los problemas que se presentan en conjuntos de datos que debes ser solbentados s
         escalado y normalización.
 
         El escalado corresponde a una transformación en el rango de los datos, esto
-        combierte los datos tomando el mínimo y máximo valor en los campos y escalandolos
+        convierte los datos tomando el mínimo y máximo valor en los campos y escalándolos
         a valores entre 0 y 1.
 
         La normalización es una transformación que convierte la distribución de los datos
-        en una distrubución normal Gaussiana. Este método es utilizado en datos
+        en una distribución normal Gaussiana. Este método es utilizado en datos
         destinados a modelos de predicción estadística\cite{Scal}.
     \item \textbf{Datos inconsistentes}: Es el tipo de dato que requiere manipulación
         acorde a las necesidades, estos datos pueden ser desde texto que registra
-        entradas diferentes por tener su versión iniciando con mayusculas y su versión en
-        minusculas hasta tipos de datos diferentes en las mismas columnas.
+        entradas diferentes por tener su versión iniciando con mayúsculas y su versión en
+        minúsculas hasta tipos de datos diferentes en las mismas columnas.
 
         Para la reparación de estos datos se debe hacer estudio de los datos y la
         información que se espera de ellos y es totalmente sujeta a quien manipula los
@@ -631,7 +704,17 @@ Los problemas que se presentan en conjuntos de datos que debes ser solbentados s
 Muchos de los desarrollos de modelos actuales presentan una característica en común,
 fueron entrenados con cantidades de datos que pasan el orden de magnitud de los cientos
 milos o millones. Esto es un importante dato a considerar cuando se tienen modelos que
-no cuentan con un conjunto de datos lo suficientemente amplio.
+no cuentan con un conjunto de datos lo suficientemente amplio \ref{fig:dataaugmen}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{dataaugmen}
+    \caption{Ejemplo de aumento de datos, las transformaciones incluyen la imagen
+    original, reflejo horizontal, reflejo vertical, rotaciones de 90°, -90° y 60°,
+reescalado a una menores resoluciones, recortes, aumento y disminución de exposición y
+agregación de ruido aleatorio.}
+    \label{fig:dataaugmen}
+\end{figure}
 
 Para esto es que se hacen estudios respecto el aumento artificial de datos, que consisten
 en resumidas cuentas en el uso de datos pre-existentes en el conjunto de datos actual
@@ -641,8 +724,19 @@ aumentos de rendimiento sobre el 30\%\cite{Augment} sobre modelos que no la util
 \subsubsection{Aumento de datos numéricos}
 Las técnicas de aumento utilizadas\cite{Augment2} en las aplicaciones de aprendizaje
 profundo dependen del tipo de datos. Para aumentar los datos numéricos simples, son
-populares técnicas como SMOTE o SMOTE NC. Estas técnicas se utilizan generalmente para
-abordar el problema del desequilibrio de clases en las tareas de clasificación. 
+populares técnicas como \textit{SMOTE, ADASYN o RandomOverSampler}\ref{fig:smote}. Estas
+técnicas se utilizan generalmente para abordar el problema del desequilibrio de clases en
+las tareas de clasificación. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{smote}
+    \caption{\textit{Original dataset} muestra el conjunto de datos original,
+    \textit{RandomOverSampler} muestra el aumento de datos de manera aleatoria,
+\textit{SMOTE} muestra el aumento de datos más localizado y \textit{ADASYN} muestra el
+aumento de muestras para definir zonas más marcadas.}
+    \label{fig:smote}
+\end{figure}
 
 Para los datos no estructurados, como las imágenes y el texto, las técnicas de aumento
 varían desde simples transformaciones hasta datos generados por redes neuronales, en
@@ -653,38 +747,75 @@ función de la complejidad de la aplicación\cite{Augment3}.
 En cierto tipo de conjuntos de datos ocurre que cierta concentración de datos sobrepasa
 de sobre manera a otra, causando desbalanceo de datos. Una forma de sobre llevar esto es
 particionando el segmento de datos más abundante para poder representar toda la
-información con el mismo nivel de importancia.
+información con el mismo nivel de importancia \ref{fig:balance}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{balance}
+    \caption{En \textit{Under-samplig} se eliminan datos del grupo más cuantioso para
+    igualar proporciones, en cambio, en \textit{Over-samplig} se aumentan de manera
+artificial los datos del grupo con menos representación.}
+    \label{fig:balance}
+\end{figure}
 
 Es importante reconocer las desventajas a lo que esto puede con llevar; esto hace dejar
 de lado gran cantidad de datos, esto es proporcional al conjunto que represente la
-minoria de datos en el conjunto, esto culminando en \textit{underfiting}.
+minoría de datos en el conjunto, esto culminando en \textit{underfiting}.
 % Modelos de cv
 % Segmentación
 % Tipo de imágenes (microscópicas)
 \subsection{Procesamiento de Imágenes y Extracción de Características}
-Es importante saber reducir la complejidad del análisis de imagenes sabiendo reconocer
-que tipo de solución necesitamos para nuetro problema. Para ello existen multiples
-transformaciónes que permiten simplificar la entrada visual que recibirá el modelo en
+Es importante saber reducir la complejidad del análisis de imágenes sabiendo reconocer
+que tipo de solución necesitamos para nuestro problema. Para ello existen multiples
+transformaciones que permiten simplificar la entrada visual que recibirá el modelo en
 orden de facilitar la tarea de extracción de características claves\cite{Prince}.
 
 \subsubsection{Transformación por Pixel}
-Es la transformación más directa de imagenes\cite{Pixel}, consisten en la modificación de
+Es la transformación más directa de imágenes\cite{Pixel}, consisten en la modificación de
 pixeles individuales asumiendo la estructura bidimensional. Se dice que la transformación
 modifica el pixel $p_{ij}$ donde $i, j$ son las coordenadas del pixel en el arreglo de la
 imagen $P$.
 
 \subsubsection{Escala de Grises}
 Es convertir la imagen de entrada a color a su versión a escala de grises. Este filtro es
-especialmente util para reducir el arreglo de pixeles de valores rgb a un simple valor
+especialmente útil para reducir el arreglo de pixeles de valores rgb a un simple valor
 que representa el nivel de blanco del pixel, esto es útil en los casos donde los colores
-no son relevantes en la extracción de caracteristicas\cite{Pixel}.
+no son relevantes en la extracción de características\cite{Pixel}.
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{color}
+        \caption{Versión de imagen a color.}
+        \label{fig:color}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{gray}
+        \caption{Versión de imagen en escala de grises.}
+        \label{fig:gray}
+    \end{subfigure}
+    \caption{Transformación de imagen en su escala de grises.}
+    \label{fig:lenna}
+\end{figure}
 
 \subsubsection{Filtros Lineales}
 Son transformaciónes de pixeles $x_{ij}$ que consideran una suma ponderada del valor de
 los pixeles abyacentes\cite{Conv}, es decir, siendo una imagen $P$ a la cual se  aplicará
 un filtro denominado \textit{kernel} $F$, el cual tendrá entradas $f_{mn}$ donde
 $m\in\{-M,M\}$ y $n\in\{-N,N\}$. Finalmente quedamos con un filtro de la forma
+\ref{fig:kernel}
 $$x_{ij}=\Sigma_{m=-M}^M\Sigma_{n=-N}^Np_{i-m,j-n}f_{m,n}$$
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{kernel}
+    \caption{Filtro con \textit{kernel} para resaltar contornos de objetos en la imagen.
+    La matriz se usa para saber las ponderaciones de los pixeles en la suma para el nuevo
+valor de pixeles en la imagen. Así obtenemos un mapa de características que en este
+ejemplo nos entrega la información de los límites del animal de la imagen de entrada.}
+    \label{fig:kernel}
+\end{figure}
 
 \section{Estado del Arte}\label{arte}
 % Alternativas preexistentes
