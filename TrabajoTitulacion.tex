@@ -15,7 +15,7 @@
 %\renewcommand{\acronymname}{Acrónimos}
 
 
-%\usepackage{apacite} %bibliografias Bibtex
+\usepackage{apacite} %bibliografias Bibtex
 
 %Tipos de Letra
 %\renewcommand{\rmdefault}{phv} % Arial
@@ -137,7 +137,7 @@ parasitológico seriado de deposiciones con visión por computadora}\\\vspace{1c
 
 %%%%%%INDICES
 \tableofcontents
-%\listoffigures
+\listoffigures
 %\renewcommand{\listtablename}{Índice de tablas}
 %\listoftables
 %\renewcommand{\lstlistlistingname}{Índice de algoritmos}
@@ -183,7 +183,7 @@ parasitológico seriado de deposiciones con visión por computadora}\\\vspace{1c
     salud que involucra a profesionales que se forman en los avances tecnológicos para
     aplicarlos a la medicina y las ciencias de la salud. %citar acá
 
-%TODO: revisar
+%TODO revisar
     Para la consultoria de este trabajo se cuenta con la ayuda del laboratorio clínico
     CESFAM de Hornopiren, con la ayuda del tecnólogo médico y jefe del laboratorio
     clínico Carlos Dupré Alvarado.
@@ -245,17 +245,17 @@ La parasitología es una disciplina con aplicación en campos variados como medi
 farmacologia y veterinaria. Es utilizada en la investigación de parásitos que pueden
 producir enfermedades en plantas y animales con objeto de analizar, diagnosticar y
 posteriormente establecer un tratamiento óptimo para poder curarlas y
-erradicarlas\cite{Paras}.
+erradicarlas \cite{Paras}.
 
 Gran parte de los parásitos más dificil de tratar son los que se alojan en el
 interior del organismo, lo que puede ingresar por via oral o fluidos y gran parte de
 estos pueden alojarse en el sistema digestivo, principalmente en estomago e
-intestino\cite{Vigil}.
+intestino \cite{Vigil}.
 
 En el contexto de la medicina, la área de \textbf{Tecnología Médica} en su
 especialización de parasitología esta encargada de la realización y analisis de
 exámenes con la finalidad de diagnosticar amenazas relacionadas a la
-disciplina\cite{Digest}.
+disciplina \cite{Digest}.
 
 \subsection{Exámenes parasitologicos}
 
@@ -269,7 +269,7 @@ al laboratorio por el médico tratante. Estas muestras dependen de la busqueda d
 parásitos sospechados y sus posibles ubicaciones, siendo estas muestras de la forma de
 sangre, heces, muestras urogenitales, esputo, aspirados o biopsias. La especificidad de
 los exámanes puede variar en la capacidad de detectar diferentes especies o realizar
-busquedas de manera particular\cite{Util}.
+busquedas de manera particular \cite{Util}.
 
 Estos exámenes se pueden dividir en dos categorias:
 
@@ -379,7 +379,7 @@ La visión por computadora es el campo de la inteligencia artificial (IA) que pe
 los computadores y sistemas derivados a extraer información util de imagenes digitales,
 videos y otras entradas visuales y tomar actiones o hacer recomendaciones basadas en esta
 información. Si la IA permite a los computadores pensar, la visión por computadora les
-permite ver, observar y entender\cite{IBM}.
+permite ver, observar y entender \cite{IBM}.
 
 La visión por computadora, así como muchas otras ramas de la disciplica de IA, logra la
 tarea de inferir gracias al aprendizaje de máquinas. El aprendizaje de maquinas consiste
@@ -387,7 +387,7 @@ en el entrenamiento de modelos de IA en base a conjuntos de datos que harán que
 distintos modelos aprendan a reconocer patrones y generen la lógica interna necesaria
 para permitirles inferir de manera correcta.
 
-Para definir formalmente el problema de la visión por computadora\cite{Prince} partimos
+Para definir formalmente el problema de la visión por computadora \cite{Prince} partimos
 tomando un dato visual $x$ y lo usamos para inferir un estado del mundo $w$. El estado
 del mundo $w$ puede ser de naturaleza continua (e.g. la posición tridimencional del
 modelo de un cuerpo \ref{fig:body}) o discreto (e.g. la presencia o ausencia de un objeto
@@ -460,7 +460,7 @@ de datos $\{x_i\}$ ajustando los parámetros $\theta$ y es de vital importancia 
 modelo pueda calcular la probabilidad de un nuevo dato $x*$\cite{Probab}.
 
 \subsubsection{Regresión Logística}
-Para los modelos de clasificación consideraremos la regresión logística\cite{LogicR}, la cual
+Para los modelos de clasificación consideraremos la regresión logística \cite{LogicR}, la cual
 independientemente de su nombre es un modelo que puede ser aplicado a clasificación. La
 regresión logística es un modelo  discriminativo; nosotros seleccionamos una distribución
 de probabilidad sobre un estado del mundo $w \in \{0, 1\}$ y hacemos estos parámetros
@@ -477,7 +477,7 @@ mapea el rango $[-\infty,\infty]$ a $[0, 1]$. El modelo final queda \ref{fig:log
 $$Pr(\omega|\phi_0, \phi, x)=Bern_\omega [sig[\alpha]],$$
 donde $\alpha$ es denominado la activación y es dado por la función linear
 $$\alpha=\phi_0+\phi^Tx$$
-y donde la función sigmoidea\cite{Sigmoid} es de la forma \ref{fig:sigmoid}
+y donde la función sigmoidea \cite{Sigmoid} es de la forma \ref{fig:sigmoid}
 $$sig(x)=\frac{1}{1 + e^{-x}}$$
 
 \begin{figure}[H]
@@ -506,7 +506,7 @@ punto de diferenciación haciendo que la función defina áreas donde trabajan}
 \end{figure}
 
 \subsubsection{Método Bayesiano}
-En el método bayesiano\cite{Bayes, Bayes2} dejamos de intentar estimar un solo valor de los parámetros
+En el método bayesiano \cite{Bayes, Bayes2} dejamos de intentar estimar un solo valor de los parámetros
 $\theta$ y aceptamos lo obvio; abrán muchos valores de parámetros que serán
 compatibles con los datos. Calculamos la distribución de probabilidad
 $Pr(\theta|x_{1...I})$ sobre los parámetros $\theta$ basados en los datos
@@ -536,7 +536,7 @@ $$Pr(x*|x_{1...I})=\int Pr(x*|\theta) \delta[\theta - \hat\theta]d\theta,$$
 $$=Pr(x*|\theta),$$ 
 
 finalmente vemos calculamos las probabilidades evaluando la probabilidad de los datos
-bajo el modelo con el que estimamos los parámetros\ref{fig:bayes}.
+bajo el modelo con el que estimamos los parámetros \ref{fig:bayes}.
 
 \begin{figure}[H]
     \centering
@@ -548,7 +548,7 @@ y azul).}
 \end{figure}
 
 \subsubsection{Árboles de Decisión}
-Para implementar ese modelo\cite{Trees} comenzamos particionando es espacio de datos en distintas
+Para implementar ese modelo \cite{Trees} comenzamos particionando es espacio de datos en distintas
 regiones y aplicamos diferentes clasificaciones a cada región.
 
 El modelo de regresión ramificada logística tiene activaciones,
@@ -585,7 +585,7 @@ funciones de activación. Por ejemplo,
 \end{equation}
 
 
-Esto es un ejemplo de árbol de clasificación\ref{fig:tree}.
+Esto es un ejemplo de árbol de clasificación \ref{fig:tree}.
 
 Para aprender los parámetros $\theta = \{\phi_0, \phi_1, \phi_{00}, \phi_{01}, \phi_{10},
 \phi_{11}, w, w_0, w_1\}$ podemos tomar una aproximación incremental. En la primera etapa
@@ -607,12 +607,12 @@ pueden ser desarrolladas juntas en un entrenamiento incremental.}
 Esta idea se volvió popular en la problemas de clasificación multiclase usando la idea
 de árbol de decisión definida anteriormente.
 
-Un bosque aleatorio\cite{Forest} es una colección de árboles aleatorios, cada uno de
+Un bosque aleatorio \cite{Forest} es una colección de árboles aleatorios, cada uno de
 estos usa un conjunto de funciónes elegidas de manera aleatoria. Cuando se promedian
 todas las probabilidades de cada árbol, es decir, $Pr(w*|w*)$ predicha por cada árbol, se
 produce una clasificación mucho más robusta. Una forma de pensarlo es aproximarlo al
 método bayesiano; donde construimos una respuesta final tomando una suma ponderada de las
-predicciones propuestas por los distintos conjuntos de parámetros\ref{fig:forest}.
+predicciones propuestas por los distintos conjuntos de parámetros \ref{fig:forest}.
 
 \begin{figure}[H]
     \centering
@@ -624,7 +624,7 @@ predicciones propuestas por los distintos conjuntos de parámetros\ref{fig:fores
 
 % Metodología de cs (Data augmentation, Data cleaning, Balancing)
 \subsection{Conjunto de Datos}
-El manejo de los conjuntos de datos\cite{Manage} es una de las tareas más importantes a la hora de
+El manejo de los conjuntos de datos \cite{Manage} es una de las tareas más importantes a la hora de
 diseñar un modelo de IA, ya que la información y como esté clasificada marcará como el
 modelo podrá desempeñarse en un entorno de uso general o específico que no contenga
 información vista con anterioridad.
@@ -650,7 +650,7 @@ de datos.
 
 \subsubsection{Limpieza de Datos}
 La limpieza de datos es un procedimiento que nos ayuda a filtrar datos erroneos y
-manipular información faltante para no causar una mayor perdida de datos\cite{Clean}.
+manipular información faltante para no causar una mayor perdida de datos \cite{Clean}.
 Este procedimiento es descrito como la intuición de los datos, dado que no existen muchas
 más formas de entender un conjunto de datos que analisandolo de manera manual.
 Generalmente el manejo de la limpieza de datos suele ser una de las partes más
@@ -672,7 +672,7 @@ Los problemas que se presentan en conjuntos de datos que debes ser solbentados s
         ultima instancia servirá para que el modelo reconozca que existen situaciones
         donde los datos no se encuentran disponibles. Esto es basicamente porque siempre
         se puede extraer información del echo de que no existen entradas en un campo en
-        particular\cite{Miss}.
+        particular \cite{Miss}.
     \item \textbf{Distribución de datos inconsistentes}: Esto ocurre cuando la escala o
         el formato de los datos no esta bien definido en los campos, vale decir, tener
         números en campos que describen texto o números en rangos que no corresponden.
@@ -690,7 +690,7 @@ Los problemas que se presentan en conjuntos de datos que debes ser solbentados s
 
         La normalización es una transformación que convierte la distribución de los datos
         en una distribución normal Gaussiana. Este método es utilizado en datos
-        destinados a modelos de predicción estadística\cite{Scal}.
+        destinados a modelos de predicción estadística \cite{Scal}.
     \item \textbf{Datos inconsistentes}: Es el tipo de dato que requiere manipulación
         acorde a las necesidades, estos datos pueden ser desde texto que registra
         entradas diferentes por tener su versión iniciando con mayúsculas y su versión en
@@ -698,13 +698,14 @@ Los problemas que se presentan en conjuntos de datos que debes ser solbentados s
 
         Para la reparación de estos datos se debe hacer estudio de los datos y la
         información que se espera de ellos y es totalmente sujeta a quien manipula los
-        datos\cite{Ingsoc}.
+        datos \cite{Ingsoc}.
 \end{itemize}
 \subsubsection{Aumento de Datos}
 Muchos de los desarrollos de modelos actuales presentan una característica en común,
 fueron entrenados con cantidades de datos que pasan el orden de magnitud de los cientos
 milos o millones. Esto es un importante dato a considerar cuando se tienen modelos que
-no cuentan con un conjunto de datos lo suficientemente amplio \ref{fig:dataaugmen}.
+no cuentan con un conjunto de datos lo suficientemente amplio \ref{fig:dataaugmen}
+\cite{Dataaug}.
 
 \begin{figure}[H]
     \centering
@@ -719,10 +720,10 @@ agregación de ruido aleatorio.}
 Para esto es que se hacen estudios respecto el aumento artificial de datos, que consisten
 en resumidas cuentas en el uso de datos pre-existentes en el conjunto de datos actual
 para creas nuevas entradas que representen información similar. Hay estudios que muestran
-aumentos de rendimiento sobre el 30\%\cite{Augment} sobre modelos que no la utiliza.
+aumentos de rendimiento sobre el 30\% \cite{Augment} sobre modelos que no la utiliza.
 
 \subsubsection{Aumento de datos numéricos}
-Las técnicas de aumento utilizadas\cite{Augment2} en las aplicaciones de aprendizaje
+Las técnicas de aumento utilizadas \cite{Augment2} en las aplicaciones de aprendizaje
 profundo dependen del tipo de datos. Para aumentar los datos numéricos simples, son
 populares técnicas como \textit{SMOTE, ADASYN o RandomOverSampler}\ref{fig:smote}. Estas
 técnicas se utilizan generalmente para abordar el problema del desequilibrio de clases en
@@ -740,14 +741,13 @@ aumento de muestras para definir zonas más marcadas.}
 
 Para los datos no estructurados, como las imágenes y el texto, las técnicas de aumento
 varían desde simples transformaciones hasta datos generados por redes neuronales, en
-función de la complejidad de la aplicación\cite{Augment3}.
+función de la complejidad de la aplicación \cite{Augment3}.
 
 \subsubsection{Balanceo de Datos}
-
 En cierto tipo de conjuntos de datos ocurre que cierta concentración de datos sobrepasa
 de sobre manera a otra, causando desbalanceo de datos. Una forma de sobre llevar esto es
 particionando el segmento de datos más abundante para poder representar toda la
-información con el mismo nivel de importancia \ref{fig:balance}.
+información con el mismo nivel de importancia \ref{fig:balance} \cite{Balan}.
 
 \begin{figure}[H]
     \centering
@@ -761,17 +761,62 @@ artificial los datos del grupo con menos representación.}
 Es importante reconocer las desventajas a lo que esto puede con llevar; esto hace dejar
 de lado gran cantidad de datos, esto es proporcional al conjunto que represente la
 minoría de datos en el conjunto, esto culminando en \textit{underfiting}.
+
 % Modelos de cv
 % Segmentación
+\subsection{Segmentación}
+La segmentación \cite{Segmenta} de imágenes es el tipo de modelo que delimita los
+contornos de los elementos contenidos en la entrada visual, en este modelo cada pixel
+pertenece a una clase. Es usado para identificar imágenes para aplicaciones que requieren
+gran nivel de precisión. La salida es una máscara que delimita la forma del objeto en la
+imagen. La segmentación de imágenes viene en muchas formas (segmentación semántica,
+intensa, panóptica, etc.), la práctica de segmentación de imágenes generalmente describe
+la necesidad de anotar cada pixel de la imagen con una clase.
+
+\begin{itemize}
+    \item \textbf{Segmentación de instancias}: cada instancia de un objeto es etiquetada por
+        separado y los segmentos sin instancia son ignorados.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\textwidth]{segment3}
+            \caption{Ejemplo de segmentación de instancias donde se puede ver que cada
+            elemento reconocido recibe un color diferente. Elementos como los carteles
+            o árboles del fondo al no contar con etiqueta son ignorados por el modelo.}
+            \label{fig:segment3}
+        \end{figure}
+    \item \textbf{Segmentación semántica}: Aquí se consideran todas las regiones de la
+        imagen y los objetos del mismo tipo reciben la misma etiqueta.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.6\textwidth]{segment2}
+            \caption{Ejemplo de segmentación semántica donde los objetos similares son
+            agrupados bajo la misma etiqueta}
+            \label{fig:segment2}
+        \end{figure}
+    \item \textbf{Segmentación panóptica}: es una combinación de segmentación semántica y
+        segmentación de instancias, de modo que a todos los píxeles se les asigna una
+        etiqueta de clase y todas las instancias de objetos están segmentadas de forma
+        única.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.7\textwidth]{segment}
+            \caption{Ejemplo de segmentación panóptica donde la totalidad de la imagen
+            recibe una clase que diferencia los distintos objetos contenidas en esta. En
+            la parte superior el cielo, los árboles de fondo, el vehículo en primer plano el
+            suelo debajo de este.}
+            \label{fig:segment}
+        \end{figure} 
+\end{itemize}
+
 % Tipo de imágenes (microscópicas)
 \subsection{Procesamiento de Imágenes y Extracción de Características}
 Es importante saber reducir la complejidad del análisis de imágenes sabiendo reconocer
 que tipo de solución necesitamos para nuestro problema. Para ello existen multiples
 transformaciones que permiten simplificar la entrada visual que recibirá el modelo en
-orden de facilitar la tarea de extracción de características claves\cite{Prince}.
+orden de facilitar la tarea de extracción de características claves \cite{Prince}.
 
 \subsubsection{Transformación por Pixel}
-Es la transformación más directa de imágenes\cite{Pixel}, consisten en la modificación de
+Es la transformación más directa de imágenes \cite{Pixel}, consisten en la modificación de
 pixeles individuales asumiendo la estructura bidimensional. Se dice que la transformación
 modifica el pixel $p_{ij}$ donde $i, j$ son las coordenadas del pixel en el arreglo de la
 imagen $P$.
@@ -780,7 +825,7 @@ imagen $P$.
 Es convertir la imagen de entrada a color a su versión a escala de grises. Este filtro es
 especialmente útil para reducir el arreglo de pixeles de valores rgb a un simple valor
 que representa el nivel de blanco del pixel, esto es útil en los casos donde los colores
-no son relevantes en la extracción de características\cite{Pixel}.
+no son relevantes en la extracción de características \cite{Pixel}.
 
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
@@ -801,7 +846,7 @@ no son relevantes en la extracción de características\cite{Pixel}.
 
 \subsubsection{Filtros Lineales}
 Son transformaciónes de pixeles $x_{ij}$ que consideran una suma ponderada del valor de
-los pixeles abyacentes\cite{Conv}, es decir, siendo una imagen $P$ a la cual se  aplicará
+los pixeles abyacentes \cite{Conv}, es decir, siendo una imagen $P$ a la cual se  aplicará
 un filtro denominado \textit{kernel} $F$, el cual tendrá entradas $f_{mn}$ donde
 $m\in\{-M,M\}$ y $n\in\{-N,N\}$. Finalmente quedamos con un filtro de la forma
 \ref{fig:kernel}
@@ -817,11 +862,11 @@ ejemplo nos entrega la información de los límites del animal de la imagen de e
     \label{fig:kernel}
 \end{figure}
 
-\section{Estado del Arte}\label{arte}
+%\section{Estado del Arte}\label{arte}
 % Alternativas preexistentes
 % Conjuntos de datos preexistentes
 
-%\chapter{Formulación del Proyecto}\label{formulación}
+\chapter{Formulación del Proyecto}\label{formulación}
 
 \section{Objetivo General}
 Crear un modelo de aprendizaje de maquinas para la detección de y clasificación de
@@ -850,6 +895,10 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
 \begin{enumerate}\justifying
     \item Recopilar y estructurar un conjunto de datos de imágenes de muestras para el entrenamiento y testeo del modelo de detección de parásitos.
         \begin{enumerate}
+            \item Formulación del protecto
+            \item Revisión de la litertura relacionada al proyecto de título
+            \item Desarroll del marco teórico
+            \item Escritura del informe
             \item Revisión de conjunto de datos disponibles relacionados al examen
                 parasitológico seriado de deposiciones.
             \item Definir una estructura estandar para almacenar imagenes microscopicas
@@ -955,7 +1004,7 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
 \renewcommand{\refname}{Referencias}
 
 %agregar referencias
-\bibliographystyle{apalike}\bibliography{document.bib}
+\bibliographystyle{apacite}\bibliography{document.bib}
 
 %\renewcommand{\appendixname}{Anexos}
 %\appendix
