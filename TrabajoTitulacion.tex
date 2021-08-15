@@ -111,15 +111,15 @@
 \thispagestyle{empty}
 
 \AddToShipoutPicture*{\BackgroundPic}
-
-   \title{\scshape\Huge{Detección de presencia de parásitos en examen
-parasitológico seriado de deposiciones con visión por computadora}\\\vspace{1cm}
-        \Large Departamento de Ciencias de la Ingeniería\\
-        \Large Ingeniería Civil en Informática\\
-        \large Campus Puerto Montt, Chile}
+\title{\vspace{-1cm}\scshape\Large{\textbf{Detección de presencia de parásitos en examen
+        parasitológico seriado de deposiciones con visión por computadora}}\\\vspace{0.5cm}
+        \large Departamento de Ciencias de la Ingeniería\\
+        \large Ingeniería Civil en Informática\\
+        Campus Puerto Montt, Chile}
    \author{
-      Diego Ignacio Muñoz Viveros\\
-      diegoignacio.munoz@alumnos.ulagos.cl
+       \vspace*{-2cm}
+       Diego Ignacio Muñoz Viveros\\
+       diegoignacio.munoz@alumnos.ulagos.cl
    }
    \date{Profesor Guía: Joel Sebastian Torres Carrasco\\  Co-guía: Carlos Dupré Alvarado\\
    \today}
@@ -155,24 +155,24 @@ parasitológico seriado de deposiciones con visión por computadora}\\\vspace{1c
 
 
 \chapter{Introducción}\label{intro}
+
+%cita1: http://scielo.sld.cu/pdf/mgi/v22n1/mgi07106.pdf
+    Los exámenes, pruebas o mediciones médicas son la base para la evaluación médica y
+    estudios clínicos que permitan elaborar diagnósticos correctos y, consecuentemente,
+    plantear tratamientos adecuados.  Los exámenes médicos son procedimientos rigurosos
+    que permiten observar el comportamiento humano siguiendo el método científico para
+    recolectar evidencias, en este caso, del cuerpo humano. Para poder medir de mejor
+    manera todos estos comportamientos, se han desarrollado diferentes técnicas a lo
+    largo del tiempo, como la observación, análisis químico o genético.  Por ende, la
+    calidad de los exámenes médicos son un factor clave para que los tratamientos dados
+    tengan efectos positivos y, finalmente, mejorar la calidad de vida de los pacientes.
+
 % Todavía hay gran cantidad de exámenes echos a mano
 % Hacer esto a mano no suple la demanda médica
-    En la actualidad en los laboratorios médicos existen gran cantidad de exámenes
-    relacionados a la observación microscópica de muestras, estos exámenes son realizados
-    bajo observación humana de manera totalmente manual. Normalmente los exámenes que
-    involucran esta observación microscópica suelen demandar bastante tiempo por muestra,
-    esto multiplicado a la demanda habitual en el área de la salud nos da a conocer una
-    problemática relacionada a la incapacidad de suplir la demanda en un tiempo
-    pertinente.
-
-% Sesgo humano
-% Certeza incierta
-    Otra característica inherente a la observación está relacionada al error humano
-    introducido en las observaciones, resultando en observaciones con clasificaciones
-    erróneas, esto concluyendo en el mal diagnostico médico. En ocasiones puede haber una
-    gran diferencia entre las observaciones de distintos tecnólogos médicos sobre la
-    misma muestra, esto en resumen, agrega gran incertidumbre a los análisis que
-    normalmente solo puede ser resuelta con observaciones adicionales o complementarias.
+    En la actualidad, los laboratorios médicos son los encargados de realizar una gran
+    cantidad de exámenes relacionados a la observación microscópica de muestras. Estos
+    exámanes son ralizados bajo observación humana de manera totalmente manual
+    considerando a un experto llamado tecnólogo médico. 
 
 % Introducción del rol de la tecnología médica
 % Intro a nuestro laboratorio clínico cesfam de hornopiren
@@ -182,47 +182,66 @@ parasitológico seriado de deposiciones con visión por computadora}\\\vspace{1c
     la salud de las personas durante su diagnóstico, desarrollo de la enfermedad y
     tratamiento aplicado. En el contexto médico, la tecnología médica es la rama de la
     salud que involucra a profesionales que se forman en los avances tecnológicos para
-    aplicarlos a la medicina y las ciencias de la salud. %citar acá
+    aplicarlos a la medicina y las ciencias de la salud.
+
+% cita2: https://www.scielo.cl/scielo.php?script=sci_arttext&pid=S0034-98872015000600011
+    Normalmente los exámenes que involucran esta observación microscópica suelen demandar
+    bastante tiempo por muestra; lo cual aumenta la demanda habitual en el área de la
+    salud y, sobretodo, en la salud pública lo que se refleja en demoras en la entrega de
+    resultados.
 
 %TODO revisar
-    Para la consultoría de este trabajo se cuenta con la ayuda del laboratorio clínico
-    CESFAM de Hornopiren, con la ayuda del tecnólogo médico y jefe del laboratorio
-    clínico Carlos Dupré Alvarado.
+%    Para la consultoria de este trabajo se cuenta con la ayuda del laboratorio clínico
+%    CESFAM de Hornopiren, con la ayuda del tecnólogo médico y jefe del laboratorio
+%    clínico Carlos Dupré Alvarado.
 
-    El examen parasitológico seriado de deposiciones es un examen realizado para la
-    detección de presencia parasitológica en pacientes. El examen se lleva a cabo con la
+% Sesgo humano
+% Certeza incierta
+    Otra característica inherente de los exámenes basada en observaciones de imágenes
+    está relacionada al error humano introducido en las observaciones, dependiendo
+    totalmente de la expertiz del tecnólogo médico.  En consecuencia, las observaciones
+    resultante contienen clasificaciones erroneas, influyendo en un mal diagnoóstico
+    médico. Es así que, en ocaciones puede haber una gran diferencia entre las
+    observaciones de distintos tecnólogos médicos sobre la misma muestra, lo que genera
+    una gran incertidumbre a los estudios clínicos y que obliquen a realizar
+    observaciones adicionales o complementarias.
+
+    Uno de estos exámenes basados en observaciones de imágenes es el examen parasitológico 
+    seriado de deposiciones  que es un examen realizado para la
+    detección de presencia parasitológica en pacientes. Este examen se lleva a cabo con la
     toma de muestras de deposiciones del paciente y, posteriormente, se hace observación
-    de las muestras por medio de observación microscópica, en la realización de la
+    de las muestras por medio de observación microscopica. En la realización de la
     observación se documenta la confirmación y clasificación de presencia parasitológica
-    en orden de dar con un tratamiento certero, eficaz y acorde a las detecciones.  La
-    denominación seriado refiere a las condiciones en las que estas muestras, tres
+    en orden de dar con un tratamiento certero, eficaz y acorde a las detecciones. %cita aqui
+    La denominación seriado refiere a las condiciones en las que estas muestras, tres
     muestras enfrascadas por separado, serán tomadas con la finalidad de tener muestras
     en distintos ciclos larvales.
 
 % Cual es el problema que tenemos acá
 % Inconsistencia en las mediciones / definición del problema
-    El problema es que dado lo extenuante de la observación y lo altamente susceptible a
-    sesgo del observador el examen es muy sensible a perdida o mala clasificación de
-    avistamientos llevando a malos diagnósticos médicos. En este trabajo se propone una
-    solución inteligente para automatizar el examen parasitológico seriado de
-    deposiciones para poder mejorar la calidad de los resultados y así mejorar la calidad
-    de vida de las personas.
+    Por lo tanto, la problemática presentada en este trabajo radica en lo altamente
+    susceptible al sesgo del observador del examen, es decir, es muy sensible a perdida o
+    mala clasificación de avistamientos llevando a malos diagnósticos médicos. 
+    
+    En este trabajo se propone una solución inteligente para automatizar el examen
+    parasitológico seriado de deposiciones para poder mejorar la calidad de los
+    resultados y así mejorar la calidad de vida de las personas.
 
     Para realizar este proyecto se pretende usar tecnologías que permitan aprovechar la
-    experiencia de los tecnólogos médicos y utilizarla para crear mejores resultados.
-    Es por ello que se pretende utilizar tecnologías de visión por computadora para
-    automatizar la observación de muestras y a su vez reducir el grado de error mientras
-    se apunta a una implementación rápida y simple.
+    experiencia de los tecnólogos médicos para mejorar los resultados de las
+    observaciones.  Es por ello, que se pretende utilizar tecnologías de visión por
+    computadora para automatizar la observación de muestras y, a su vez, reducir el grado
+    de error. Además, se espera que la implementación permita simplificar y agilizar el
+    procedimiento de observación del examen.
 
     La visión por computadora es la combinación de tecnologías que permite a las
     computadoras generar inferencia respecto a imágenes estáticas o en movimiento
     emulando la visión humana por medio de un aprendizaje basado en conjuntos de datos
     utilizados como ejemplos iniciales de los cuales el modelo generado ajustará sus
-    parámetros. %cita acá
-    El uso de la visión por computadora espera demostrar el aumento en la precisión y
-    velocidad de la detección y clasificación de parásitos con objetivo de reducir
-    incertidumbre y error humano introducido en la observación manual ejercida en el proceso
-    de observación del examen parasitológico seriado de deposiciones. 
+    parámetros.  El uso de la visión por computadora espera demostrar el aumento en la
+    precisión y velocidad de la detección y clasificación de parásitos con objetivo de
+    reducir incertidumbre y error humano introducido en la observación manual ejercida en
+    el proceso de observación del examen parasitológico seriado de deposiciones. 
 
 % El gran desafió tésnico
 % Uno de los problemas, existencia de dataset relacionados al examen
@@ -231,7 +250,12 @@ parasitológico seriado de deposiciones con visión por computadora}\\\vspace{1c
     un modelo robusto y de altas prestación con gran capacidad de generalización para el
     examen parasitologico seriado de deposiciones.
 
-% Continua que se verá
+% Continua que se verá (terminar esto)
+    En adelante, el documento se estructura de la siguiente manera. El capítulo
+    \ref{teorico}, presenta los conocimientos básicos para entender el desarrollo de este
+    proyecto de título. El capítulo \ref{formulación}, define los objetivos, metodología
+    y planificación del proyecto. Finalmente, el capítulo \ref{conclusion}, entrega
+    algunas ideas a desarrollar a futuro en el proyecto.
 
 \chapter{Marco Teórico}\label{teorico}
 
@@ -311,19 +335,19 @@ Para la realización de los exámenes se procede de las siguientes formas: \cite
         lesiones en los órganos.
 \end{enumerate}
 
-\subsection{Examen Parasitológico Seriado de Deposiciones}
+\subsection{Examen Parasitológico Seriado de Deposiciones (EPSD)}
 % Que es, para que, procedimiento
 % Hablar del contexto del tecnologo medico
-Como se menciona anteriormente, el examen parasitológico seriado de deposiciones es un
-examen que busca estudiar la presencia parasitaria intestinal por medio de observaciones
-de muestras de heces. La realización de este examen es llevado a cabo por un tecnólogo
-médico y su principal objetivo es documentar las observaciones realizadas.
+Como se menciona anteriormente, el examen parasitológico seriado de deposiciones (EPSD)
+es un examen que busca estudiar la presencia parasitaria intestinal por medio de
+observaciones de muestras de heces. La realización de este examen es llevado a cabo por
+un tecnólogo médico y su principal objetivo es documentar las observaciones realizadas.
 
-La realización del examen en detalle se muestra a continuación:\cite{Serial, Serial2}
+La realización del examen en detalle se muestra a continuación:\cite{Serial}
 \begin{enumerate}
     \item Una vez se reconoce la necesidad de la realización del examen, el médico
         tratante pedirá la preparación de tres frascos de muestras con 10-20 ml de
-        liquido fijador\footnote{Liquido conservantes, normalmente formaldehído}.
+        líquido fijador\footnote{Liquido conservantes, normalmente formaldehído}.
     \item Se hace entrega al paciente de los frascos junto a una nota con las
         instrucciones para la toma de muestras, conservación de las mismas y precauciones
         a tomar \ref{fig:frascos}.
@@ -339,8 +363,8 @@ La realización del examen en detalle se muestra a continuación:\cite{Serial, S
         laboratorio donde serán almacenadas y/o examinadas.
     \item Las muestras son retiradas del área de refrigeración, en el caso que se
         encuentren en conservación, y se proceden a introducir una porción de cada frasco
-        en tres probetas diluidas en el liquido fijador.
-    \item Se centrifugan las muestras en orden de separar el material fecal del liquido
+        en tres probetas diluidas en el líquido fijador.
+    \item Se centrifugan las muestras en orden de separar el material fecal del líquido
         fijador para poder extraerlo \ref{fig:sample}.
         \begin{figure}[H]
             \centering
@@ -354,7 +378,25 @@ La realización del examen en detalle se muestra a continuación:\cite{Serial, S
     \item Dejar caer una gota de cada una de las muestras en un portaobjeto y esparcir
         para observación de goteo fino.
     \item Hacer observación de las muestras con gran detalle en el microscopio y
-        documentar hallazgos en caso de haber.
+        documentar hallazgos en caso de haber \ref{fig:documentacion}.
+        \begin{figure}[H]
+            \begin{subfigure}{0.5\textwidth}
+                \centering
+                \includegraphics[width=0.8\textwidth]{negativo}
+                \caption{Contenido textual en caso de no hallar presencia parasitológica}
+                \label{fig:negativo}
+            \end{subfigure}
+            \begin{subfigure}{0.5\textwidth}
+                \centering
+                \includegraphics[width=0.8\textwidth]{positivo}
+                \caption{El informe debe contener un listado detallado de las observaciones
+                incluyendo nombre del parásito y cantidad de avistaminetos.}
+                \label{fig:positivo}
+            \end{subfigure}
+            \caption{Ejemplos de documentación del examen parasitológico seriado de
+            deposiciones.}
+            \label{fig:documentacion}
+        \end{figure}
     \item En caso de no detectar presencia parasitaria, documentar que no se observa
         presencia en la muestra.
 \end{enumerate}
@@ -373,6 +415,8 @@ continuación:
     \item En caso de existir dudas sobre la observación de las muestras, se puede
         realizar una segunda observación.
 \end{itemize}
+%TODO agregar ejemplos de resultados
+%TODO listado de parásitos
 
 \section{Visión por Computadora}
 \subsection{Definición}
@@ -445,7 +489,7 @@ Para efectos de este informe se estudiara el primer tipo de modelo.
 Al modelar $Pr(w|x)$, elegimos un forma de distribución apropiada para $Pr(w)$ sobre los
 estados del mundo $w$ y hacer la distribución de los parámetros una función de los datos
 $x$. Si el mundo de estados es continuo, lo definimos como una distribución normal con
-media $\mu$ en función de $x$\cite{MLClass}.
+media $\mu$ en función de $x$ \cite{MLClass}.
 
 El valor que nos entrega la función también en un conjunto de parámetros definidos,
 $\theta$. Dado que la distribución dependen tanto de los datos $x$ y los parámetros
@@ -609,7 +653,7 @@ de árbol de decisión definida anteriormente.
 
 Un bosque aleatorio \cite{Forest} es una colección de árboles aleatorios, cada uno de
 estos usa un conjunto de funciones elegidas de manera aleatoria. Cuando se promedian
-todas las probabilidades de cada árbol, es decir, $Pr(w*|w*)$ predicha por cada árbol, se
+todas las probabilidades de cada árbol, es decir, $Pr(x*|w_i)$ predicha por cada árbol, se
 produce una clasificación mucho más robusta. Una forma de pensarlo es aproximarlo al
 método bayesiano; donde construimos una respuesta final tomando una suma ponderada de las
 predicciones propuestas por los distintos conjuntos de parámetros \ref{fig:forest}.
@@ -1000,8 +1044,13 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
 %\end{figure}
 %\end{landscape}
 
-%\chapter{Conclusión}\label{conclusion}
-%En las conclusiones se destaca lo mostrado en el trabajo, resaltando los resultados. Se indican los trabajos futuros. Usualmente, luego de las conclusiones se incluye un párrafo de agradecimientos a quienes auspician la investigación.
+\chapter{Conclusión}\label{conclusion}
+Durante este informe se vieron las tecnologías relacionadas a la visión por computadora
+que permiten hacer uso de una inferencia en base al entrenamiento de modelos de
+aprendizaje de máquinas para la detección y clasificación de presencia parasitológica en
+el examen seriado de deposiciones. Vimos el estado de los procedimientos para este examen
+y reconocimos el punto donde el uso de estas tecnologías puede jugar un gran rol en la
+mejora de resultados y la velocidad de análisis.
 %\section{Principales aportes}
 %\section{Contraste de resultados}
 %\section{Trabajos futuros} Solo si corresponde.
