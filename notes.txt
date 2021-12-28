@@ -1,0 +1,21 @@
+ ~ El estado del arte en estos proyectos generalmente se llevar a buscar soluciones relevantes iguales o similares en algún grado al trabajo directamente o indirectamente.
+    ~ deberías buscar alguna aproximaciones sobre detección de parásitos
+    ~ si no hay, se busca algo relacionado,
+
+como si se utiliza algún tipo de tecnología en el área o si otro tipo de examenes ya se
+hacen con IA y tiene buenos o mejores resultados la idea es que al final del estado del
+arte, puedas decir que el problema está vigente, tu propuesta tiene un elemento
+diferenciador o novedoso, y que puedes obtener buenos resultados el estado del arte en
+escritura no es extenso, pero si denso, ya que dices en un párrafo, "tal autor realizó
+tal cosa (cita), y este otro auto hizo otra cosa (cita)" y así van los párrafos Nos
+podríamos juntar hoy en la tarde
+
+- Comparacion con la maquina de sangre, trabajo futuro
+- Complementación de otras areas
+- Valor agregado
+
+- Que hace/ que hay
+- En que diferencia(caracteristicas/beneficios y/o ventajas desventajas)
+
+- Aproximaciones de machin lenin
+- Sieque, agrandar las utilidades encontradas

@@ -25,11 +25,11 @@
 \marginsize{3cm}{2cm}{2cm}{2cm}
 \spacing{1.5}%interlineado
 
-  \providecommand{\keywords}[1]{\textbf{\textit{Palabras Clave---}} #1}
+\providecommand{\keywords}[1]{\textbf{\textit{Palabras Clave---}} #1}
 
 \newcommand\BackgroundPic{ \put(-3,0){ \parbox[b][\paperheight]{\paperwidth}{ \vfill \centering \includegraphics[width=\paperwidth,height=\paperheight]{portada.jpg} \vfill }}} 
-  
-  %Definicion de Colores
+
+%Definicion de Colores
 \definecolor{gray97}{gray}{.97}
 \definecolor{gray75}{gray}{.75}
 \definecolor{gray45}{gray}{.45}
@@ -45,9 +45,9 @@
 \newcommand\blanco[1]{\textcolor[rgb]{1,1,1}{\textbf{#1}}}
 \newcommand {\red}[1]{\textcolor[rgb]{1.00,0.00,0.00}{#1}}
 \newcommand\cita[1]{{\scriptsize \begin{flushright}\emph{(#1)}\end{flushright}}}
-  
 
-  
+
+
 %%%Entornos de desarrollo
 \newtheorem{ejemplo}{Ejemplo}
 \newtheorem{definir}{Definición}
@@ -56,35 +56,35 @@
 \newtheorem{obs}{Observación}
 
 \newcommand{\ignore}[1]{}
-  
-  %%%CODIGOS DE PROGRAMACION
+
+%%%CODIGOS DE PROGRAMACION
 \lstset{%backgroundcolor=\color{lbcolor},
-	frame=Ltb, framerule=0pt, aboveskip=0.5cm, tabsize=4, rulecolor=, language=C, %%%CAMBIAR POR LENGUAJE DE PREFERENCIA
- stringstyle=\ttfamily,  %basicstyle=\footnotesize,
-        upquote=true, aboveskip={1.5\baselineskip}, columns=fixed, showstringspaces=false, extendedchars=true,breaklines=true, prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}}, showtabs=false, showspaces=false, showstringspaces=false,
-        %tipos de letra y colores
-        identifierstyle=\ttfamily,
-        keywordstyle=\bfseries  \color[RGB]{0,2,216}, %palabras reservadas
-        commentstyle= \scriptsize\color[rgb]{0,.5,0.2}, %comentarios
-        stringstyle=\color[RGB]{216,0,114},%cadena de texto
-        %numeracion de lineas
-        framextopmargin=3pt, framexbottommargin=3pt, framexleftmargin=0.4cm,
-        framesep=0pt, rulesep=.4pt, rulesepcolor=\color{black}, numbers=left, numbersep=15pt, numberstyle=\tiny, numberfirstline = false, breaklines=true,literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
-  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
-  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
-  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
-  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
-  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
-  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
-  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
-  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
-  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-  {€}{{\EUR}}1 {£}{{\pounds}}1 {Ñ}{{\~N}}1 {ñ}{{\~n}}1 {¿}{{?`}}1
+    frame=Ltb, framerule=0pt, aboveskip=0.5cm, tabsize=4, rulecolor=, language=C, %%%CAMBIAR POR LENGUAJE DE PREFERENCIA
+    stringstyle=\ttfamily,  %basicstyle=\footnotesize,
+    upquote=true, aboveskip={1.5\baselineskip}, columns=fixed, showstringspaces=false, extendedchars=true,breaklines=true, prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}}, showtabs=false, showspaces=false, showstringspaces=false,
+    %tipos de letra y colores
+    identifierstyle=\ttfamily,
+    keywordstyle=\bfseries  \color[RGB]{0,2,216}, %palabras reservadas
+    commentstyle= \scriptsize\color[rgb]{0,.5,0.2}, %comentarios
+    stringstyle=\color[RGB]{216,0,114},%cadena de texto
+    %numeracion de lineas
+    framextopmargin=3pt, framexbottommargin=3pt, framexleftmargin=0.4cm,
+    framesep=0pt, rulesep=.4pt, rulesepcolor=\color{black}, numbers=left, numbersep=15pt, numberstyle=\tiny, numberfirstline = false, breaklines=true,literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+    {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+    {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+    {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+    {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+    {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+    {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+    {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+    {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+    {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+    {€}{{\EUR}}1 {£}{{\pounds}}1 {Ñ}{{\~N}}1 {ñ}{{\~n}}1 {¿}{{?`}}1
 }
 %%%%FIN CODIGOS DE PROGRAMACION
 \def\figurename{}
-  
+
 %%%%%%%%%%ENCABEZADO Y PIE DE PAGINA
 %encabezado de las paginas pares e impares.
 \rhead[PP]{Ingeniería Civil en Informática}
@@ -95,11 +95,11 @@
 \renewcommand{\footrulewidth}{0.5pt}
 %encabezado y pie de pagina de la pagina inicial de un capitulo.
 \fancypagestyle{plain}{
-\fancyhead[R]{Ingeniería Civil en Informática}
-\fancyfoot[L]{Muñoz Viveros}
-\fancyfoot[R]{Universidad de los Lagos}
-\renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\footrulewidth}{0.5pt}
+    \fancyhead[R]{Ingeniería Civil en Informática}
+    \fancyfoot[L]{Muñoz Viveros}
+    \fancyfoot[R]{Universidad de los Lagos}
+    \renewcommand{\headrulewidth}{0.5pt}
+    \renewcommand{\footrulewidth}{0.5pt}
 }
 \pagestyle{fancy} 
 %%%%%%%%%%FIN ENCABEZADO Y PIE DE PAGINA 
@@ -112,19 +112,19 @@
 
 \AddToShipoutPicture*{\BackgroundPic}
 \title{\vspace{-1cm}\scshape\Large{\textbf{Detección de presencia de parásitos en examen
-        parasitológico seriado de deposiciones con visión por computadora}}\\\vspace{0.5cm}
-        \large Departamento de Ciencias de la Ingeniería\\
-        \large Ingeniería Civil en Informática\\
-        Campus Puerto Montt, Chile}
-   \author{
-       \vspace*{-2cm}
-       Diego Ignacio Muñoz Viveros\\
-       diegoignacio.munoz@alumnos.ulagos.cl
-   }
-   \date{Profesor Guía: Joel Sebastian Torres Carrasco\\  Co-guía: Carlos Dupré Alvarado\\
-   \today}
-   \maketitle
-   \ClearShipoutPicture
+    parasitológico seriado de deposiciones con visión por computadora}}\\\vspace{0.5cm}
+    \large Departamento de Ciencias de la Ingeniería\\
+    \large Ingeniería Civil en Informática\\
+Campus Puerto Montt, Chile}
+\author{
+    \vspace*{-2cm}
+    Diego Ignacio Muñoz Viveros\\
+    diegoignacio.munoz@alumnos.ulagos.cl
+}
+\date{Profesor Guía: Joel Sebastian Torres Carrasco\\  Co-guía: Carlos Dupré Alvarado\\
+\today}
+\maketitle
+\ClearShipoutPicture
 
 
 \cleardoublepage
@@ -157,38 +157,38 @@
 \chapter{Introducción}\label{intro}
 
 %cita1: http://scielo.sld.cu/pdf/mgi/v22n1/mgi07106.pdf
-    Los exámenes, pruebas o mediciones médicas son la base para la evaluación médica y
-    estudios clínicos que permitan elaborar diagnósticos correctos y, consecuentemente,
-    plantear tratamientos adecuados.  Los exámenes médicos son procedimientos rigurosos
-    que permiten observar el comportamiento humano siguiendo el método científico para
-    recolectar evidencias, en este caso, del cuerpo humano. Para poder medir de mejor
-    manera todos estos comportamientos, se han desarrollado diferentes técnicas a lo
-    largo del tiempo, como la observación, análisis químico o genético.  Por ende, la
-    calidad de los exámenes médicos son un factor clave para que los tratamientos dados
-    tengan efectos positivos y, finalmente, mejorar la calidad de vida de los pacientes.
+Los exámenes, pruebas o mediciones médicas son la base para la evaluación médica y
+estudios clínicos que permitan elaborar diagnósticos correctos y, consecuentemente,
+plantear tratamientos adecuados.  Los exámenes médicos son procedimientos rigurosos
+que permiten observar el comportamiento humano siguiendo el método científico para
+recolectar evidencias, en este caso, del cuerpo humano. Para poder medir de mejor
+manera todos estos comportamientos, se han desarrollado diferentes técnicas a lo
+largo del tiempo, como la observación, análisis químico o genético.  Por ende, la
+calidad de los exámenes médicos son un factor clave para que los tratamientos dados
+tengan efectos positivos y, finalmente, mejorar la calidad de vida de los pacientes.
 
 % Todavía hay gran cantidad de exámenes echos a mano
 % Hacer esto a mano no suple la demanda médica
-    En la actualidad, los laboratorios médicos son los encargados de realizar una gran
-    cantidad de exámenes relacionados a la observación microscópica de muestras. Estos
-    exámanes son ralizados bajo observación humana de manera totalmente manual
-    considerando a un experto llamado tecnólogo médico. 
+En la actualidad, los laboratorios médicos son los encargados de realizar una gran
+cantidad de exámenes relacionados a la observación microscópica de muestras. Estos
+exámanes son ralizados bajo observación humana de manera totalmente manual
+considerando a un experto llamado tecnólogo médico. 
 
 % Introducción del rol de la tecnología médica
 % Intro a nuestro laboratorio clínico cesfam de hornopiren
 % Dentro de los exámenes con mirada experta
-    La tecnología médica en el ámbito del conocimiento abarca el estudio e investigación
-    que tiene como objetivo la aplicación de diferentes tipos de tecnologías para mejorar
-    la salud de las personas durante su diagnóstico, desarrollo de la enfermedad y
-    tratamiento aplicado. En el contexto médico, la tecnología médica es la rama de la
-    salud que involucra a profesionales que se forman en los avances tecnológicos para
-    aplicarlos a la medicina y las ciencias de la salud.
+La tecnología médica en el ámbito del conocimiento abarca el estudio e investigación
+que tiene como objetivo la aplicación de diferentes tipos de tecnologías para mejorar
+la salud de las personas durante su diagnóstico, desarrollo de la enfermedad y
+tratamiento aplicado. En el contexto médico, la tecnología médica es la rama de la
+salud que involucra a profesionales que se forman en los avances tecnológicos para
+aplicarlos a la medicina y las ciencias de la salud.
 
 % cita2: https://www.scielo.cl/scielo.php?script=sci_arttext&pid=S0034-98872015000600011
-    Normalmente los exámenes que involucran esta observación microscópica suelen demandar
-    bastante tiempo por muestra; lo cual aumenta la demanda habitual en el área de la
-    salud y, sobretodo, en la salud pública lo que se refleja en demoras en la entrega de
-    resultados.
+Normalmente los exámenes que involucran esta observación microscópica suelen demandar
+bastante tiempo por muestra; lo cual aumenta la demanda habitual en el área de la
+salud y, sobretodo, en la salud pública lo que se refleja en demoras en la entrega de
+resultados.
 
 %TODO revisar
 %    Para la consultoria de este trabajo se cuenta con la ayuda del laboratorio clínico
@@ -197,65 +197,65 @@
 
 % Sesgo humano
 % Certeza incierta
-    Otra característica inherente de los exámenes basada en observaciones de imágenes
-    está relacionada al error humano introducido en las observaciones, dependiendo
-    totalmente de la expertiz del tecnólogo médico.  En consecuencia, las observaciones
-    resultante contienen clasificaciones erroneas, influyendo en un mal diagnoóstico
-    médico. Es así que, en ocaciones puede haber una gran diferencia entre las
-    observaciones de distintos tecnólogos médicos sobre la misma muestra, lo que genera
-    una gran incertidumbre a los estudios clínicos y que obliquen a realizar
-    observaciones adicionales o complementarias.
+Otra característica inherente de los exámenes basada en observaciones de imágenes
+está relacionada al error humano introducido en las observaciones, dependiendo
+totalmente de la expertiz del tecnólogo médico.  En consecuencia, las observaciones
+resultante contienen clasificaciones erroneas, influyendo en un mal diagnoóstico
+médico. Es así que, en ocaciones puede haber una gran diferencia entre las
+observaciones de distintos tecnólogos médicos sobre la misma muestra, lo que genera
+una gran incertidumbre a los estudios clínicos y que obliquen a realizar
+observaciones adicionales o complementarias.
 
-    Uno de estos exámenes basados en observaciones de imágenes es el examen parasitológico 
-    seriado de deposiciones  que es un examen realizado para la
-    detección de presencia parasitológica en pacientes. Este examen se lleva a cabo con la
-    toma de muestras de deposiciones del paciente y, posteriormente, se hace observación
-    de las muestras por medio de observación microscopica. En la realización de la
-    observación se documenta la confirmación y clasificación de presencia parasitológica
-    en orden de dar con un tratamiento certero, eficaz y acorde a las detecciones. %cita aqui
-    La denominación seriado refiere a las condiciones en las que estas muestras, tres
-    muestras enfrascadas por separado, serán tomadas con la finalidad de tener muestras
-    en distintos ciclos larvales.
+Uno de estos exámenes basados en observaciones de imágenes es el examen parasitológico 
+seriado de deposiciones  que es un examen realizado para la
+detección de presencia parasitológica en pacientes. Este examen se lleva a cabo con la
+toma de muestras de deposiciones del paciente y, posteriormente, se hace observación
+de las muestras por medio de observación microscopica. En la realización de la
+observación se documenta la confirmación y clasificación de presencia parasitológica
+en orden de dar con un tratamiento certero, eficaz y acorde a las detecciones. %cita aqui
+La denominación seriado refiere a las condiciones en las que estas muestras, tres
+muestras enfrascadas por separado, serán tomadas con la finalidad de tener muestras
+en distintos ciclos larvales.
 
 % Cual es el problema que tenemos acá
 % Inconsistencia en las mediciones / definición del problema
-    Por lo tanto, la problemática presentada en este trabajo radica en lo altamente
-    susceptible al sesgo del observador del examen, es decir, es muy sensible a perdida o
-    mala clasificación de avistamientos llevando a malos diagnósticos médicos. 
-    
-    En este trabajo se propone una solución inteligente para automatizar el examen
-    parasitológico seriado de deposiciones para poder mejorar la calidad de los
-    resultados y así mejorar la calidad de vida de las personas.
+Por lo tanto, la problemática presentada en este trabajo radica en lo altamente
+susceptible al sesgo del observador del examen, es decir, es muy sensible a perdida o
+mala clasificación de avistamientos llevando a malos diagnósticos médicos. 
 
-    Para realizar este proyecto se pretende usar tecnologías que permitan aprovechar la
-    experiencia de los tecnólogos médicos para mejorar los resultados de las
-    observaciones.  Es por ello, que se pretende utilizar tecnologías de visión por
-    computadora para automatizar la observación de muestras y, a su vez, reducir el grado
-    de error. Además, se espera que la implementación permita simplificar y agilizar el
-    procedimiento de observación del examen.
+En este trabajo se propone una solución inteligente para automatizar el examen
+parasitológico seriado de deposiciones para poder mejorar la calidad de los
+resultados y así mejorar la calidad de vida de las personas.
 
-    La visión por computadora es la combinación de tecnologías que permite a las
-    computadoras generar inferencia respecto a imágenes estáticas o en movimiento
-    emulando la visión humana por medio de un aprendizaje basado en conjuntos de datos
-    utilizados como ejemplos iniciales de los cuales el modelo generado ajustará sus
-    parámetros.  El uso de la visión por computadora espera demostrar el aumento en la
-    precisión y velocidad de la detección y clasificación de parásitos con objetivo de
-    reducir incertidumbre y error humano introducido en la observación manual ejercida en
-    el proceso de observación del examen parasitológico seriado de deposiciones. 
+Para realizar este proyecto se pretende usar tecnologías que permitan aprovechar la
+experiencia de los tecnólogos médicos para mejorar los resultados de las
+observaciones.  Es por ello, que se pretende utilizar tecnologías de visión por
+computadora para automatizar la observación de muestras y, a su vez, reducir el grado
+de error. Además, se espera que la implementación permita simplificar y agilizar el
+procedimiento de observación del examen.
+
+La visión por computadora es la combinación de tecnologías que permite a las
+computadoras generar inferencia respecto a imágenes estáticas o en movimiento
+emulando la visión humana por medio de un aprendizaje basado en conjuntos de datos
+utilizados como ejemplos iniciales de los cuales el modelo generado ajustará sus
+parámetros.  El uso de la visión por computadora espera demostrar el aumento en la
+precisión y velocidad de la detección y clasificación de parásitos con objetivo de
+reducir incertidumbre y error humano introducido en la observación manual ejercida en
+el proceso de observación del examen parasitológico seriado de deposiciones. 
 
 % El gran desafió tésnico
 % Uno de los problemas, existencia de dataset relacionados al examen
-    El desafío técnico encontrado está relacionado a la estructuración de un conjunto de
-    datos de imágenes microscópicas que contengas la información suficiente para generar
-    un modelo robusto y de altas prestación con gran capacidad de generalización para el
-    examen parasitologico seriado de deposiciones.
+El desafío técnico encontrado está relacionado a la estructuración de un conjunto de
+datos de imágenes microscópicas que contengas la información suficiente para generar
+un modelo robusto y de altas prestación con gran capacidad de generalización para el
+examen parasitologico seriado de deposiciones.
 
 % Continua que se verá (terminar esto)
-    En adelante, el documento se estructura de la siguiente manera. El capítulo
-    \ref{teorico}, presenta los conocimientos básicos para entender el desarrollo de este
-    proyecto de título. El capítulo \ref{formulación}, define los objetivos, metodología
-    y planificación del proyecto. Finalmente, el capítulo \ref{conclusion}, entrega
-    algunas ideas a desarrollar a futuro en el proyecto.
+En adelante, el documento se estructura de la siguiente manera. El capítulo
+\ref{teorico}, presenta los conocimientos básicos para entender el desarrollo de este
+proyecto de título. El capítulo \ref{formulación}, define los objetivos, metodología
+y planificación del proyecto. Finalmente, el capítulo \ref{conclusion}, entrega
+algunas ideas a desarrollar a futuro en el proyecto.
 
 \chapter{Marco Teórico}\label{teorico}
 
@@ -327,7 +327,7 @@ Para la realización de los exámenes se procede de las siguientes formas: \cite
         parasitaria y/o lesiones de relacionadas a presencia parasitaria.
     \item \textbf{Exámenes parasitológico seriado de deposiciones}: consiste en el
         análisis de tres muestras seriadas \footnote{Muestras tomadas con intervalos de
-        tiempo equidistantes con objetivo de muestrear sin que se pierdan ciclos
+            tiempo equidistantes con objetivo de muestrear sin que se pierdan ciclos
         larvarios evitando excluir avistamientos} de heces tintadas con observación por
         microscopio . La observación se realiza por goteo fino.
     \item \textbf{Resonancia Magnética (RM), Tomografía axial computarizada (TAC)}:
@@ -528,8 +528,8 @@ $$sig(x)=\frac{1}{1 + e^{-x}}$$
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{sigmoid}
-\caption{Gráfica de función sigmoidea donde los valores de $c_i$ controlan la pendiente
-de la función en $c_2$}
+    \caption{Gráfica de función sigmoidea donde los valores de $c_i$ controlan la pendiente
+    de la función en $c_2$}
     \label{fig:sigmoid}
 \end{figure}
 
@@ -544,9 +544,9 @@ la función linear $\alpha$ cruza cero y su pendiente depende del gradiente $\ph
     \centering
     \includegraphics[width=0.8\textwidth]{logistic}
     \caption{a) representación de la probabilidad de un estado del mundo $w$ y su
-    conjugado, b) función lineal de la distribución y c) función sigmoidea sobre la
-función lineal representando como los factores de la suma ponderada se anulan en torno a
-punto de diferenciación haciendo que la función defina áreas donde trabajan}
+        conjugado, b) función lineal de la distribución y c) función sigmoidea sobre la
+        función lineal representando como los factores de la suma ponderada se anulan en torno a
+    punto de diferenciación haciendo que la función defina áreas donde trabajan}
     \label{fig:logistic}
 \end{figure}
 
@@ -642,8 +642,8 @@ sucesivamente.
     \centering
     \includegraphics[width=0.7\textwidth]{tree}
     \caption{Árbol de clasificación definido para el ejemplo donde los datos fluyen desde
-    la raíz hasta las hojas. El área en gris representa el área de las variables que
-pueden ser desarrolladas juntas en un entrenamiento incremental.}
+        la raíz hasta las hojas. El área en gris representa el área de las variables que
+    pueden ser desarrolladas juntas en un entrenamiento incremental.}
     \label{fig:tree}
 \end{figure}
 
@@ -755,9 +755,9 @@ no cuentan con un conjunto de datos lo suficientemente amplio \ref{fig:dataaugme
     \centering
     \includegraphics[width=0.8\textwidth]{dataaugmen}
     \caption{Ejemplo de aumento de datos, las transformaciones incluyen la imagen
-    original, reflejo horizontal, reflejo vertical, rotaciones de 90°, -90° y 60°,
-reescalado a una menores resoluciones, recortes, aumento y disminución de exposición y
-agregación de ruido aleatorio.}
+        original, reflejo horizontal, reflejo vertical, rotaciones de 90°, -90° y 60°,
+        reescalado a una menores resoluciones, recortes, aumento y disminución de exposición y
+    agregación de ruido aleatorio.}
     \label{fig:dataaugmen}
 \end{figure}
 
@@ -777,9 +777,9 @@ las tareas de clasificación.
     \centering
     \includegraphics[width=0.8\textwidth]{smote}
     \caption{\textit{Original dataset} muestra el conjunto de datos original,
-    \textit{RandomOverSampler} muestra el aumento de datos de manera aleatoria,
-\textit{SMOTE} muestra el aumento de datos más localizado y \textit{ADASYN} muestra el
-aumento de muestras para definir zonas más marcadas.}
+        \textit{RandomOverSampler} muestra el aumento de datos de manera aleatoria,
+        \textit{SMOTE} muestra el aumento de datos más localizado y \textit{ADASYN} muestra el
+    aumento de muestras para definir zonas más marcadas.}
     \label{fig:smote}
 \end{figure}
 
@@ -797,8 +797,8 @@ información con el mismo nivel de importancia \ref{fig:balance} \cite{Balan}.
     \centering
     \includegraphics[width=0.8\textwidth]{balance}
     \caption{En \textit{Under-samplig} se eliminan datos del grupo más cuantioso para
-    igualar proporciones, en cambio, en \textit{Over-samplig} se aumentan de manera
-artificial los datos del grupo con menos representación.}
+        igualar proporciones, en cambio, en \textit{Over-samplig} se aumentan de manera
+    artificial los datos del grupo con menos representación.}
     \label{fig:balance}
 \end{figure}
 
@@ -824,7 +824,7 @@ la necesidad de anotar cada pixel de la imagen con una clase.
             \centering
             \includegraphics[width=0.6\textwidth]{segment3}
             \caption{Ejemplo de segmentación de instancias donde se puede ver que cada
-            elemento reconocido recibe un color diferente. Elementos como los carteles
+                elemento reconocido recibe un color diferente. Elementos como los carteles
             o árboles del fondo al no contar con etiqueta son ignorados por el modelo.}
             \label{fig:segment3}
         \end{figure}
@@ -845,8 +845,8 @@ la necesidad de anotar cada pixel de la imagen con una clase.
             \centering
             \includegraphics[width=0.7\textwidth]{segment}
             \caption{Ejemplo de segmentación panóptica donde la totalidad de la imagen
-            recibe una clase que diferencia los distintos objetos contenidas en esta. En
-            la parte superior el cielo, los árboles de fondo, el vehículo en primer plano el
+                recibe una clase que diferencia los distintos objetos contenidas en esta. En
+                la parte superior el cielo, los árboles de fondo, el vehículo en primer plano el
             suelo debajo de este.}
             \label{fig:segment}
         \end{figure} 
@@ -900,9 +900,9 @@ $$x_{ij}=\Sigma_{m=-M}^M\Sigma_{n=-N}^Np_{i-m,j-n}f_{m,n}$$
     \centering
     \includegraphics[width=0.8\textwidth]{kernel}
     \caption{Filtro con \textit{kernel} para resaltar contornos de objetos en la imagen.
-    La matriz se usa para saber las ponderaciones de los pixeles en la suma para el nuevo
-valor de pixeles en la imagen. Así obtenemos un mapa de características que en este
-ejemplo nos entrega la información de los límites del animal de la imagen de entrada.}
+        La matriz se usa para saber las ponderaciones de los pixeles en la suma para el nuevo
+        valor de pixeles en la imagen. Así obtenemos un mapa de características que en este
+    ejemplo nos entrega la información de los límites del animal de la imagen de entrada.}
     \label{fig:kernel}
 \end{figure}
 
@@ -919,11 +919,11 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
 \section{Objetivos Específicos}
 \begin{enumerate}\justifying
     \item Recopilar y estructurar un conjunto de datos de imágenes de muestras para el entrenamiento y testeo del modelo de detección de parásitos.
-  \item Definir un modelo de detección de parásitos para la automatización de resultados del examen parasitológico seriado de deposiciones basado en visión por computadora.
-  \item Analizar y validar la calidad de las predicciones de la detección de parásitos en
-      las muestras, a través de experimentación con el conjuntos de datos recopilado y
-      con muestras obtenidas desde procedimientos reales del examen parasitológico
-      seriado de deposiciones, utilizando imágenes microscópicas.
+    \item Definir un modelo de detección de parásitos para la automatización de resultados del examen parasitológico seriado de deposiciones basado en visión por computadora.
+    \item Analizar y validar la calidad de las predicciones de la detección de parásitos en
+        las muestras, a través de experimentación con el conjuntos de datos recopilado y
+        con muestras obtenidas desde procedimientos reales del examen parasitológico
+        seriado de deposiciones, utilizando imágenes microscópicas.
 \end{enumerate}
 
 %\section{Justificación}
@@ -931,10 +931,10 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
 %
 %Esta subdivisión debe:
 %\begin{enumerate}\justifying
-  %\item Identifique el producto del software para ser diseñado por el nombre (por ejemplo, Anfitrión DBMS, el Generador del Reporte, etc.);
-  %\item Explique eso que el producto (del software hará y que no hará.
-  %\item Describe la aplicación del software especificándose los beneficios pertinentes, objetivos, y metas;
-  %\item Sea consistente con las declaraciones similares en las especificaciones de niveles superiores (por ejemplo, las especificaciones de los requisitos del sistema), si ellos existen.
+%\item Identifique el producto del software para ser diseñado por el nombre (por ejemplo, Anfitrión DBMS, el Generador del Reporte, etc.);
+%\item Explique eso que el producto (del software hará y que no hará.
+%\item Describe la aplicación del software especificándose los beneficios pertinentes, objetivos, y metas;
+%\item Sea consistente con las declaraciones similares en las especificaciones de niveles superiores (por ejemplo, las especificaciones de los requisitos del sistema), si ellos existen.
 %\end{enumerate}
 %\blindtext
 
@@ -955,30 +955,30 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
             \item Realizar un procedimiento de análisis exploratorio de datos.
         \end{enumerate}
 
-  \item Definir un modelo de detección de parásitos para la automatización de resultados del examen parasitológico seriado de deposiciones basado en visión por computadora.
-      \begin{enumerate}
-          \item Adoptar una metodología (elección de experimento, métricas, configuración
-              y \textit{kfolds}) de proyectos de visión por computadora para realizar una
-              comparación de la calidad de los modelos.
-          \item Proponer distintos modelos para la detección de parásitos en imágenes
-              microscópicas.
-          \item Seleccionar el o los modelos con mejor calidad de resultado.
-      \end{enumerate}
+    \item Definir un modelo de detección de parásitos para la automatización de resultados del examen parasitológico seriado de deposiciones basado en visión por computadora.
+        \begin{enumerate}
+            \item Adoptar una metodología (elección de experimento, métricas, configuración
+                y \textit{kfolds}) de proyectos de visión por computadora para realizar una
+                comparación de la calidad de los modelos.
+            \item Proponer distintos modelos para la detección de parásitos en imágenes
+                microscópicas.
+            \item Seleccionar el o los modelos con mejor calidad de resultado.
+        \end{enumerate}
 
-  \item Analizar y validar la calidad de las predicciones de la detección de parásitos en
-      las muestras, a través de experimentación con el conjuntos de datos recopilado y
-      con muestras obtenidas desde procedimientos reales del examen parasitológico
-      seriado de deposiciones, utilizando imágenes microscópicas.
-      \begin{enumerate}
-          \item Implementar la metodología elegida o adaptada para el tratamiento de
-              imágenes microscópicas.
-          \item Implementar el procedimiento de predicción de parásitos detectada en las
-              imagen microscópicas.
-          \item Implementar el reporte final de parásitos detectados en las muestras a
-              través del modelo de visión por computadora.
-          \item Recopilación de nuevas muestras, sus resultados, su validación y la
-              retroalimentación del tecnólogo médico.
-      \end{enumerate}
+    \item Analizar y validar la calidad de las predicciones de la detección de parásitos en
+        las muestras, a través de experimentación con el conjuntos de datos recopilado y
+        con muestras obtenidas desde procedimientos reales del examen parasitológico
+        seriado de deposiciones, utilizando imágenes microscópicas.
+        \begin{enumerate}
+            \item Implementar la metodología elegida o adaptada para el tratamiento de
+                imágenes microscópicas.
+            \item Implementar el procedimiento de predicción de parásitos detectada en las
+                imagen microscópicas.
+            \item Implementar el reporte final de parásitos detectados en las muestras a
+                través del modelo de visión por computadora.
+            \item Recopilación de nuevas muestras, sus resultados, su validación y la
+                retroalimentación del tecnólogo médico.
+        \end{enumerate}
 \end{enumerate}
 
 %\subsubsection{Equipo de Trabajo}
@@ -996,51 +996,188 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
     \label{fig:gantt}
 \end{figure}
 
+\section{Desarrollo}
+\subsection{Conjunto de Datos}
+Para el desarrollo del proyecto de título se utiliza el conjunto de datos \textit{Makerere
+Automated Lab Diagnostics Database (MALDD)} en cuyas característica encontramos 1217 imágenes 
+clasificadas entre tres distintas clases de parásitos:
+
+\begin{itemize}
+    \item Hookworm
+    \item Hymenolepsis Nana
+    \item Taenia
+\end{itemize}
+
+El conjunto se compone de imágenes microscópicas de muestras de heces fecales y su
+clasificación destaca cualquier presencia de los parásitos anteriormente mencionados. 
+La estructura de los datos se conforma en una carpeta raíz con las imagenes y su meta data
+en un archivo en formato \textit{xml}, ambos de mismo nombre.
+
+\begin{lstlisting}[language=xml]
+<annotation>
+  <source>
+    <database>Makerere Automated Lab Diagnostics Database</database>
+    <annotation>Makerere University</annotation>
+    <image>Mulago National Referral Hospital</image>
+  </source>
+  <size>
+    <width>2064</width>
+    <height>1161</height>
+  </size>
+</annotation>
+\end{lstlisting}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{labelImage}
+    \caption{Ejemplo de imagen donde se aprecian dos \textit{Hookworms}.}
+    \label{fig:labelImage}
+\end{figure}
+% TODO: poner más fotos de las otras dos clases
+
+El proceso de preprocesamiento y limpieza de datos comprente la reestructuración de las
+captetas separando el conjunto en entrenamiento (\textit{train}) y testeo (\textit{test}),
+a su vez se requiere de una modificación en la meta data de los archivos \textit{xml}
+que incluya si la carpeta del archivo corresponde a uno de entrenamiento o testeo, agregar
+un tag con el nombre del archivo de la imagen que le corresponde y su ruta absoluta al mismo.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{diff}
+    \caption{Ejemplo de modificación de archivo \textit{xml} de imagen n.}
+    \label{fig:diff}
+\end{figure}
+
+La utilidad de conjunto de datos está especialmente orientada a la detección de estas clases
+en el contexto descrito. En el contexto del examen parasitologico seriado de deposiciones,
+el conjunto de datos cubre una pequeña parte de los parásitos que se esperan reconocer.
+
+La expansión esperada del conjunto de datos es abarcar las clases faltantes compuestas por:
+
+\begin{itemize}
+    \item Aedes aegypti
+    \item Anisaki spp
+    \item Anopheles
+    \item Ascaris lumbricoide
+    \item Balantidium coli
+    \item Blastocystis hominis
+    \item Chilomastix mesnili
+    \item Cryptosporidium spp
+    \item Cyclospora cayetanensis
+    \item Cystoisospora belli
+    \item Diphyllobothrium spp
+    \item Endolimax nana
+    \item Entamoeba coli
+    \item Entamoeba gingivalis
+    \item Entamoeba histolytica / dispar
+    \item Enterobius vermicularis
+    \item Fasciola hepática
+    \item Giardia lamblia
+    \item Hymenolepis diminuta
+    \item Iodamoeba butschlii
+    \item Latrodectus mactans: viuda negra
+    \item Loxosceles laeta: rincon
+    \item Schistosoma mansoni
+    \item Toxoplasma gondii
+    \item Tribolium confusum
+    \item Trichomonas tenax
+    \item Trichomonas vaginalis
+    \item Trichuris trichiuria
+    \item Trypanosoma cruzi
+    \item Pediculus humanus
+    \item Plasmodium falciparum
+    \item Phthirus pubis
+    \item Pulex irritans
+    \item Schistosoma haematobium
+\end{itemize}
+
+\subsection{Modelo}
+
+% TODO: explicar Resnet y Centernet
+Se revisaron las opciones de modelos; \textit{Faster RCNN Inception Resnet v2 (FRIR v2)} y
+\textit{Centernet} durante la face de investigación con el objetivo de un modelo general que
+pueda especificarse en la tarea de reconocimiento de parásitos a través de imágenes
+microscópicas.
+
+Se descarta \textit{FRIR v2} por su lento desempeño general en inferencias sobre conjuntos
+de datos de imagenes de contexto general.
+
+Finalmente se decide por \textit{Centernet} por su característica forma de realizar una
+infernecia, \textit{Centernet} busca identificar ejes aliniados a un rectangulo
+correspondiente a un objeto dentro de una imagen. Esta diferencia nace de su forma de 
+buscar regiones que contengan objetos e identeficandolos como un punto, dando así con un
+modelo de muy rápida inferencia y gran nivel de presición en casos particulares.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{centernet}
+    \caption{Ejemplo de detección de objetos con \textit{Centernet}.}
+    \label{fig:centernet}
+\end{figure}
+
+\subsection{Entrenamiento}
+% TODO: explicar tensorflow api
+El entrenamiento del modelo \textit{Centernet} con el conjunto de datos de \textit{MALDD} se
+realiza de manera local con la API de \textit{TensorFlow} para un seguimiento en tiempo real
+de las mediciones de pérdida del modelo durante el entrenamiento.
+
+Especificaciones del computador usado durante la etapa de entrenamiento:
+
+\begin{itemize}
+    \item Procesador: AMD 2600X (6 núcleos)
+    \item Tarjeta Gráfica: NVidia RTX 2060 (6GB)
+    \item Cantidad de Memoria RAM: 16 GB
+\end{itemize}
+
+\subsection{Resultados}
+% TODO: graficos de perdida
+\blindtext
+
 %\subsection{Desglose de Actividades}\label{PERT}
 %En esta sección se describen cada una de las actividades, duración, dependencias, caminos críticos, entre otras y se debe dar una conclusión de lo mismo.
 %\begin{figure}[hbt]
 %\begin{tabular}{|c|c|c|c|c|}\hline
-  %\textbf{Actividad}&\textbf{Duración} &\textbf{Después de} & \textbf{Simultanea} & \textbf{Antes de}\\\hline
+%\textbf{Actividad}&\textbf{Duración} &\textbf{Después de} & \textbf{Simultanea} & \textbf{Antes de}\\\hline
 %& & &&\\\hline
 %
 %\end{tabular}
-  %\caption{Duración de tareas y dependencias}
+%\caption{Duración de tareas y dependencias}
 %\end{figure}
 %
 %\begin{landscape}
 %\begin{figure}[hbt]
-  %\centering
-  %%\includegraphics{}
-  %\caption{Grafo de Actividades del Proyecto XYZ}
-  %\label{CPM}
+%\centering
+%%\includegraphics{}
+%\caption{Grafo de Actividades del Proyecto XYZ}
+%\label{CPM}
 %\end{figure}
 %\end{landscape}
 %
 %\begin{landscape}
 %\begin{figure}[hbt]
-  %\centering
-  %%\includegraphics{}
-  %\caption{Grafo de Actividades con duración del Proyecto XYZ}
-  %\label{CPMduracion}
+%\centering
+%%\includegraphics{}
+%\caption{Grafo de Actividades con duración del Proyecto XYZ}
+%\label{CPMduracion}
 %\end{figure}
 %\end{landscape}
 %
 %\begin{figure}[hbt]
- %\begin{tabular}{|c|c|cc|cc|c|c|}\hline
- %& & \multicolumn{2}{|c|}{\textbf{Inicio}} & \multicolumn{2}{|c|}{\textbf{Termino}} & \textbf{Holgura} & \\
+%\begin{tabular}{|c|c|cc|cc|c|c|}\hline
+%& & \multicolumn{2}{|c|}{\textbf{Inicio}} & \multicolumn{2}{|c|}{\textbf{Termino}} & \textbf{Holgura} & \\
 %\textbf{Actividad}& \textbf{Duración}& \textbf{Temprano} &\textbf{Tardío} &\textbf{Temprano} &\textbf{Tardío} &\textbf{Total}  &\textbf{Crítico} \\\hline
 %& & &   & &   & & \\\hline
 %
 %\end{tabular}
-  %\caption{Cálculo del diagrama de actividades}
+%\caption{Cálculo del diagrama de actividades}
 %\end{figure}
 %
 %\begin{landscape}
 %\begin{figure}[hbt]
-  %\centering
-  %%\includegraphics{}
-  %\caption{Grafo de Actividades con duración y caminos críticos}
-  %\label{CPMcritico}
+%\centering
+%%\includegraphics{}
+%\caption{Grafo de Actividades con duración y caminos críticos}
+%\label{CPMcritico}
 %\end{figure}
 %\end{landscape}
 
