@@ -1100,13 +1100,16 @@ pueda especificarse en la tarea de reconocimiento de parásitos a través de im�
 microscópicas.
 
 Se descarta \textit{FRIR v2} por su lento desempeño general en inferencias sobre conjuntos
-de datos de imagenes de contexto general.
+de datos de imágenes de contexto general.
 
 Finalmente se decide por \textit{Centernet} por su característica forma de realizar una
-infernecia, \textit{Centernet} busca identificar ejes aliniados a un rectangulo
+inferencia, \textit{Centernet} busca identificar ejes alineados a un rectángulo
 correspondiente a un objeto dentro de una imagen. Esta diferencia nace de su forma de 
-buscar regiones que contengan objetos e identeficandolos como un punto, dando así con un
-modelo de muy rápida inferencia y gran nivel de presición en casos particulares.
+buscar regiones que contengan objetos e identificándolos como un punto, dando así con un
+modelo de muy rápida inferencia y gran nivel de precisión en casos particulares.
+
+Como agregado, el modelo cuenta con una capa de entrada de redimensionado de imágenes para
+facilitar la entrada sin mayor manipulación directa de la imagen.
 
 \begin{figure}[ht]
     \centering
@@ -1121,6 +1124,16 @@ El entrenamiento del modelo \textit{Centernet} con el conjunto de datos de \text
 realiza de manera local con la API de \textit{TensorFlow} para un seguimiento en tiempo real
 de las mediciones de pérdida del modelo durante el entrenamiento.
 
+En las configuraciones del modelo se aceptan como parámetros; máxima cantidad de predicciones
+de $100$ para no dejar fuera elementos de las muestras, mínimo grado de solapamiento de cajas
+de reconocimiento de $0.7$ dado que las muestras son tomadas en un porta objeto que aplana
+la muestra para evitar solapamiento de antemano.
+
+El conjunto de datos se separa con $60\%$ de las imágenes para entrenamiento del modelo y
+$40\%$ para testeo. A continuación se revisan los resultados. El modelo es entrenado con el
+optimizador Adam y un ratio de aprendizaje de $0.001$ constante durante todo el entrenamiento
+y $140000$ iteraciones por generación, especificando el modelo en detección.
+
 Especificaciones del computador usado durante la etapa de entrenamiento:
 
 \begin{itemize}
@@ -1131,7 +1144,33 @@ Especificaciones del computador usado durante la etapa de entrenamiento:
 
 \subsection{Resultados}
 % TODO: graficos de perdida
-\blindtext
+Las medidas de evaluación de precisión utilizadas son \textit{coco detection metrics},
+métricas utilizadas para la evaluación de modelos sobre el conjunto de datos de
+\textit{Coco}.
+
+Los resultados obtenidos durante la etapa de entrenamiento comprenden las siguientes curvas
+de perdida:
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{total_loss}
+    \caption{Gráfica de pérdida general del modelo (a más bajo mejor rendimiento).}
+    \label{fig:total_loss}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{object_center}
+    \caption{Gráfica de pérdida en detección de centros (a más bajo mejor rendimiento).}
+    \label{fig:object_center}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{offset}
+    \caption{Gráfica de pérdida en alineamiento delimitador (a más bajo mejor rendimiento).}
+    \label{fig:offset}
+\end{figure}
 
 %\subsection{Desglose de Actividades}\label{PERT}
 %En esta sección se describen cada una de las actividades, duración, dependencias, caminos críticos, entre otras y se debe dar una conclusión de lo mismo.
