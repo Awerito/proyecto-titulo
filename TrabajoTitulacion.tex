@@ -1145,7 +1145,7 @@ Especificaciones del computador usado durante la etapa de entrenamiento:
 \subsection{Resultados}
 % TODO: graficos de perdida
 Las medidas de evaluación de precisión utilizadas son \textit{coco detection metrics},
-métricas utilizadas para la evaluación de modelos sobre el conjunto de datos de
+que son métricas utilizadas para la evaluación de modelos sobre el conjunto de datos de
 \textit{Coco}.
 
 Los resultados obtenidos durante la etapa de entrenamiento comprenden las siguientes curvas
@@ -1170,6 +1170,31 @@ de perdida:
     \includegraphics[width=0.8\textwidth]{offset}
     \caption{Gráfica de pérdida en alineamiento delimitador (a más bajo mejor rendimiento).}
     \label{fig:offset}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{caca}
+        \caption{Imagen original (300x300).}
+        \label{fig:caca}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{cacafit}
+        \caption{Imagen con etiquetas de reconocimiento, clases reconocidas; Hookworm y
+        Taenia.}
+        \label{fig:cacafit}
+    \end{subfigure}
+    \caption{Detección de multiples parásitos contenidos en una sola muestra.}
+    \label{fig:comparation_caca}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{obstruction}
+    \caption{Muestra de parásito Hookworm obstruido por material indeseado.}
+    \label{fig:obstruction}
 \end{figure}
 
 %\subsection{Desglose de Actividades}\label{PERT}
