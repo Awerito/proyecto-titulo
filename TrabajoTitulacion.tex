@@ -996,7 +996,7 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
     \label{fig:gantt}
 \end{figure}
 
-\section{Desarrollo}
+\chapter{Desarrollo}
 \subsection{Conjunto de Datos}
 Para el desarrollo del proyecto de título se utiliza el conjunto de datos \textit{Makerere
 Automated Lab Diagnostics Database (MALDD)} en cuyas característica encontramos 1217 imágenes 
@@ -1009,9 +1009,10 @@ clasificadas entre tres distintas clases de parásitos:
 \end{itemize}
 
 El conjunto se compone de imágenes microscópicas de muestras de heces fecales y su
-clasificación destaca cualquier presencia de los parásitos anteriormente mencionados. 
-La estructura de los datos se conforma en una carpeta raíz con las imagenes y su meta data
-en un archivo en formato \textit{xml}, ambos de mismo nombre.
+clasificación destaca cualquier presencia de los parásitos anteriormente mencionados
+como se puede apreciar en la figura \ref{fig:labelImage}. La estructura de los datos se
+conforma en una carpeta raíz con las imágenes y su meta data en un archivo en formato
+\textit{xml}, ambos de mismo nombre.
 
 \begin{lstlisting}[language=xml]
 <annotation>
@@ -1033,13 +1034,13 @@ en un archivo en formato \textit{xml}, ambos de mismo nombre.
     \caption{Ejemplo de imagen donde se aprecian dos \textit{Hookworms}.}
     \label{fig:labelImage}
 \end{figure}
-% TODO: poner más fotos de las otras dos clases
 
-El proceso de preprocesamiento y limpieza de datos comprente la reestructuración de las
-captetas separando el conjunto en entrenamiento (\textit{train}) y testeo (\textit{test}),
+El proceso de preprocesamiento y limpieza de datos comprende la reestructuración de las
+carpetas separando el conjunto en entrenamiento (\textit{train}) y testeo (\textit{test}),
 a su vez se requiere de una modificación en la meta data de los archivos \textit{xml}
 que incluya si la carpeta del archivo corresponde a uno de entrenamiento o testeo, agregar
-un tag con el nombre del archivo de la imagen que le corresponde y su ruta absoluta al mismo.
+un tag con el nombre del archivo de la imagen que le corresponde y su ruta absoluta al mismo
+mostrado en la figura \ref{fig:diff}.
 
 \begin{figure}[ht]
     \centering
@@ -1049,7 +1050,7 @@ un tag con el nombre del archivo de la imagen que le corresponde y su ruta absol
 \end{figure}
 
 La utilidad de conjunto de datos está especialmente orientada a la detección de estas clases
-en el contexto descrito. En el contexto del examen parasitologico seriado de deposiciones,
+en el contexto descrito. En el contexto del examen parasitológico seriado de deposiciones,
 el conjunto de datos cubre una pequeña parte de los parásitos que se esperan reconocer.
 
 La expansión esperada del conjunto de datos es abarcar las clases faltantes compuestas por:
@@ -1103,7 +1104,7 @@ Se descarta \textit{FRIR v2} por su lento desempeño general en inferencias sobr
 de datos de imágenes de contexto general.
 
 Finalmente se decide por \textit{Centernet} por su característica forma de realizar una
-inferencia, \textit{Centernet} busca identificar ejes alineados a un rectángulo
+inferencia (figura \ref{fig:centernet}), \textit{Centernet} busca identificar ejes alineados a un rectángulo
 correspondiente a un objeto dentro de una imagen. Esta diferencia nace de su forma de 
 buscar regiones que contengan objetos e identificándolos como un punto, dando así con un
 modelo de muy rápida inferencia y gran nivel de precisión en casos particulares.
@@ -1122,7 +1123,8 @@ facilitar la entrada sin mayor manipulación directa de la imagen.
 % TODO: explicar tensorflow api
 El entrenamiento del modelo \textit{Centernet} con el conjunto de datos de \textit{MALDD} se
 realiza de manera local con la API de \textit{TensorFlow} para un seguimiento en tiempo real
-de las mediciones de pérdida del modelo durante el entrenamiento.
+de las mediciones de pérdida del modelo durante el entrenamiento. Finalmente el
+entrenamiento se lleva a cabo durante $10$ horas y $31$ minutos.
 
 En las configuraciones del modelo se aceptan como parámetros; máxima cantidad de predicciones
 de $100$ para no dejar fuera elementos de las muestras, mínimo grado de solapamiento de cajas
@@ -1132,7 +1134,7 @@ la muestra para evitar solapamiento de antemano.
 El conjunto de datos se separa con $60\%$ de las imágenes para entrenamiento del modelo y
 $40\%$ para testeo. A continuación se revisan los resultados. El modelo es entrenado con el
 optimizador Adam y un ratio de aprendizaje de $0.001$ constante durante todo el entrenamiento
-y $140000$ iteraciones por generación, especificando el modelo en detección.
+y $40000$ iteraciones por generación, especificando el modelo en detección.
 
 Especificaciones del computador usado durante la etapa de entrenamiento:
 
@@ -1143,34 +1145,10 @@ Especificaciones del computador usado durante la etapa de entrenamiento:
 \end{itemize}
 
 \subsection{Resultados}
-% TODO: graficos de perdida
 Las medidas de evaluación de precisión utilizadas son \textit{coco detection metrics},
 que son métricas utilizadas para la evaluación de modelos sobre el conjunto de datos de
-\textit{Coco}.
-
-Los resultados obtenidos durante la etapa de entrenamiento comprenden las siguientes curvas
-de perdida:
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.8\textwidth]{total_loss}
-    \caption{Gráfica de pérdida general del modelo (a más bajo mejor rendimiento).}
-    \label{fig:total_loss}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.8\textwidth]{object_center}
-    \caption{Gráfica de pérdida en detección de centros (a más bajo mejor rendimiento).}
-    \label{fig:object_center}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.8\textwidth]{offset}
-    \caption{Gráfica de pérdida en alineamiento delimitador (a más bajo mejor rendimiento).}
-    \label{fig:offset}
-\end{figure}
+\textit{Coco}. Los resultados del modelo concluyen en un tiempo de espera por inferencia
+de $7.84$ segundos con clasificaciones mostradas a continuación en \ref{fig:comparation_caca}.
 
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
@@ -1190,11 +1168,58 @@ de perdida:
     \label{fig:comparation_caca}
 \end{figure}
 
+Destaca la especialidad del modelo en la detección de presencia parasitaria en casos de
+material indeseado obstruyendo la muestra como se puede apreciar en la figura
+\ref{fig:obstruction}.
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.6\textwidth]{obstruction}
     \caption{Muestra de parásito Hookworm obstruido por material indeseado.}
     \label{fig:obstruction}
+\end{figure}
+
+En la gráfica de perdida final de la figura \ref{fig:total_loss} se muestra el seguimiento de
+pérdida general en función del tiempo en el eje horizontal y la precisión en el eje vertical.
+En el análisis de la curva de pérdida general se puede apreciar el error inicial cercano al
+$30\%$ y disminuye rápidamente hasta el $10\%$ para la iteración $15000$, manteniendo una
+disminución casi constante a partir de ese punto. La gráfica atenuada detrás es la curva de
+pérdida real sin suavizado se puede apreciar entre las iteraciones $15000$ y $20000$ un gran
+nivel de error que pueden haber sido causadas por imágenes mal etiquetadas, finalmente ese
+ruido causado en el entrenamiento no repercute en desajuste del modelo y el error en 
+entrenamiento se normalizó en un valor cercano al $30\%$ ($70\%$ de precisión).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{total_loss}
+    \caption{Gráfica de pérdida general del modelo.}
+    \label{fig:total_loss}
+\end{figure}
+
+Así mismo en la figura \ref{fig:object_center} de mismos ejes y separando el error en
+precisión del modelo en identificación de centros de objetos se aprecia una curva similar a
+la anteriormente descrita. Los valores de error disminuyen con el mismo comportamiento
+general y sin recibir mayor aumento de error por ruido en el conjunto de datos. En resumen,
+se termina en un error del $2.5\%$ ($98.5\%$ de precisión).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{object_center}
+    \caption{Gráfica de pérdida en detección de centros.}
+    \label{fig:object_center}
+\end{figure}
+
+Por último tenemos la figura \ref{fig:offset} con los resultados de error en lo que comprende
+a la delimitación del área de detección de cada error. Se puede apreciar que a diferencia del
+error de centros, la gráfica muestra una disminución de perdida más lineal, lo que da a 
+entender que la perdida en la delimitación de las áreas donde se localizan los errores es un
+error que disminuye en razón a una constante.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{offset}
+    \caption{Gráfica de pérdida en alineamiento delimitador.}
+    \label{fig:offset}
 \end{figure}
 
 %\subsection{Desglose de Actividades}\label{PERT}
