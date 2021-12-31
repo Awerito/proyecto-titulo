@@ -906,6 +906,41 @@ $$x_{ij}=\Sigma_{m=-M}^M\Sigma_{n=-N}^Np_{i-m,j-n}f_{m,n}$$
     \label{fig:kernel}
 \end{figure}
 
+\subsubsection{Centernet}
+
+El modelo \textit{Centernet} de detección identifica los objetos como cuadros alineados con el
+eje en una imagen. La mayoría de los detectores de objetos que tienen éxito enumeran una lista
+casi exhaustiva de posibles ubicaciones de objetos y clasifican cada una de ellas. Esto es un
+desperdicio, ineficiente y requiere un post-procesamiento adicional. El modelo, adapta un 
+enfoque diferente. Modela un objeto como un único punto, el punto central de su caja
+delimitadora. El modelo utiliza la estimación del punto clave para encontrar los puntos 
+centrales y hace una regresión a todas las demás propiedades del objeto, como el tamaño, la
+ubicación 3D, la orientación e incluso la postura (figura \ref{fig:3dspace}). Este enfoque 
+basado en el punto central es diferenciable de extremo a extremo, más simple, más rápido y más
+preciso que los detectores correspondientes basados en el cuadro delimitador. CenterNet
+consigue la mejor relación velocidad-precisión en el conjunto de datos \textit{MS COCO}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{3dspace}
+    \caption{Primero se puede aprecias la busqueda de puntos clave, luego la consideración
+    de espacio tridimensional para delimitar las proporciónes, luego la profundidad de los
+    objetos, finalmente determina la orientación de movimiento de los objetos detectados.}
+    \label{fig:3dspace}
+\end{figure}
+
+Su arquitectura es una red convolucional que aplica extracción de esquinas en cascada (\textit{Cascade corner pooling}) y 
+extracción de centros (\textit{Center pooling}) para generar dos mapas; de calor y características respectivamente. La detección
+de esquinas son utilizadas para la detección temprana de posibles delimitantes de objetos. Entonces los puntos correspondientes a
+centros detectados son usados para determinar el tamaño real de las áreas delimitantes (figura \ref{fig:arquitectureCenternet}).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{arquitectureCenternet}
+    \caption{Arquitectura de red Centernet.}
+    \label{fig:arquitectureCenternet}
+\end{figure}
+
 %\section{Estado del Arte}\label{arte}
 % Alternativas preexistentes
 % Conjuntos de datos preexistentes
@@ -981,13 +1016,6 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
         \end{enumerate}
 \end{enumerate}
 
-%\subsubsection{Equipo de Trabajo}
-%Content ;v
-% Calza esto
-% 1
-% 2-3.5
-% 3-4
-
 \subsection{Planificación}
 \begin{figure}[H]
     \centering
@@ -997,7 +1025,7 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
 \end{figure}
 
 \chapter{Desarrollo}
-\subsection{Conjunto de Datos}
+\section{Conjunto de Datos}
 Para el desarrollo del proyecto de título se utiliza el conjunto de datos \textit{Makerere
 Automated Lab Diagnostics Database (MALDD)} en cuyas característica encontramos 1217 imágenes 
 clasificadas entre tres distintas clases de parásitos:
@@ -1092,7 +1120,7 @@ La expansión esperada del conjunto de datos es abarcar las clases faltantes com
     \item Schistosoma haematobium
 \end{itemize}
 
-\subsection{Modelo}
+\section{Modelo}
 
 % TODO: explicar Resnet y Centernet
 Se revisaron las opciones de modelos; \textit{Faster RCNN Inception Resnet v2 (FRIR v2)} y
@@ -1119,7 +1147,7 @@ facilitar la entrada sin mayor manipulación directa de la imagen.
     \label{fig:centernet}
 \end{figure}
 
-\subsection{Entrenamiento}
+\section{Entrenamiento}
 % TODO: explicar tensorflow api
 El entrenamiento del modelo \textit{Centernet} con el conjunto de datos de \textit{MALDD} se
 realiza de manera local con la API de \textit{TensorFlow} para un seguimiento en tiempo real
@@ -1145,7 +1173,7 @@ Especificaciones del computador usado durante la etapa de entrenamiento:
     \item Cantidad de Memoria RAM: 16 GB
 \end{itemize}
 
-\subsection{Resultados}
+\section{Resultados}
 Las medidas de evaluación de precisión utilizadas son \textit{coco detection metrics},
 que son métricas utilizadas para la evaluación de modelos sobre el conjunto de datos de
 \textit{Coco}. Los resultados del modelo concluyen en un tiempo de espera por inferencia
