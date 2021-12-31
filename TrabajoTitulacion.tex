@@ -1129,7 +1129,8 @@ entrenamiento se lleva a cabo durante $10$ horas y $31$ minutos.
 En las configuraciones del modelo se aceptan como parámetros; máxima cantidad de predicciones
 de $100$ para no dejar fuera elementos de las muestras, mínimo grado de solapamiento de cajas
 de reconocimiento de $0.7$ dado que las muestras son tomadas en un porta objeto que aplana
-la muestra para evitar solapamiento de antemano.
+la muestra para evitar solapamiento de antemano, también se usa aumento de datos con giros
+horizontales y verticales de las imágenes para cubrir el pequeño tamaño del conjunto de datos.
 
 El conjunto de datos se separa con $60\%$ de las imágenes para entrenamiento del modelo y
 $40\%$ para testeo. A continuación se revisan los resultados. El modelo es entrenado con el
@@ -1222,6 +1223,12 @@ error que disminuye en razón a una constante.
     \label{fig:offset}
 \end{figure}
 
+Finalmente se aprecia que los resultados obtenidos en las detecciones es altamente sensible
+a la resolución de la imagen, dejando un rango de resoluciones de $200\times200$ hasta
+$1000\times1000$ pixeles aproximadamente. Cualquier imagen fuera de ese rango causa errores en
+interpretaciones que pueden varias desde objetos no reconocidos, hasta objetos clasificados
+de manera errónea.
+
 %\subsection{Desglose de Actividades}\label{PERT}
 %En esta sección se describen cada una de las actividades, duración, dependencias, caminos críticos, entre otras y se debe dar una conclusión de lo mismo.
 %\begin{figure}[hbt]
@@ -1277,6 +1284,34 @@ aprendizaje de máquinas para la detección y clasificación de presencia parasi
 el examen seriado de deposiciones. Vimos el estado de los procedimientos para este examen
 y reconocimos el punto donde el uso de estas tecnologías puede jugar un gran rol en la
 mejora de resultados y la velocidad de análisis.
+
+En términos de los objetivos planteados al inicio del proyecto de título, se recopiló un
+conjunto de datos orientado a imágenes microscópicas de muestras de deposiciones con y sin
+presencia parasitaria con la finalidad del entrenamiento del modelo.
+
+El conjunto de datos cumplió con las características de poseer tres clases de parásitos
+intestinales, así como también imágenes sin presencia alguna, haciendo una totalidad de 1217
+imágenes de muestras.
+
+Se entrenó un modelo llamado \textit{Centernet} con la finalidad de hacerlo específico al
+reconocimiento y clasificación de especies de parásitos presentes en el sistema digestivo
+humano para la ayuda en el área de la tecnología médica, que es en donde se realizan los
+estudios médicos y se emplea el uso de las tecnologías existentes para facilitar y respaldar
+el diagnóstico médico.
+
+Al analizar la calidad de las predicciones en la detección de parásitos se puede apreciar la
+gran precisión que logra el modelo dentro de las ventanas de tiempo y tamaños de muestras
+con las que se contó en el momento, esto muestra una gran ventana al desarrollo de la visión
+por computadora en el área de la medicina, más específico, al área del análisis de imágenes
+microscópicas.
+
+%Se termina con un modelo de inteligencia artificial usando Centernet que tiene la capacidad
+%de detectar y clasificar tres clases de parásitos diferentes en imágenes microscópicas de
+%muestras de heces para el examen parasitológico seriado de deposiciones.
+
+%Sus comparativas directas con modelos similares orientados a el uso de visión por computadora
+%para análisis de imágenes microscópicas ...
+
 %\section{Principales aportes}
 %\section{Contraste de resultados}
 %\section{Trabajos futuros} Solo si corresponde.
