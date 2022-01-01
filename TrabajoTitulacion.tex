@@ -861,13 +861,13 @@ orden de facilitar la tarea de extracción de características claves \cite{Prin
 
 \subsubsection{Transformación por Pixel}
 Es la transformación más directa de imágenes \cite{Pixel}, consisten en la modificación de
-pixeles individuales asumiendo la estructura bidimensional. Se dice que la transformación
+píxeles individuales asumiendo la estructura bidimensional. Se dice que la transformación
 modifica el pixel $p_{ij}$ donde $i, j$ son las coordenadas del pixel en el arreglo de la
 imagen $P$.
 
 \subsubsection{Escala de Grises}
 Es convertir la imagen de entrada a color a su versión a escala de grises. Este filtro es
-especialmente útil para reducir el arreglo de pixeles de valores rgb a un simple valor
+especialmente útil para reducir el arreglo de píxeles de valores rgb a un simple valor
 que representa el nivel de blanco del pixel, esto es útil en los casos donde los colores
 no son relevantes en la extracción de características \cite{Pixel}.
 
@@ -889,8 +889,8 @@ no son relevantes en la extracción de características \cite{Pixel}.
 \end{figure}
 
 \subsubsection{Filtros Lineales}
-Son transformaciones de pixeles $x_{ij}$ que consideran una suma ponderada del valor de
-los pixeles adyacentes \cite{Conv}, es decir, siendo una imagen $P$ a la cual se  aplicará
+Son transformaciones de píxeles $x_{ij}$ que consideran una suma ponderada del valor de
+los píxeles adyacentes \cite{Conv}, es decir, siendo una imagen $P$ a la cual se  aplicará
 un filtro denominado \textit{kernel} $F$, el cual tendrá entradas $f_{mn}$ donde
 $m\in\{-M,M\}$ y $n\in\{-N,N\}$. Finalmente quedamos con un filtro de la forma
 \ref{fig:kernel}
@@ -900,26 +900,43 @@ $$x_{ij}=\Sigma_{m=-M}^M\Sigma_{n=-N}^Np_{i-m,j-n}f_{m,n}$$
     \centering
     \includegraphics[width=0.8\textwidth]{kernel}
     \caption{Filtro con \textit{kernel} para resaltar contornos de objetos en la imagen.
-        La matriz se usa para saber las ponderaciones de los pixeles en la suma para el nuevo
-        valor de pixeles en la imagen. Así obtenemos un mapa de características que en este
+        La matriz se usa para saber las ponderaciones de los píxeles en la suma para el nuevo
+        valor de píxeles en la imagen. Así obtenemos un mapa de características que en este
     ejemplo nos entrega la información de los límites del animal de la imagen de entrada.}
     \label{fig:kernel}
 \end{figure}
 
-\subsubsection{Modelo Centernet}
+\subsection{Modelo Faster RCNN Inception Resnet}
 
-% TODO: citar centernet
-El modelo \textit{Centernet} de detección identifica los objetos como cuadros alineados con el
-eje en una imagen. La mayoría de los detectores de objetos que tienen éxito enumeran una lista
-casi exhaustiva de posibles ubicaciones de objetos y clasifican cada una de ellas. Esto es un
-desperdicio, ineficiente y requiere un post-procesamiento adicional. El modelo, adapta un 
-enfoque diferente. Modela un objeto como un único punto, el punto central de su caja
-delimitadora. El modelo utiliza la estimación del punto clave para encontrar los puntos 
-centrales y hace una regresión a todas las demás propiedades del objeto, como el tamaño, la
-ubicación 3D, la orientación e incluso la postura (figura \ref{fig:3dspace}). Este enfoque 
-basado en el punto central es diferenciable de extremo a extremo, más simple, más rápido y más
-preciso que los detectores correspondientes basados en el cuadro delimitador. CenterNet
-consigue la mejor relación velocidad-precisión en el conjunto de datos \textit{MS COCO}.
+El modelo \textit{Faster RCNN Inception Resnet} \ref{tensorflowmodelgarden2020} es una red
+neuronal pre-entrenada para propósito general, es decir, se centra en el reconocimiento de
+$600$ clases diferentes. Para esto el modelo hace uso de una red convolucional y una
+red de extracción de características que apunta a precisión sobre las detecciones que realiza
+para su clasificación, está centrada en la búsqueda exhaustiva de elementos diferenciables en
+una imagen. Esto otorga al modelo la capacidad de reconocer gran cantidad de objetos de la
+misma imagen como se puede apreciar en la figura \ref{resnet}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{resnet}
+    \caption{Ejemplo de detección en su contexto general de Faster RCNN Inception Resnet.}
+    \label{fig:resnet}
+\end{figure}
+
+\subsection{Modelo Centernet}
+
+El modelo \textit{Centernet} \ref{zhou2019objects} de detección identifica los objetos como
+cuadros alineados con el eje en una imagen. La mayoría de los detectores de objetos que tienen
+éxito enumeran una lista casi exhaustiva de posibles ubicaciones de objetos y clasifican cada
+una de ellas. Esto es un desperdicio, ineficiente y requiere un post-procesamiento adicional.
+El modelo, adapta un enfoque diferente. Modela un objeto como un único punto, el punto central
+de su caja delimitadora. El modelo utiliza la estimación del punto clave para encontrar los
+puntos centrales y hace una regresión a todas las demás propiedades del objeto, como el tamaño
+, la ubicación 3D, la orientación e incluso la postura (figura \ref{fig:3dspace}). Este
+enfoque basado en el punto central es diferenciable de extremo a extremo, más simple, más
+rápido y más preciso que los detectores correspondientes basados en el cuadro delimitador.
+CenterNet consigue la mejor relación velocidad-precisión en el conjunto de datos
+\textit{MS COCO}.
 
 \begin{figure}[ht]
     \centering
@@ -940,6 +957,22 @@ centros detectados son usados para determinar el tamaño real de las áreas deli
     \includegraphics[width=0.8\textwidth]{arquitectureCenternet}
     \caption{Arquitectura de red Centernet.}
     \label{fig:arquitectureCenternet}
+\end{figure}
+
+\subsection{Tensorflow API}
+
+La API de detección de objetos de \textit{TensorFlow} es un marco de trabajo de código abierto
+construido sobre \textit{TensorFlow} con la finalidad de facilitar la construcción, el
+entrenamiento y el despliegue de modelos de detección de objetos creando una instancia de
+seguimiento en tiempo real para las métricas de rendimiento de los modelos (figura
+\ref{fig:tensorapi}) y permitiendo empaquetar resultados junto a sus configuraciones para
+etapas posteriores de producción.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{tensorapi}
+    \caption{Interfaz de monitoreo de \textit{Tensorflow API}.}
+    \label{fig:tensorapi}
 \end{figure}
 
 %\section{Estado del Arte}\label{arte}
@@ -1043,36 +1076,9 @@ clasificadas entre tres distintas clases de parásitos:
 \end{itemize}
 
 El conjunto se compone de imágenes microscópicas de muestras de deposiciones con etiquetas
-de parásitos presentes en la misma como se meustra en la figura \ref{fig:labelImage}. La
-estructura de los datos se conforma en una carpeta raíz con las imágenes y su meta data en un
-archivo en formato \textit{xml}, ambos de mismo nombre.
-
-% TODO: mover a anexo
-%\begin{lstlisting}[language=xml]
-%<annotation>
-  %<source>
-    %<database>Makerere Automated Lab Diagnostics Database</database>
-    %<annotation>Makerere University</annotation>
-    %<image>Mulago National Referral Hospital</image>
-  %</source>
-  %<size>
-    %<width>1632</width>
-    %<height>1224</height>
-  %</size>
-  %<object>
-    %<name>Hookworm</name>
-    %<pose>Unspecified</pose>
-    %<truncated>0</truncated>
-    %<occluded>0</occluded>
-    %<bndbox>
-      %<xmin>903</xmin>
-      %<ymin>735</ymin>
-      %<xmax>1198</xmax>
-      %<ymax>921</ymax>
-    %</bndbox>
-  %</object>
-%</annotation>
-%\end{lstlisting}
+de parásitos presentes (anexo \ref{xmlFormat}) en la misma como se meustra en la figura
+\ref{fig:labelImage}. La estructura de los datos se conforma en una carpeta raíz con las
+imágenes y su meta data en un archivo en formato \textit{xml}, ambos de mismo nombre.
 
 \begin{figure}[ht]
     \centering
@@ -1150,7 +1156,6 @@ la lista de parásitos faltantes los siguientes:
 
 \section{Modelo}
 
-% TODO: explicar Resnet y Centernet
 Se revisaron las opciones de modelos; \textit{Faster RCNN Inception Resnet v2 (FRIR v2)} y
 \textit{Centernet} durante la face de investigación con el objetivo de un modelo general que
 pueda especificarse en la tarea de reconocimiento de parásitos a través de imágenes
@@ -1174,7 +1179,6 @@ modelo de muy rápida inferencia y gran nivel de precisión en casos particulare
 \end{figure}
 
 \chapter{Entrenamiento}
-% TODO: explicar tensorflow api
 El entrenamiento del modelo \textit{Centernet} con el conjunto de datos de \textit{MALDD} se
 realiza de manera local con la API de \textit{TensorFlow} para un seguimiento en tiempo real
 de las mediciones de pérdida del modelo durante el entrenamiento.
@@ -1242,10 +1246,8 @@ error que disminuye en razón a una constante.
     \label{fig:offset}
 \end{figure}
 
-% TODO: describir metricas en marco teorico
-Las medidas de evaluación de precisión utilizadas son \textit{coco detection metrics}. Los
-resultados del modelo concluyen en un tiempo de espera por inferencia de $7.84$ segundos con
-clasificaciones mostradas a continuación en \ref{fig:comparation_caca}.
+Los resultados del modelo concluyen en un tiempo de espera por inferencia de $7.84$ segundos
+con clasificaciones mostradas a continuación en \ref{fig:comparation_caca}.
 
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
@@ -1266,7 +1268,7 @@ clasificaciones mostradas a continuación en \ref{fig:comparation_caca}.
 \end{figure}
 
 % TODO: alargar este apartado
-Destaca la especialidad del modelo en la detección de presencia parasitaria en casos de
+Se destaca la especialidad del modelo en la detección de presencia parasitaria en casos de
 material indeseado obstruyendo la muestra como se puede apreciar en la figura
 \ref{fig:obstruction}.
 
@@ -1279,7 +1281,7 @@ material indeseado obstruyendo la muestra como se puede apreciar en la figura
 
 Finalmente, se aprecia que los resultados obtenidos en las detecciones es altamente sensible
 a la resolución de la imagen, dejando un rango de resoluciones de $200\times200$ hasta
-$1000\times1000$ pixeles aproximadamente. Cualquier imagen fuera de ese rango causa errores en
+$1000\times1000$ píxeles aproximadamente. Cualquier imagen fuera de ese rango causa errores en
 interpretaciones que pueden variar desde objetos no reconocidos, hasta objetos clasificados
 de manera errónea.
 
@@ -1374,8 +1376,37 @@ microscópicas.
 %agregar referencias
 \bibliographystyle{apacite}\bibliography{document.bib}
 
-%\renewcommand{\appendixname}{Anexos}
-%\appendix
+\renewcommand{\appendixname}{Anexos}
+\appendix
+
+\chapter{Archivo XML}\label{xmlFormat}
+
+\begin{lstlisting}[language=xml]
+<annotation>
+  <source>
+    <database>Makerere Automated Lab Diagnostics Database</database>
+    <annotation>Makerere University</annotation>
+    <image>Mulago National Referral Hospital</image>
+  </source>
+  <size>
+    <width>1632</width>
+    <height>1224</height>
+  </size>
+  <object>
+    <name>Hookworm</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <occluded>0</occluded>
+    <bndbox>
+      <xmin>903</xmin>
+      <ymin>735</ymin>
+      <xmax>1198</xmax>
+      <ymax>921</ymax>
+    </bndbox>
+  </object>
+</annotation>
+\end{lstlisting}
+
 %
 %\chapter{Definciones, Acronimos y Abreviaturas}\label{definiciones}
 %\section{Definiciones}
