@@ -220,7 +220,7 @@ en distintos ciclos larvales.
 % Cual es el problema que tenemos acá
 % Inconsistencia en las mediciones / definición del problema
 Por lo tanto, la problemática presentada en este trabajo radica en lo altamente
-susceptible al sesgo del observador del examen, es decir, es muy sensible a perdida o
+susceptible al sesgo del observador del examen, es decir, es muy sensible a pérdida o
 mala clasificación de avistamientos llevando a malos diagnósticos médicos. 
 
 En este trabajo se propone una solución inteligente para automatizar el examen
@@ -694,7 +694,7 @@ de datos.
 
 \subsubsection{Limpieza de Datos}
 La limpieza de datos es un procedimiento que nos ayuda a filtrar datos erróneos y
-manipular información faltante para no causar una mayor perdida de datos \cite{Clean}.
+manipular información faltante para no causar una mayor pérdida de datos \cite{Clean}.
 Este procedimiento es descrito como la intuición de los datos, dado que no existen muchas
 más formas de entender un conjunto de datos que analizándolo de manera manual.
 Generalmente el manejo de la limpieza de datos suele ser una de las partes más
@@ -906,8 +906,9 @@ $$x_{ij}=\Sigma_{m=-M}^M\Sigma_{n=-N}^Np_{i-m,j-n}f_{m,n}$$
     \label{fig:kernel}
 \end{figure}
 
-\subsubsection{Centernet}
+\subsubsection{Modelo Centernet}
 
+% TODO: citar centernet
 El modelo \textit{Centernet} de detección identifica los objetos como cuadros alineados con el
 eje en una imagen. La mayoría de los detectores de objetos que tienen éxito enumeran una lista
 casi exhaustiva de posibles ubicaciones de objetos y clasifican cada una de ellas. Esto es un
@@ -1024,7 +1025,12 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
     \label{fig:gantt}
 \end{figure}
 
-\chapter{Desarrollo}
+\chapter{Modelo de Identificación y Clasificación de Parásitos}
+
+En el presente capítulo, se describe el desarrollo de un modelo para indentificar y
+clasificar los parásitos contenidos en en conjunto de dato utilizado para el examen 
+parasitológico seriado de deposiciones.
+
 \section{Conjunto de Datos}
 Para el desarrollo del proyecto de título se utiliza el conjunto de datos \textit{Makerere
 Automated Lab Diagnostics Database (MALDD)} en cuyas característica encontramos 1217 imágenes 
@@ -1036,52 +1042,65 @@ clasificadas entre tres distintas clases de parásitos:
     \item Taenia
 \end{itemize}
 
-El conjunto se compone de imágenes microscópicas de muestras de heces fecales y su
-clasificación destaca cualquier presencia de los parásitos anteriormente mencionados
-como se puede apreciar en la figura \ref{fig:labelImage}. La estructura de los datos se
-conforma en una carpeta raíz con las imágenes y su meta data en un archivo en formato
-\textit{xml}, ambos de mismo nombre.
+El conjunto se compone de imágenes microscópicas de muestras de deposiciones con etiquetas
+de parásitos presentes en la misma como se meustra en la figura \ref{fig:labelImage}. La
+estructura de los datos se conforma en una carpeta raíz con las imágenes y su meta data en un
+archivo en formato \textit{xml}, ambos de mismo nombre.
 
-\begin{lstlisting}[language=xml]
-<annotation>
-  <source>
-    <database>Makerere Automated Lab Diagnostics Database</database>
-    <annotation>Makerere University</annotation>
-    <image>Mulago National Referral Hospital</image>
-  </source>
-  <size>
-    <width>2064</width>
-    <height>1161</height>
-  </size>
-</annotation>
-\end{lstlisting}
+% TODO: mover a anexo
+%\begin{lstlisting}[language=xml]
+%<annotation>
+  %<source>
+    %<database>Makerere Automated Lab Diagnostics Database</database>
+    %<annotation>Makerere University</annotation>
+    %<image>Mulago National Referral Hospital</image>
+  %</source>
+  %<size>
+    %<width>1632</width>
+    %<height>1224</height>
+  %</size>
+  %<object>
+    %<name>Hookworm</name>
+    %<pose>Unspecified</pose>
+    %<truncated>0</truncated>
+    %<occluded>0</occluded>
+    %<bndbox>
+      %<xmin>903</xmin>
+      %<ymin>735</ymin>
+      %<xmax>1198</xmax>
+      %<ymax>921</ymax>
+    %</bndbox>
+  %</object>
+%</annotation>
+%\end{lstlisting}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{labelImage}
+    \includegraphics[width=0.7\textwidth]{labelImage}
     \caption{Ejemplo de imagen donde se aprecian dos \textit{Hookworms}.}
     \label{fig:labelImage}
 \end{figure}
 
-El proceso de preprocesamiento y limpieza de datos comprende la reestructuración de las
-carpetas separando el conjunto en entrenamiento (\textit{train}) y testeo (\textit{test}),
-a su vez se requiere de una modificación en la meta data de los archivos \textit{xml}
-que incluya si la carpeta del archivo corresponde a uno de entrenamiento o testeo, agregar
-un tag con el nombre del archivo de la imagen que le corresponde y su ruta absoluta al mismo
-mostrado en la figura \ref{fig:diff}.
+\subsection{Preprocesamiento y Limpieza}
+El proceso comprende la reestructuración de las carpetas separando el conjunto en
+entrenamiento (\textit{train}) y testeo (\textit{test}), a su vez se requiere de una
+modificación en la meta data de los archivos \textit{xml} que incluya si la carpeta del
+archivo corresponde a uno de entrenamiento o testeo, agregar una etiqueta con el nombre del
+archivo de la imagen que le corresponde y su ruta absoluta al mismo mostrado en la figura
+\ref{fig:diff}. El conjunto de datos se separa con $60\%$ de las imágenes para entrenamiento del modelo y
+$40\%$ para testeo de manera aleatoria uniforme.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{diff}
-    \caption{Ejemplo de modificación de archivo \textit{xml} de imagen n.}
+    \includegraphics[width=0.7\textwidth]{diff}
+    \caption{Ejemplo de modificación de archivo \textit{xml} de imagen.}
     \label{fig:diff}
 \end{figure}
 
-La utilidad de conjunto de datos está especialmente orientada a la detección de estas clases
-en el contexto descrito. En el contexto del examen parasitológico seriado de deposiciones,
-el conjunto de datos cubre una pequeña parte de los parásitos que se esperan reconocer.
-
-La expansión esperada del conjunto de datos es abarcar las clases faltantes compuestas por:
+La utilidad de conjunto de datos está especialmente orientada a la detección de las clases
+anteriormente descritas. En el contexto del examen parasitológico seriado de deposiciones,
+el conjunto de datos cubre una pequeña parte de los parásitos que se esperan reconocer siendo
+la lista de parásitos faltantes los siguientes:
 
 \begin{itemize}
     \item Aedes aegypti
@@ -1120,6 +1139,15 @@ La expansión esperada del conjunto de datos es abarcar las clases faltantes com
     \item Schistosoma haematobium
 \end{itemize}
 
+% TODO: Resultado final del dataset, como quedó la estructura de carpetas (mostrar), no hubo
+% estratificación, estructura del código
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{dataFrame}
+    \caption{Meta data del conjunto de elementos con más de una detección de parásitos.}
+    \label{fig:dataFrame}
+\end{figure}
+
 \section{Modelo}
 
 % TODO: explicar Resnet y Centernet
@@ -1128,17 +1156,15 @@ Se revisaron las opciones de modelos; \textit{Faster RCNN Inception Resnet v2 (F
 pueda especificarse en la tarea de reconocimiento de parásitos a través de imágenes
 microscópicas.
 
+% TODO: datos de justificación de la decisión
 Se descarta \textit{FRIR v2} por su lento desempeño general en inferencias sobre conjuntos
 de datos de imágenes de contexto general.
 
-Finalmente se decide por \textit{Centernet} por su característica forma de realizar una
+Finalmente, se decide por \textit{Centernet} por su característica forma de realizar una
 inferencia (figura \ref{fig:centernet}), \textit{Centernet} busca identificar ejes alineados a un rectángulo
 correspondiente a un objeto dentro de una imagen. Esta diferencia nace de su forma de 
 buscar regiones que contengan objetos e identificándolos como un punto, dando así con un
 modelo de muy rápida inferencia y gran nivel de precisión en casos particulares.
-
-Como agregado, el modelo cuenta con una capa de entrada de redimensionado de imágenes para
-facilitar la entrada sin mayor manipulación directa de la imagen.
 
 \begin{figure}[ht]
     \centering
@@ -1147,25 +1173,21 @@ facilitar la entrada sin mayor manipulación directa de la imagen.
     \label{fig:centernet}
 \end{figure}
 
-\section{Entrenamiento}
+\chapter{Entrenamiento}
 % TODO: explicar tensorflow api
 El entrenamiento del modelo \textit{Centernet} con el conjunto de datos de \textit{MALDD} se
 realiza de manera local con la API de \textit{TensorFlow} para un seguimiento en tiempo real
-de las mediciones de pérdida del modelo durante el entrenamiento. Finalmente el
-entrenamiento se lleva a cabo durante $10$ horas y $31$ minutos.
-
+de las mediciones de pérdida del modelo durante el entrenamiento.
 En las configuraciones del modelo se aceptan como parámetros; máxima cantidad de predicciones
 de $100$ para no dejar fuera elementos de las muestras, mínimo grado de solapamiento de cajas
 de reconocimiento de $0.7$ dado que las muestras son tomadas en un porta objeto que aplana
 la muestra para evitar solapamiento de antemano, también se usa aumento de datos con giros
 horizontales y verticales de las imágenes para cubrir el pequeño tamaño del conjunto de datos.
+El modelo es entrenado con el optimizador Adam y un ratio de aprendizaje de $0.001$ constante
+durante todo el entrenamiento y $40000$ iteraciones por generación, especificando el modelo
+en detección sin \textit{kfolds}, validación cruzada y sin optimización de hiperparámetros.
 
-El conjunto de datos se separa con $60\%$ de las imágenes para entrenamiento del modelo y
-$40\%$ para testeo. A continuación se revisan los resultados. El modelo es entrenado con el
-optimizador Adam y un ratio de aprendizaje de $0.001$ constante durante todo el entrenamiento
-y $40000$ iteraciones por generación, especificando el modelo en detección.
-
-Especificaciones del computador usado durante la etapa de entrenamiento:
+Se ocupó para la etapa de entrenamiento un computador con las siguientes características:
 
 \begin{itemize}
     \item Procesador: AMD 2600X (6 núcleos)
@@ -1173,42 +1195,11 @@ Especificaciones del computador usado durante la etapa de entrenamiento:
     \item Cantidad de Memoria RAM: 16 GB
 \end{itemize}
 
-\section{Resultados}
-Las medidas de evaluación de precisión utilizadas son \textit{coco detection metrics},
-que son métricas utilizadas para la evaluación de modelos sobre el conjunto de datos de
-\textit{Coco}. Los resultados del modelo concluyen en un tiempo de espera por inferencia
-de $7.84$ segundos con clasificaciones mostradas a continuación en \ref{fig:comparation_caca}.
+Finalmente, el entrenamiento se lleva a cabo durante $10$ horas y $31$ minutos.
 
-\begin{figure}[H]
-    \begin{subfigure}{0.5\textwidth}
-        \centering
-        \includegraphics[width=0.8\textwidth]{caca}
-        \caption{Imagen original (300x300).}
-        \label{fig:caca}
-    \end{subfigure}
-    \begin{subfigure}{0.5\textwidth}
-        \centering
-        \includegraphics[width=0.8\textwidth]{cacafit}
-        \caption{Imagen con etiquetas de reconocimiento, clases reconocidas; Hookworm y
-        Taenia.}
-        \label{fig:cacafit}
-    \end{subfigure}
-    \caption{Detección de multiples parásitos contenidos en una sola muestra.}
-    \label{fig:comparation_caca}
-\end{figure}
-
-Destaca la especialidad del modelo en la detección de presencia parasitaria en casos de
-material indeseado obstruyendo la muestra como se puede apreciar en la figura
-\ref{fig:obstruction}.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.6\textwidth]{obstruction}
-    \caption{Muestra de parásito Hookworm obstruido por material indeseado.}
-    \label{fig:obstruction}
-\end{figure}
-
-En la gráfica de perdida final de la figura \ref{fig:total_loss} se muestra el seguimiento de
+\chapter{Resultados}
+% TODO: conectar el orden de los parrafos
+En la gráfica de pérdida final de la figura \ref{fig:total_loss} se muestra el seguimiento de
 pérdida general en función del tiempo en el eje horizontal y la precisión en el eje vertical.
 En el análisis de la curva de pérdida general se puede apreciar el error inicial cercano al
 $30\%$ y disminuye rápidamente hasta el $10\%$ para la iteración $15000$, manteniendo una
@@ -1238,10 +1229,10 @@ se termina en un error del $2.5\%$ ($98.5\%$ de precisión).
     \label{fig:object_center}
 \end{figure}
 
-Por último tenemos la figura \ref{fig:offset} con los resultados de error en lo que comprende
+Por último, tenemos la figura \ref{fig:offset} con los resultados de error en lo que comprende
 a la delimitación del área de detección de cada error. Se puede apreciar que a diferencia del
-error de centros, la gráfica muestra una disminución de perdida más lineal, lo que da a 
-entender que la perdida en la delimitación de las áreas donde se localizan los errores es un
+error de centros, la gráfica muestra una disminución de pérdida más lineal, lo que da a 
+entender que la pérdida en la delimitación de las áreas donde se localizan los objetos es un
 error que disminuye en razón a una constante.
 
 \begin{figure}[ht]
@@ -1251,10 +1242,45 @@ error que disminuye en razón a una constante.
     \label{fig:offset}
 \end{figure}
 
-Finalmente se aprecia que los resultados obtenidos en las detecciones es altamente sensible
+% TODO: describir metricas en marco teorico
+Las medidas de evaluación de precisión utilizadas son \textit{coco detection metrics}. Los
+resultados del modelo concluyen en un tiempo de espera por inferencia de $7.84$ segundos con
+clasificaciones mostradas a continuación en \ref{fig:comparation_caca}.
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{caca}
+        \caption{Imagen original (300x300).}
+        \label{fig:caca}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{cacafit}
+        \caption{Imagen con etiquetas de reconocimiento, clases reconocidas; Hookworm y
+        Taenia.}
+        \label{fig:cacafit}
+    \end{subfigure}
+    \caption{Detección de multiples parásitos contenidos en una sola muestra.}
+    \label{fig:comparation_caca}
+\end{figure}
+
+% TODO: alargar este apartado
+Destaca la especialidad del modelo en la detección de presencia parasitaria en casos de
+material indeseado obstruyendo la muestra como se puede apreciar en la figura
+\ref{fig:obstruction}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{obstruction}
+    \caption{Muestra de parásito Hookworm obstruido por material indeseado.}
+    \label{fig:obstruction}
+\end{figure}
+
+Finalmente, se aprecia que los resultados obtenidos en las detecciones es altamente sensible
 a la resolución de la imagen, dejando un rango de resoluciones de $200\times200$ hasta
 $1000\times1000$ pixeles aproximadamente. Cualquier imagen fuera de ese rango causa errores en
-interpretaciones que pueden varias desde objetos no reconocidos, hasta objetos clasificados
+interpretaciones que pueden variar desde objetos no reconocidos, hasta objetos clasificados
 de manera errónea.
 
 %\subsection{Desglose de Actividades}\label{PERT}
@@ -1309,17 +1335,15 @@ de manera errónea.
 Durante este informe se vieron las tecnologías relacionadas a la visión por computadora
 que permiten hacer uso de una inferencia en base al entrenamiento de modelos de
 aprendizaje de máquinas para la detección y clasificación de presencia parasitológica en
-el examen seriado de deposiciones. Vimos el estado de los procedimientos para este examen
+el examen seriado de deposiciones. Se vió el estado de los procedimientos para este examen
 y reconocimos el punto donde el uso de estas tecnologías puede jugar un gran rol en la
 mejora de resultados y la velocidad de análisis.
 
 En términos de los objetivos planteados al inicio del proyecto de título, se recopiló un
 conjunto de datos orientado a imágenes microscópicas de muestras de deposiciones con y sin
-presencia parasitaria con la finalidad del entrenamiento del modelo.
-
-El conjunto de datos cumplió con las características de poseer tres clases de parásitos
-intestinales, así como también imágenes sin presencia alguna, haciendo una totalidad de 1217
-imágenes de muestras.
+presencia parasitaria con la finalidad del entrenamiento del modelo. El conjunto de datos
+cumplió con las características de poseer tres clases de parásitos intestinales, así como
+también imágenes sin presencia alguna, haciendo una totalidad de 1217 imágenes de muestras.
 
 Se entrenó un modelo llamado \textit{Centernet} con la finalidad de hacerlo específico al
 reconocimiento y clasificación de especies de parásitos presentes en el sistema digestivo
