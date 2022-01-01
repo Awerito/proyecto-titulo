@@ -1089,12 +1089,13 @@ imágenes y su meta data en un archivo en formato \textit{xml}, ambos de mismo n
 
 \subsection{Preprocesamiento y Limpieza}
 El proceso comprende la reestructuración de las carpetas separando el conjunto en
-entrenamiento (\textit{train}) y testeo (\textit{test}), a su vez se requiere de una
-modificación en la meta data de los archivos \textit{xml} que incluya si la carpeta del
-archivo corresponde a uno de entrenamiento o testeo, agregar una etiqueta con el nombre del
-archivo de la imagen que le corresponde y su ruta absoluta al mismo mostrado en la figura
-\ref{fig:diff}. El conjunto de datos se separa con $60\%$ de las imágenes para entrenamiento del modelo y
-$40\%$ para testeo de manera aleatoria uniforme.
+entrenamiento (\textit{train}) y testeo (\textit{test}) como se puede ver en la figura 
+]\ref{fig:carpetas}), a su vez se requiere de una modificación en la meta data de los archivos
+\textit{xml} que incluya si la carpeta del archivo corresponde a uno de entrenamiento o testeo
+, agregar una etiqueta con el nombre del archivo de la imagen que le corresponde y su ruta
+absoluta al mismo mostrado en la figura \ref{fig:diff}. El conjunto de datos se separa con
+$60\%$ de las imágenes para entrenamiento del modelo y $40\%$ para testeo de manera aleatoria
+uniforme.
 
 \begin{figure}[H]
     \centering
@@ -1103,10 +1104,30 @@ $40\%$ para testeo de manera aleatoria uniforme.
     \label{fig:diff}
 \end{figure}
 
+En la figura \ref{fig:dataFrame} se pueden ver los datos relacionado a la ubicación de los
+parásitos identificados en la muestras, los datos se componen de dos puntos $(xmin, ymin)$ y
+$(xmax, ymax)$ que representan la ubicación de las esquinas del rectangulo que encierra el
+parásito en cuestión y el nombre de la clase a indentificar.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{dataFrame}
+    \caption{Meta data del conjunto de elementos con más de una detección de parásitos.}
+    \label{fig:dataFrame}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{treeDir}
+    \caption{Resumen de la estructura de directorios del conjunto de datos ordenado y listo
+    para entrenamiento.}
+    \label{fig:carpetas}
+\end{figure}
+
 La utilidad de conjunto de datos está especialmente orientada a la detección de las clases
 anteriormente descritas. En el contexto del examen parasitológico seriado de deposiciones,
 el conjunto de datos cubre una pequeña parte de los parásitos que se esperan reconocer siendo
-la lista de parásitos faltantes los siguientes:
+la lista de parásitos faltantes la siguiente:
 
 \begin{itemize}
     \item Aedes aegypti
@@ -1145,15 +1166,6 @@ la lista de parásitos faltantes los siguientes:
     \item Schistosoma haematobium
 \end{itemize}
 
-% TODO: Resultado final del dataset, como quedó la estructura de carpetas (mostrar), no hubo
-% estratificación, estructura del código
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.8\textwidth]{dataFrame}
-    \caption{Meta data del conjunto de elementos con más de una detección de parásitos.}
-    \label{fig:dataFrame}
-\end{figure}
-
 \section{Modelo}
 
 Se revisaron las opciones de modelos; \textit{Faster RCNN Inception Resnet v2 (FRIR v2)} y
@@ -1161,9 +1173,15 @@ Se revisaron las opciones de modelos; \textit{Faster RCNN Inception Resnet v2 (F
 pueda especificarse en la tarea de reconocimiento de parásitos a través de imágenes
 microscópicas.
 
-% TODO: datos de justificación de la decisión
-Se descarta \textit{FRIR v2} por su lento desempeño general en inferencias sobre conjuntos
-de datos de imágenes de contexto general.
+Durante las comparativas iniciales en su pre-entrenamiento general se pueden apreciar grandes
+diferencian en los rendimientos de inferencia de cada modelo, siendo de estos
+\textit{Centernet} el más consistente en tiempos de ejecución con una media de $7.84$
+segundos con variaciones no mayores a $1$ segundo, luego por el lado de FRIR v2 cuenta con una
+media de $24.48$ segundos donde los rangos de tiempo eran irregulares, por ejemplo, una
+inferencia toma $3.17$ segundos contra otra inferencia similar que toma $45.46$ segundos.
+
+Es así como finalemente se descarta \textit{FRIR v2} por su lento desempeño general en
+inferencias sobre conjuntos de datos de imágenes de contexto general.
 
 Finalmente, se decide por \textit{Centernet} por su característica forma de realizar una
 inferencia (figura \ref{fig:centernet}), \textit{Centernet} busca identificar ejes alineados a un rectángulo
@@ -1179,6 +1197,7 @@ modelo de muy rápida inferencia y gran nivel de precisión en casos particulare
 \end{figure}
 
 \chapter{Entrenamiento}
+\section{Configuración del Modelo}
 El entrenamiento del modelo \textit{Centernet} con el conjunto de datos de \textit{MALDD} se
 realiza de manera local con la API de \textit{TensorFlow} para un seguimiento en tiempo real
 de las mediciones de pérdida del modelo durante el entrenamiento.
@@ -1191,6 +1210,7 @@ El modelo es entrenado con el optimizador Adam y un ratio de aprendizaje de $0.0
 durante todo el entrenamiento y $40000$ iteraciones por generación, especificando el modelo
 en detección sin \textit{kfolds}, validación cruzada y sin optimización de hiperparámetros.
 
+\section{Hardware Ocupado}
 Se ocupó para la etapa de entrenamiento un computador con las siguientes características:
 
 \begin{itemize}
@@ -1202,16 +1222,15 @@ Se ocupó para la etapa de entrenamiento un computador con las siguientes caract
 Finalmente, el entrenamiento se lleva a cabo durante $10$ horas y $31$ minutos.
 
 \chapter{Resultados}
-% TODO: conectar el orden de los parrafos
-En la gráfica de pérdida final de la figura \ref{fig:total_loss} se muestra el seguimiento de
-pérdida general en función del tiempo en el eje horizontal y la precisión en el eje vertical.
-En el análisis de la curva de pérdida general se puede apreciar el error inicial cercano al
-$30\%$ y disminuye rápidamente hasta el $10\%$ para la iteración $15000$, manteniendo una
-disminución casi constante a partir de ese punto. La gráfica atenuada detrás es la curva de
-pérdida real sin suavizado se puede apreciar entre las iteraciones $15000$ y $20000$ un gran
-nivel de error que pueden haber sido causadas por imágenes mal etiquetadas, finalmente ese
-ruido causado en el entrenamiento no repercute en desajuste del modelo y el error en 
-entrenamiento se normalizó en un valor cercano al $30\%$ ($70\%$ de precisión).
+Se puede apreciar en la gráfica de pérdida total de la figura \ref{fig:total_loss} cuyos ejes
+representan tiempo en el eje horizontal y precisión en el eje vertical. En el análisis de la
+curva de pérdida total se puede apreciar un error inicial cercano al $30\%$ que disminuye
+rápidamente hasta el $10\%$ para la iteración $15000$, manteniendo una disminución casi
+constante a partir de ese punto. En la gráfica atenuada detrás es la curva de pérdida real
+sin suavizado que entre las iteraciones $15000$ y $20000$ se puede apreciar un gran nivel de
+error que pueden haber sido causadas por imágenes mal etiquetadas, finalmente ese ruido
+causado en el entrenamiento no repercute en desajuste del modelo y el error en entrenamiento
+se normalizó en un valor cercano al $30\%$ ($70\%$ de precisión).
 
 \begin{figure}[ht]
     \centering
@@ -1246,8 +1265,8 @@ error que disminuye en razón a una constante.
     \label{fig:offset}
 \end{figure}
 
-Los resultados del modelo concluyen en un tiempo de espera por inferencia de $7.84$ segundos
-con clasificaciones mostradas a continuación en \ref{fig:comparation_caca}.
+Los resultados del modelo concluyen en un tiempo de espera medio por inferencia de $7.84$
+segundos con clasificaciones mostradas a continuación en \ref{fig:comparation_caca}.
 
 \begin{figure}[H]
     \begin{subfigure}{0.5\textwidth}
@@ -1267,7 +1286,6 @@ con clasificaciones mostradas a continuación en \ref{fig:comparation_caca}.
     \label{fig:comparation_caca}
 \end{figure}
 
-% TODO: alargar este apartado
 Se destaca la especialidad del modelo en la detección de presencia parasitaria en casos de
 material indeseado obstruyendo la muestra como se puede apreciar en la figura
 \ref{fig:obstruction}.
@@ -1284,6 +1302,10 @@ a la resolución de la imagen, dejando un rango de resoluciones de $200\times200
 $1000\times1000$ píxeles aproximadamente. Cualquier imagen fuera de ese rango causa errores en
 interpretaciones que pueden variar desde objetos no reconocidos, hasta objetos clasificados
 de manera errónea.
+
+A su vez se puede apreciar la buena capacidad del modelo en la correcta captura de
+características de los parásitos pertenecientes al conjunto de datos y la velocidad que 
+presenta este a la hora de realizar inferencia sobre una imagen.
 
 %\subsection{Desglose de Actividades}\label{PERT}
 %En esta sección se describen cada una de las actividades, duración, dependencias, caminos críticos, entre otras y se debe dar una conclusión de lo mismo.
