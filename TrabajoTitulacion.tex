@@ -1041,8 +1041,8 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
         \begin{enumerate}
             \item Implementar la metodología elegida o adaptada para el tratamiento de
                 imágenes microscópicas.
-            \item Implementar el procedimiento de predicción de parásitos detectada en las
-                imagen microscópicas.
+            \item Implementar el procedimiento de predicción de parásitos detectados en las
+                imágenes microscópicas.
             \item Implementar el reporte final de parásitos detectados en las muestras a
                 través del modelo de visión por computadora.
             \item Recopilación de nuevas muestras, sus resultados, su validación y la
@@ -1207,8 +1207,8 @@ de reconocimiento de $0.7$ dado que las muestras son tomadas en un porta objeto 
 la muestra para evitar solapamiento de antemano, también se usa aumento de datos con giros
 horizontales y verticales de las imágenes para cubrir el pequeño tamaño del conjunto de datos.
 El modelo es entrenado con el optimizador Adam y un ratio de aprendizaje de $0.001$ constante
-durante todo el entrenamiento y $40000$ iteraciones por generación, especificando el modelo
-en detección sin \textit{kfolds}, validación cruzada y sin optimización de hiperparámetros.
+durante todo el entrenamiento y $40000$ iteraciones, especificando el modelo en detección sin
+\textit{kfolds}, validación cruzada y sin optimización de hiperparámetros.
 
 \section{Hardware Ocupado}
 Se ocupó para la etapa de entrenamiento un computador con las siguientes características:
@@ -1250,6 +1250,19 @@ se termina en un error del $2.5\%$ ($98.5\%$ de precisión).
     \includegraphics[width=0.9\textwidth]{object_center}
     \caption{Gráfica de pérdida en detección de centros.}
     \label{fig:object_center}
+\end{figure}
+
+La gráfica de la figura \ref{fig:scale} muestra la disminución más marcada de los parámetros
+del modelo, esta gráfica representa el nivel de error en el tamaño de las áreas delimitadas
+en las detecciones. Este error disminuye rápidamente hasta que su disminución es casi nula,
+esto indica la facilidad del modelo en la corrección de tamaños de objetos (confirmando una 
+las caracteristicas principales del modelo \textit{Centernet}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{scale}
+    \caption{Gráfica de pérdida en tamaño de área delimitadora.}
+    \label{fig:scale}
 \end{figure}
 
 Por último, tenemos la figura \ref{fig:offset} con los resultados de error en lo que comprende
