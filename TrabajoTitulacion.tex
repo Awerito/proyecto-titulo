@@ -27,7 +27,8 @@
 
 \providecommand{\keywords}[1]{\textbf{\textit{Palabras Clave---}} #1}
 
-\newcommand\BackgroundPic{ \put(-3,0){ \parbox[b][\paperheight]{\paperwidth}{ \vfill \centering \includegraphics[width=\paperwidth,height=\paperheight]{portada.jpg} \vfill }}} 
+%\newcommand\BackgroundPic{ \put(-3,0){ \parbox[b][\paperheight]{\paperwidth}{ \vfill \centering \includegraphics[width=\paperwidth,height=\paperheight]{portada.jpg} \vfill }}} 
+\newcommand\BackgroundPic{ \put(-3,0){ \parbox[b][\paperheight]{\paperwidth}{ \vfill \centering \includegraphics[width=\paperwidth,height=\paperheight]{portada.png} \vfill }}} 
 
 %Definicion de Colores
 \definecolor{gray97}{gray}{.97}
@@ -111,20 +112,23 @@
 \thispagestyle{empty}
 
 \AddToShipoutPicture*{\BackgroundPic}
-\title{\vspace{-1cm}\scshape\Large{\textbf{Detección de presencia de parásitos en examen
-    parasitológico seriado de deposiciones con visión por computadora}}\\\vspace{0.5cm}
-    \large Departamento de Ciencias de la Ingeniería\\
-    \large Ingeniería Civil en Informática\\
-Campus Puerto Montt, Chile}
-\author{
-    \vspace*{-2cm}
-    Diego Ignacio Muñoz Viveros\\
-    diegoignacio.munoz@alumnos.ulagos.cl
-}
-\date{Profesor Guía: Joel Sebastian Torres Carrasco\\  Co-guía: Carlos Dupré Alvarado\\
-\today}
-\maketitle
-\ClearShipoutPicture
+{\color{white}
+   \title{\scshape\Huge{Detección de Presencia de Parásitos en Examen
+        Parasitológico Seriado de Deposiciones con Visión por
+        Computadora}\\\vspace{1cm}
+        \Large Departamento de Ciencias de la Ingeniería\\
+        \Large Ingeniería Civil en Informática\\
+        \Large Proyecto de Título\\
+        \large {Puerto Montt}, Chile}
+   \author{
+      Diego Ignacio Muñoz Viveros\\
+      diegoignacio.munoz@alumnos.ulagos.cl
+   }
+   \date{Profesor Guia: Joel Sebastian Torres Carrasco\\
+        \today}
+   \maketitle
+   \ClearShipoutPicture
+   }
 
 
 \cleardoublepage
@@ -134,7 +138,6 @@ Campus Puerto Montt, Chile}
 %%%%Agradecimientos
 %\input{Agradecimientos}
 %%%%%%%%RESUMEN
-\input{Resumen}
 
 %%%%%%INDICES
 \tableofcontents
@@ -152,7 +155,7 @@ Campus Puerto Montt, Chile}
 
 %%%%%%%%COMIENZO
 
-
+\input{Resumen}
 
 \chapter{Introducción}\label{intro}
 
@@ -190,7 +193,6 @@ bastante tiempo por muestra; lo cual aumenta la demanda habitual en el área de 
 salud y, sobretodo, en la salud pública lo que se refleja en demoras en la entrega de
 resultados.
 
-%TODO revisar
 %    Para la consultoria de este trabajo se cuenta con la ayuda del laboratorio clínico
 %    CESFAM de Hornopiren, con la ayuda del tecnólogo médico y jefe del laboratorio
 %    clínico Carlos Dupré Alvarado.
@@ -220,8 +222,9 @@ en distintos ciclos larvales.
 % Cual es el problema que tenemos acá
 % Inconsistencia en las mediciones / definición del problema
 Por lo tanto, la problemática presentada en este trabajo radica en lo altamente
-susceptible al sesgo del observador del examen, es decir, es muy sensible a pérdida o
-mala clasificación de avistamientos llevando a malos diagnósticos médicos. 
+susceptible al sesgo del observador del examen, es decir, es muy sensible a la
+omisión o mala clasificación de avistamientos llevando a malos diagnósticos
+médicos. 
 
 En este trabajo se propone una solución inteligente para automatizar el examen
 parasitológico seriado de deposiciones para poder mejorar la calidad de los
@@ -246,11 +249,12 @@ el proceso de observación del examen parasitológico seriado de deposiciones.
 % El gran desafió tésnico
 % Uno de los problemas, existencia de dataset relacionados al examen
 El desafío técnico encontrado está relacionado a la estructuración de un conjunto de
-datos de imágenes microscópicas que contengas la información suficiente para generar
+datos de imágenes microscópicas que contengan la información suficiente para generar
 un modelo robusto y de altas prestación con gran capacidad de generalización para el
 examen parasitologico seriado de deposiciones.
 
 % Continua que se verá (terminar esto)
+% TODO: actualizar a los nuevos capitulos
 En adelante, el documento se estructura de la siguiente manera. El capítulo
 \ref{teorico}, presenta los conocimientos básicos para entender el desarrollo de este
 proyecto de título. El capítulo \ref{formulación}, define los objetivos, metodología
@@ -291,7 +295,7 @@ antecedentes de viajes.
 
 El análisis de laboratorio se lleva a cabo con las observaciones de muestras entregadas
 al laboratorio por el médico tratante. Estas muestras dependen de la búsqueda de los
-parásitos sospechados y sus posibles ubicaciones, siendo estas muestras de la forma de
+parásitos sospechosos y sus posibles ubicaciones, siendo estas muestras de la forma de
 sangre, heces, muestras urogenitales, esputo, aspirados o biopsias. La especificidad de
 los exámenes puede variar en la capacidad de detectar diferentes especies o realizar
 búsquedas de manera particular \cite{Util}.
@@ -416,7 +420,6 @@ continuación:
         realizar una segunda observación.
 \end{itemize}
 %TODO agregar ejemplos de resultados
-%TODO listado de parásitos
 
 \section{Visión por Computadora}
 \subsection{Definición}
@@ -427,13 +430,13 @@ información. Si la IA permite a los computadores pensar, la visión por computa
 permite ver, observar y entender \cite{IBM}.
 
 La visión por computadora, así como muchas otras ramas de la disciplina de IA, logra la
-tarea de inferir gracias al aprendizaje de máquinas. El aprendizaje de maquinas consiste
+tarea de inferir gracias al aprendizaje de máquinas. El aprendizaje de máquina consiste
 en el entrenamiento de modelos de IA en base a conjuntos de datos que harán que los
 distintos modelos aprendan a reconocer patrones y generen la lógica interna necesaria
 para permitirles inferir de manera correcta.
 
-Para definir formalmente el problema de la visión por computadora \cite{Prince} partimos
-tomando un dato visual $x$ y lo usamos para inferir un estado del mundo $w$. El estado
+Para definir formalmente el problema de la visión por computadora \cite{Prince} se parte
+tomando un dato visual $x$ y se usa para inferir un estado del mundo $w$. El estado
 del mundo $w$ puede ser de naturaleza continua (e.g. La posición tridimensional del
 modelo de un cuerpo \ref{fig:body}) o discreto (e.g. La presencia o ausencia de un objeto
 particular \ref{fig:obclass}).  Cuando el estado es continuo, la inferencia es llamada
@@ -467,7 +470,7 @@ Para resolver un problema de visión de esta naturaleza se necesitan tres compon
         mundo $w$. El modelo representa una familia de posibles relaciones entre $x$, 
         $w$ y la relación particular es determinada por el modelo de parámetros $\theta$.
     \item Un algoritmo de aprendizaje que nos permita ajustar los parámetros $\theta$
-        usando ejemplos de pares de entrenamiento $\{x_i, w_i\}$, donde sabemos ambas
+        usando ejemplos de pares de entrenamiento $\{x_i, w_i\}$, donde se sabe ambas
         medidas y el estado relacionado.
     \item Un algoritmo de inferencia que tome una nueva observación $x$ y use el modelo
         para calcular $Pr(w|x, \theta)$ sobre el estado del mundo $w$.
@@ -476,51 +479,51 @@ Para resolver un problema de visión de esta naturaleza se necesitan tres compon
 Los modelos que relacionan los datos $x$ a el mundo $w$ caen en una de dos categorías:
 \begin{enumerate}
     \item modelar la contingencia del estado del mundo en los datos $Pr(w|x)$ o
-    \item modelas la contingencia de los datos sobre el estado del mundo $Pr(x|w)$.
+    \item modelar la contingencia de los datos sobre el estado del mundo $Pr(x|w)$.
 \end{enumerate}
 
 El primer tipo de modelos es denominado discriminativo. El segundo es denominado
-generativo; aquí, construimos un modelo de probabilidad sobre los datos y esto puede ser
+generativo; aquí, se construye un modelo de probabilidad sobre los datos y esto puede ser
 usado para generar nuevas observaciones.
 
 Para efectos de este informe se estudiara el primer tipo de modelo.
 
 \subsection{Modelos de Clasificación}
-Al modelar $Pr(w|x)$, elegimos un forma de distribución apropiada para $Pr(w)$ sobre los
+Al modelar $Pr(w|x)$, se elige un forma de distribución apropiada para $Pr(w)$ sobre los
 estados del mundo $w$ y hacer la distribución de los parámetros una función de los datos
-$x$. Si el mundo de estados es continuo, lo definimos como una distribución normal con
+$x$. Si el mundo de estados es continuo, se define como una distribución normal con
 media $\mu$ en función de $x$ \cite{MLClass}.
 
 El valor que nos entrega la función también en un conjunto de parámetros definidos,
 $\theta$. Dado que la distribución dependen tanto de los datos $x$ y los parámetros
-$\theta$, escribimos que la función es $Pr(w|x, \theta)$ y nos referimos a ella como
+$\theta$, se escribe que la función es $Pr(w|x, \theta)$ y se refiere a ella como
 distribución posterior.
 
 El objetivo del algoritmo de aprendizaje es el de ajustar los parámetros $\theta$ usando
 pares de entrenamiento $\{x_i, w_i\}$.
 
 \subsection{Ajuste del Modelo Probabilístico}
-Nos referimos como aprendizaje al proceso de ajustar el modelo probabilístico al conjunto
+Se refiere como aprendizaje al proceso de ajustar el modelo probabilístico al conjunto
 de datos $\{x_i\}$ ajustando los parámetros $\theta$ y es de vital importancia que el
 modelo pueda calcular la probabilidad de un nuevo dato $x*$\cite{Probab}.
 
 \subsubsection{Regresión Logística}
-Para los modelos de clasificación consideraremos la regresión logística \cite{LogicR}, la cual
+Para los modelos de clasificación se considera la regresión logística \cite{LogicR}, la cual
 independientemente de su nombre es un modelo que puede ser aplicado a clasificación. La
-regresión logística es un modelo  discriminativo; nosotros seleccionamos una distribución
-de probabilidad sobre un estado del mundo $w \in \{0, 1\}$ y hacemos estos parámetros
+regresión logística es un modelo  discriminativo; se selecciona una distribución
+de probabilidad sobre un estado del mundo $w \in \{0, 1\}$ y se hacen estos parámetros
 consistentes en los datos observados $x$. Como los estados del mundo son binarios,
-lo describimos con una distribución de Bernoulli y hacemos el parámetro $\lambda$ (que
+se describen con una distribución de Bernoulli y se hace el parámetro $\lambda$ (que
 indica la probabilidad de que el estado del mundo tome el valor $w=1$) una medida en
 función de $x$.
 
-Es importante destacar, no podemos simplemente hacer el parámetro $\lambda$ una función
-linear $\phi_0+\phi^Tx$ de las medidas; una función linear puede retornar cualquier
+Es importante destacar, no se puede simplemente hacer el parámetro $\lambda$ una función
+lineal $\phi_0+\phi^Tx$ de las medidas; una función lineal puede retornar cualquier
 valor, pero el parámetro $\lambda$ debe caer entre 0 y 1. Consecuentemente, primero
-debemos calcular la función linear y luego pasarla a través de la función sigmoidea que
+se debe calcular la función lineal y luego pasarla a través de la función sigmoidea que
 evalúa el rango $[-\infty,\infty]$ a $[0, 1]$. El modelo final queda \ref{fig:logistic}
 $$Pr(\omega|\phi_0, \phi, x)=Bern_\omega [sig[\alpha]],$$
-donde $\alpha$ es denominado la activación y es dado por la función linear
+donde $\alpha$ es denominado la activación y es dado por la función lineal
 $$\alpha=\phi_0+\phi^Tx$$
 y donde la función sigmoidea \cite{Sigmoid} es de la forma \ref{fig:sigmoid}
 $$sig(x)=\frac{1}{1 + e^{-x}}$$
@@ -538,7 +541,7 @@ tiende a menos infinito tiende a cero. Cuando $\alpha$ es cero, la función log�
 sigmoidea retorna un valor de un medio. Para datos unidimensionales de $x$, el conjunto
 de efectos de esta transformación es la de describir una curva sigmoidea relacionando $x$
 con $\lambda$. La posición horizontal de la sigmoidea es determinada por el lugar donde
-la función linear $\alpha$ cruza cero y su pendiente depende del gradiente $\phi_1$.
+la función lineal $\alpha$ cruza cero y su pendiente depende del gradiente $\phi_1$.
 
 \begin{figure}[H]
     \centering
@@ -551,17 +554,17 @@ la función linear $\alpha$ cruza cero y su pendiente depende del gradiente $\ph
 \end{figure}
 
 \subsubsection{Método Bayesiano}
-En el método bayesiano \cite{Bayes, Bayes2} dejamos de intentar estimar un solo valor de los parámetros
-$\theta$ y aceptamos lo obvio; habrán muchos valores de parámetros que serán
-compatibles con los datos. Calculamos la distribución de probabilidad
-$Pr(\theta|x_{1...I})$ sobre los parámetros $\theta$ basados en los datos
-$\{x_i\}_{i=1}^I$ usando el teorema de Bayes
+En el método bayesiano \cite{Bayes, Bayes2} se deja de intentar estimar un solo
+valor de los parámetros $\theta$ y se acepta lo obvio; habrán muchos valores de
+parámetros que serán compatibles con los datos. Se calcula la distribución de
+probabilidad $Pr(\theta|x_{1...I})$ sobre los parámetros $\theta$ basados en
+los datos $\{x_i\}_{i=1}^I$ usando el teorema de Bayes
 $$Pr(\theta|x_{1...I})=\frac{\Pi_{i=1}^I
 Pr(x_i|\theta)Pr(\theta)}{Pr(x_{1...I})}$$
 
 Evaluando la distribución predictiva es más difícil para el caso bayesiano dado que no
-tenemos ningún modelo estimado pero en su lugar encontramos una distribución de
-probabilidad sobre posibles modelos. Así, calculamos
+se tiene ningún modelo estimado pero en su lugar se encuentra una distribución de
+probabilidad sobre posibles modelos. Así, se calcula
 $$Pr(x*|x_{1...I})=\int Pr(x*|\theta) Pr(\theta|x_{1...I})d\theta,$$
 esto puede ser interpretado como: el termino $Pr(x*|\theta)$ es la predicción para un
 valor dado de $\theta$. Así, la integral puede entenderse como la suma ponderada de los
@@ -570,18 +573,18 @@ probabilidad posterior $Pr(\theta|x_{1...I})$ sobre los parámetros (asumiendo q
 los parámetros son diferentes).
 
 Los cálculos de densidad predictiva para el bayesiano, máximo a posteriori u máxima
-verosimilitud puede unificarse si consideramos que estos dos últimos son distribuciones
+verosimilitud puede unificarse si se considera que estos dos últimos son distribuciones
 de probabilidades especiales sobre los parámetros donde toda la densidad está en
-$\hat\theta$. Más formalmente, los consideramos funciones delta centradas en
+$\hat\theta$. Más formalmente, se consideran funciones delta centradas en
 $\hat\theta$. Una función delta $\delta(z)$ es una función que integra a uno, y retorna
 cero en todo su dominio excepto $z=0$.
 
-Entonces escribimos
+Entonces se escribe
 $$Pr(x*|x_{1...I})=\int Pr(x*|\theta) \delta[\theta - \hat\theta]d\theta,$$
 $$=Pr(x*|\theta),$$ 
 
-Finalmente vemos calculamos las probabilidades evaluando la probabilidad de los datos
-bajo el modelo con el que estimamos los parámetros \ref{fig:bayes}.
+Finalmente, se calculan las probabilidades evaluando la probabilidad de los datos
+bajo el modelo con el que estima los parámetros \ref{fig:bayes}.
 
 \begin{figure}[H]
     \centering
@@ -592,8 +595,8 @@ bajo el modelo con el que estimamos los parámetros \ref{fig:bayes}.
 \end{figure}
 
 \subsubsection{Árboles de Decisión}
-Para implementar ese modelo \cite{Trees} comenzamos particionando es espacio de datos en
-distintas regiones y aplicamos diferentes clasificaciones a cada región.
+Para implementar ese modelo \cite{Trees} se comienza particionando el espacio de datos en
+distintas regiones y se aplica diferentes clasificaciones a cada región.
 
 El modelo de regresión ramificada logística tiene activaciones,
 $$\alpha_i=(1-g[x_i,\omega])\phi_0^T x_i+g[x_i,\omega]\phi_1^T x_i$$
@@ -603,20 +606,20 @@ Si esta función de activación retorna 0, entonces la activación será $\phi_0
 otro lado si retorna 1, la activación será $\phi_1x_i$. Si la activación retorna un valor
 intermedio, entonces la activación será la suma ponderada de los dos componentes. La
 propia función de activación depende de los datos $x_i$ y toma parámetros $\omega$. Este
-modelo induce un complejo límite de decisión no linear donde las dos funciones lineares
+modelo induce un complejo límite de decisión no lineal donde las dos funciones lineales
 $\phi_0x_i$ y $\phi_1x_i$ son especializadas en diferentes regiones del espacio de datos.
 
 La función de activación puede tomar muchas formas, pero una obvia posibilidad es la de
-usar un segundo modelo de regresión linear. Vale decir, calculamos una función linear
+usar un segundo modelo de regresión lineal. Vale decir, se calcula una función lineal
 $\omega^Tx_i$ de los datos que son pasados a través de una sigmoidea logística, es decir,
 $$g[x_i,\omega]=sig[\omega^Tx_i]$$
 
-Para que este modelo aprenda debemos maximizar $L = \Sigma_i \log[Pr(w_i|x_i)]$ una
+Para que este modelo aprenda se debe maximizar $L = \Sigma_i \log[Pr(w_i|x_i)]$ una
 probabilidad logarítmica de los pares de datos de entrenamiento $\{x_i,w_i\}_{i=1}^I$ con
 respecto a todos los parámetros $\theta=\{\phi_0,\phi_1,w\}$. Normalmente esto puede
-lograr usando métodos de optimización no linear.
+lograr usando métodos de optimización no lineal.
 
-Podemos extender esta idea para crear una estructura de árbol jerárquica anidando
+Se puede extender esta idea para crear una estructura de árbol jerárquica anidando
 funciones de activación. Por ejemplo,
 
 \begin{equation}
@@ -632,9 +635,9 @@ funciones de activación. Por ejemplo,
 Esto es un ejemplo de árbol de clasificación \ref{fig:tree}.
 
 Para aprender los parámetros $\theta = \{\phi_0, \phi_1, \phi_{00}, \phi_{01}, \phi_{10},
-\phi_{11}, w, w_0, w_1\}$ podemos tomar una aproximación incremental. En la primera etapa
-ajustamos la parte superior del árbol, ajustando los parámetros $w, \phi_0, \phi_1$.
-Luego ajustamos la rama de la izquierda, ajustando los parámetros $w_0, \phi_{00},
+\phi_{11}, w, w_0, w_1\}$ se puede tomar una aproximación incremental. En la primera etapa
+se ajusta la parte superior del árbol, ajustando los parámetros $w, \phi_0, \phi_1$.
+Luego se ajusta la rama de la izquierda, ajustando los parámetros $w_0, \phi_{00},
 \phi_{01}$ y así con la rama de la derecha, ajustando $w_1, \phi_{01}, \phi_{11}$ y así
 sucesivamente.
 
@@ -655,7 +658,7 @@ Un bosque aleatorio \cite{Forest} es una colección de árboles aleatorios, cada
 estos usa un conjunto de funciones elegidas de manera aleatoria. Cuando se promedian
 todas las probabilidades de cada árbol, es decir, $Pr(x*|w_i)$ predicha por cada árbol, se
 produce una clasificación mucho más robusta. Una forma de pensarlo es aproximarlo al
-método bayesiano; donde construimos una respuesta final tomando una suma ponderada de las
+método bayesiano; donde se construye una respuesta final tomando una suma ponderada de las
 predicciones propuestas por los distintos conjuntos de parámetros \ref{fig:forest}.
 
 \begin{figure}[H]
@@ -703,19 +706,20 @@ demandantes en el proceso de desarrollo de un modelo de inteligencia artificial.
 Los problemas que se presentan en conjuntos de datos que debes ser solventados son:
 \begin{itemize}
     \item \textbf{Datos faltantes}: Existen situaciones en las que no todos los datos de una
-        entrada tendrán asignados un valor. Si bien es factible eliminar todas las
+        entrada tendrán asignados un valor. Si bien, es factible eliminar todas las
         entradas que contengan datos perdidos, en la mayoría de los casos esto termina
         descartando excesiva cantidades de entradas (hay conjuntos de datos que pueden
         tener datos perdidos en todas sus entradas).
 
-        Una alternativa para cuando los datos faltantes tienen estar agrupados en su
-        mayoría en un campo en particular es eliminar el campo por completo. Esto valido
-        dado que el campo de por si mostraba no tener mucha utilidad.
+        Una alternativa para cuando los datos faltantes tienden a estar
+        agrupados en su mayoría en un campo en particular es eliminar el campo
+        por completo. Esto solo es válido si el campo de por sí no mostraba
+        tener mucha utilidad.
 
         La forma más común de manejar datos faltantes es usar un valor por defecto que en
-        ultima instancia servirá para que el modelo reconozca que existen situaciones
-        donde los datos no se encuentran disponibles. Esto es básicamente porque siempre
-        se puede extraer información del echo de que no existen entradas en un campo en
+        última instancia servirá para que el modelo reconozca que existen situaciones
+        donde los datos no se encuentran disponibles. Esto es, básicamente, porque siempre
+        se puede extraer información del hecho de que no existen entradas en un campo en
         particular \cite{Miss}.
     \item \textbf{Distribución de datos inconsistentes}: Esto ocurre cuando la escala o
         el formato de los datos no esta bien definido en los campos, vale decir, tener
@@ -789,7 +793,7 @@ función de la complejidad de la aplicación \cite{Augment3}.
 
 \subsubsection{Balanceo de Datos}
 En cierto tipo de conjuntos de datos ocurre que cierta concentración de datos sobrepasa
-de sobre manera a otra, causando desbalanceo de datos. Una forma de sobre llevar esto es
+de sobremanera a otra, causando desbalanceo de datos. Una forma de sobre llevar esto es
 particionando el segmento de datos más abundante para poder representar toda la
 información con el mismo nivel de importancia \ref{fig:balance} \cite{Balan}.
 
@@ -802,9 +806,10 @@ información con el mismo nivel de importancia \ref{fig:balance} \cite{Balan}.
     \label{fig:balance}
 \end{figure}
 
-Es importante reconocer las desventajas a lo que esto puede con llevar; esto hace dejar
-de lado gran cantidad de datos, esto es proporcional al conjunto que represente la
-minoría de datos en el conjunto, esto culminando en \textit{underfiting}.
+Se puede apreciar que esto resulta en el descarte de gran cantidad de datos,
+esto siempre es proporcional al conjunto de datos y afecta sobre todo al
+conjunto que represente a la minoría de datos del mismo, esto suele traducirse
+en \textit{underfiting} del modelo.
 
 % Modelos de cv
 % Segmentación
@@ -855,7 +860,7 @@ la necesidad de anotar cada pixel de la imagen con una clase.
 % Tipo de imágenes (microscópicas)
 \subsection{Procesamiento de Imágenes y Extracción de Características}
 Es importante saber reducir la complejidad del análisis de imágenes sabiendo reconocer
-que tipo de solución necesitamos para nuestro problema. Para ello existen multiples
+que tipo de solución se necesita para nuestro problema. Para ello existen múltiples
 transformaciones que permiten simplificar la entrada visual que recibirá el modelo en
 orden de facilitar la tarea de extracción de características claves \cite{Prince}.
 
@@ -867,7 +872,9 @@ imagen $P$.
 
 \subsubsection{Escala de Grises}
 Es convertir la imagen de entrada a color a su versión a escala de grises. Este filtro es
-especialmente útil para reducir el arreglo de píxeles de valores rgb a un simple valor
+especialmente útil para reducir el arreglo de píxeles de valores
+RGB\footnote{tupla de tres valores entre $0$ y $255$ que representan el valor
+de rojo, verde y azul, por sus siglas en inglés, de cada pixel.} a un simple valor
 que representa el nivel de blanco del pixel, esto es útil en los casos donde los colores
 no son relevantes en la extracción de características \cite{Pixel}.
 
@@ -892,7 +899,7 @@ no son relevantes en la extracción de características \cite{Pixel}.
 Son transformaciones de píxeles $x_{ij}$ que consideran una suma ponderada del valor de
 los píxeles adyacentes \cite{Conv}, es decir, siendo una imagen $P$ a la cual se  aplicará
 un filtro denominado \textit{kernel} $F$, el cual tendrá entradas $f_{mn}$ donde
-$m\in\{-M,M\}$ y $n\in\{-N,N\}$. Finalmente quedamos con un filtro de la forma
+$m\in\{-M,M\}$ y $n\in\{-N,N\}$. Finalmente, se queda con un filtro de la forma
 \ref{fig:kernel}
 $$x_{ij}=\Sigma_{m=-M}^M\Sigma_{n=-N}^Np_{i-m,j-n}f_{m,n}$$
 
@@ -901,20 +908,20 @@ $$x_{ij}=\Sigma_{m=-M}^M\Sigma_{n=-N}^Np_{i-m,j-n}f_{m,n}$$
     \includegraphics[width=0.8\textwidth]{kernel}
     \caption{Filtro con \textit{kernel} para resaltar contornos de objetos en la imagen.
         La matriz se usa para saber las ponderaciones de los píxeles en la suma para el nuevo
-        valor de píxeles en la imagen. Así obtenemos un mapa de características que en este
+        valor de píxeles en la imagen. Así se obtiene un mapa de características que en este
     ejemplo nos entrega la información de los límites del animal de la imagen de entrada.}
     \label{fig:kernel}
 \end{figure}
 
 \subsection{Modelo Faster RCNN Inception Resnet}
 
-El modelo \textit{Faster RCNN Inception Resnet} \ref{tensorflowmodelgarden2020} es una red
+El modelo \textit{Faster RCNN Inception Resnet} \cite{tensorflowmodelgarden2020} es una red
 neuronal pre-entrenada para propósito general, es decir, se centra en el reconocimiento de
 $600$ clases diferentes. Para esto el modelo hace uso de una red convolucional y una
 red de extracción de características que apunta a precisión sobre las detecciones que realiza
 para su clasificación, está centrada en la búsqueda exhaustiva de elementos diferenciables en
 una imagen. Esto otorga al modelo la capacidad de reconocer gran cantidad de objetos de la
-misma imagen como se puede apreciar en la figura \ref{resnet}.
+misma imagen como se puede apreciar en la figura \ref{fig:resnet}.
 
 \begin{figure}[ht]
     \centering
@@ -925,7 +932,7 @@ misma imagen como se puede apreciar en la figura \ref{resnet}.
 
 \subsection{Modelo Centernet}
 
-El modelo \textit{Centernet} \ref{zhou2019objects} de detección identifica los objetos como
+El modelo \textit{Centernet} \cite{zhou2019objects} de detección identifica los objetos como
 cuadros alineados con el eje en una imagen. La mayoría de los detectores de objetos que tienen
 éxito enumeran una lista casi exhaustiva de posibles ubicaciones de objetos y clasifican cada
 una de ellas. Esto es un desperdicio, ineficiente y requiere un post-procesamiento adicional.
@@ -959,22 +966,6 @@ centros detectados son usados para determinar el tamaño real de las áreas deli
     \label{fig:arquitectureCenternet}
 \end{figure}
 
-\subsection{Tensorflow API}
-
-La API de detección de objetos de \textit{TensorFlow} es un marco de trabajo de código abierto
-construido sobre \textit{TensorFlow} con la finalidad de facilitar la construcción, el
-entrenamiento y el despliegue de modelos de detección de objetos creando una instancia de
-seguimiento en tiempo real para las métricas de rendimiento de los modelos (figura
-\ref{fig:tensorapi}) y permitiendo empaquetar resultados junto a sus configuraciones para
-etapas posteriores de producción.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.8\textwidth]{tensorapi}
-    \caption{Interfaz de monitoreo de \textit{Tensorflow API}.}
-    \label{fig:tensorapi}
-\end{figure}
-
 %\section{Estado del Arte}\label{arte}
 % Alternativas preexistentes
 % Conjuntos de datos preexistentes
@@ -982,7 +973,7 @@ etapas posteriores de producción.
 \chapter{Formulación del Proyecto}\label{formulación}
 
 \section{Objetivo General}
-Crear un modelo de aprendizaje de maquinas para la detección de y clasificación de
+Crear un modelo de aprendizaje de máquina para la detección de y clasificación de
 parásitos en el análisis parasitológico de seriado de deposiciones.
 
 \section{Objetivos Específicos}
@@ -1065,9 +1056,10 @@ clasificar los parásitos contenidos en en conjunto de dato utilizado para el ex
 parasitológico seriado de deposiciones.
 
 \section{Conjunto de Datos}
-Para el desarrollo del proyecto de título se utiliza el conjunto de datos \textit{Makerere
-Automated Lab Diagnostics Database (MALDD)} en cuyas característica encontramos 1217 imágenes 
-clasificadas entre tres distintas clases de parásitos:
+Para el desarrollo del proyecto de título se utiliza el conjunto de datos
+\textit{Makerere Automated Lab Diagnostics Database (MALDD)} en cuyas
+característica se encuentran 1217 imágenes clasificadas entre tres distintas
+clases de parásitos:
 
 \begin{itemize}
     \item Hookworm
@@ -1129,44 +1121,49 @@ anteriormente descritas. En el contexto del examen parasitológico seriado de de
 el conjunto de datos cubre una pequeña parte de los parásitos que se esperan reconocer siendo
 la lista de parásitos faltantes la siguiente:
 
-\begin{itemize}
-    \item Aedes aegypti
-    \item Anisaki spp
-    \item Anopheles
-    \item Ascaris lumbricoide
-    \item Balantidium coli
-    \item Blastocystis hominis
-    \item Chilomastix mesnili
-    \item Cryptosporidium spp
-    \item Cyclospora cayetanensis
-    \item Cystoisospora belli
-    \item Diphyllobothrium spp
-    \item Endolimax nana
-    \item Entamoeba coli
-    \item Entamoeba gingivalis
-    \item Entamoeba histolytica / dispar
-    \item Enterobius vermicularis
-    \item Fasciola hepática
-    \item Giardia lamblia
-    \item Hymenolepis diminuta
-    \item Iodamoeba butschlii
-    \item Latrodectus mactans: viuda negra
-    \item Loxosceles laeta: rincon
-    \item Schistosoma mansoni
-    \item Toxoplasma gondii
-    \item Tribolium confusum
-    \item Trichomonas tenax
-    \item Trichomonas vaginalis
-    \item Trichuris trichiuria
-    \item Trypanosoma cruzi
-    \item Pediculus humanus
-    \item Plasmodium falciparum
-    \item Phthirus pubis
-    \item Pulex irritans
-    \item Schistosoma haematobium
-\end{itemize}
+\begin{tabular}{p{0.4\textwidth}p{0.5\textwidth}}
+    \begin{itemize}
+        \item Aedes aegypti
+        \item Anisaki spp
+        \item Anopheles
+        \item Ascaris lumbricoide
+        \item Balantidium coli
+        \item Blastocystis hominis
+        \item Chilomastix mesnili
+        \item Cryptosporidium spp
+        \item Cyclospora cayetanensis
+        \item Cystoisospora belli
+        \item Diphyllobothrium spp
+        \item Endolimax nana
+        \item Entamoeba coli
+        \item Entamoeba gingivalis
+        \item Entamoeba histolytica / dispar
+        \item Enterobius vermicularis
+        \item Fasciola hepática
+    \end{itemize} &
+    \begin{itemize}
+        \item Giardia lamblia
+        \item Hymenolepis diminuta
+        \item Iodamoeba butschlii
+        \item Latrodectus mactans: viuda negra
+        \item Loxosceles laeta: rincon
+        \item Schistosoma mansoni
+        \item Toxoplasma gondii
+        \item Tribolium confusum
+        \item Trichomonas tenax
+        \item Trichomonas vaginalis
+        \item Trichuris trichiuria
+        \item Trypanosoma cruzi
+        \item Pediculus humanus
+        \item Plasmodium falciparum
+        \item Phthirus pubis
+        \item Pulex irritans
+        \item Schistosoma haematobium
+    \end{itemize}\\
+\end{tabular}
 
 \section{Modelo}
+% TODO: agregar párrafo con el criterio de elección de modelo pag 37 de observaciones
 
 Se revisaron las opciones de modelos; \textit{Faster RCNN Inception Resnet v2 (FRIR v2)} y
 \textit{Centernet} durante la face de investigación con el objetivo de un modelo general que
@@ -1198,17 +1195,26 @@ modelo de muy rápida inferencia y gran nivel de precisión en casos particulare
 
 \chapter{Entrenamiento}
 \section{Configuración del Modelo}
-El entrenamiento del modelo \textit{Centernet} con el conjunto de datos de \textit{MALDD} se
-realiza de manera local con la API de \textit{TensorFlow} para un seguimiento en tiempo real
-de las mediciones de pérdida del modelo durante el entrenamiento.
-En las configuraciones del modelo se aceptan como parámetros; máxima cantidad de predicciones
-de $100$ para no dejar fuera elementos de las muestras, mínimo grado de solapamiento de cajas
-de reconocimiento de $0.7$ dado que las muestras son tomadas en un porta objeto que aplana
-la muestra para evitar solapamiento de antemano, también se usa aumento de datos con giros
-horizontales y verticales de las imágenes para cubrir el pequeño tamaño del conjunto de datos.
-El modelo es entrenado con el optimizador Adam y un ratio de aprendizaje de $0.001$ constante
-durante todo el entrenamiento y $40000$ iteraciones, especificando el modelo en detección sin
-\textit{kfolds}, validación cruzada y sin optimización de hiperparámetros.
+Las configuraciones a utilizar para el modelo \textit{Centernet} con el
+conjunto de datos de \textit{MALDD} se describen a continuación:
+
+\begin{itemize}
+    \item Máxima cantidad de predicciones: 100
+    \item Mínimo grado de solapamiento de áreas: 0,7
+    \item Aumento de datos con giros horizontales y verticales
+    \item Optimizador Adam
+    \item Ratio de aprendizaje constante: 0,001
+    \item Iteraciones totales: 40000
+    \item Sin kfolds
+    \item Sin validación cruzada
+    \item Sin optimización de hiperparámetros
+\end{itemize}   
+
+La máxima cantidad de predicciones se elige en orden de no dejar fuera
+elementos durante la inferencia del modelo, el solapamiento de cajas de
+reconocimiento considera aglomeraciones de parásitos en las muestras, también
+se usa aumento de datos con giros horizontales y verticales de las imágenes
+para cubrir parte de las cadencias del tamaño del conjunto de datos.
 
 \section{Hardware Ocupado}
 Se ocupó para la etapa de entrenamiento un computador con las siguientes características:
@@ -1222,15 +1228,34 @@ Se ocupó para la etapa de entrenamiento un computador con las siguientes caract
 Finalmente, el entrenamiento se lleva a cabo durante $10$ horas y $31$ minutos.
 
 \chapter{Resultados}
+% TODO: párrafo de presentación
+
+\section{Tensorflow API}
+
+La API de detección de objetos de \textit{TensorFlow} es un marco de trabajo de código abierto
+construido sobre \textit{TensorFlow} con la finalidad de facilitar la construcción, el
+entrenamiento y el despliegue de modelos de detección de objetos creando una instancia de
+seguimiento en tiempo real para las métricas de rendimiento de los modelos (figura
+\ref{fig:tensorapi}) y permitiendo empaquetar resultados junto a sus configuraciones para
+etapas posteriores de producción.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{tensorapi}
+    \caption{Interfaz de monitoreo de \textit{Tensorflow API}.}
+    \label{fig:tensorapi}
+\end{figure}
+
+\section{Observaciones}
 Se puede apreciar en la gráfica de pérdida total de la figura \ref{fig:total_loss} cuyos ejes
 representan tiempo en el eje horizontal y precisión en el eje vertical. En el análisis de la
 curva de pérdida total se puede apreciar un error inicial cercano al $30\%$ que disminuye
 rápidamente hasta el $10\%$ para la iteración $15000$, manteniendo una disminución casi
 constante a partir de ese punto. En la gráfica atenuada detrás es la curva de pérdida real
 sin suavizado que entre las iteraciones $15000$ y $20000$ se puede apreciar un gran nivel de
-error que pueden haber sido causadas por imágenes mal etiquetadas, finalmente ese ruido
+error que pueden haber sido causadas por imágenes mal etiquetadas, finalmente, ese ruido
 causado en el entrenamiento no repercute en desajuste del modelo y el error en entrenamiento
-se normalizó en un valor cercano al $30\%$ ($70\%$ de precisión).
+se estabilizó en un valor cercano al $30\%$ ($70\%$ de precisión).
 
 \begin{figure}[ht]
     \centering
@@ -1265,7 +1290,7 @@ las caracteristicas principales del modelo \textit{Centernet}.
     \label{fig:scale}
 \end{figure}
 
-Por último, tenemos la figura \ref{fig:offset} con los resultados de error en lo que comprende
+Por último, se tiene la figura \ref{fig:offset} con los resultados de error en lo que comprende
 a la delimitación del área de detección de cada error. Se puede apreciar que a diferencia del
 error de centros, la gráfica muestra una disminución de pérdida más lineal, lo que da a 
 entender que la pérdida en la delimitación de las áreas donde se localizan los objetos es un
@@ -1369,30 +1394,41 @@ presenta este a la hora de realizar inferencia sobre una imagen.
 %\end{landscape}
 
 \chapter{Conclusión}\label{conclusion}
-Durante este informe se vieron las tecnologías relacionadas a la visión por computadora
-que permiten hacer uso de una inferencia en base al entrenamiento de modelos de
-aprendizaje de máquinas para la detección y clasificación de presencia parasitológica en
-el examen seriado de deposiciones. Se vió el estado de los procedimientos para este examen
-y reconocimos el punto donde el uso de estas tecnologías puede jugar un gran rol en la
-mejora de resultados y la velocidad de análisis.
+Durante este trabajo se vieron las tecnologías relacionadas a la visión por
+computadora que permiten hacer uso de una inferencia en base al entrenamiento
+de modelos de aprendizaje de máquinas para la detección y clasificación de
+presencia parasitológica en el examen seriado de deposiciones. Se ve el estado
+de los procedimientos para este examen y se reconoce el punto donde el uso de
+estas tecnologías puede jugar un gran rol en la mejora de resultados y la
+velocidad de análisis.
 
-En términos de los objetivos planteados al inicio del proyecto de título, se recopiló un
-conjunto de datos orientado a imágenes microscópicas de muestras de deposiciones con y sin
-presencia parasitaria con la finalidad del entrenamiento del modelo. El conjunto de datos
-cumplió con las características de poseer tres clases de parásitos intestinales, así como
-también imágenes sin presencia alguna, haciendo una totalidad de 1217 imágenes de muestras.
+En términos de los objetivo específico 1; se recopiló un conjunto de datos
+orientado a imágenes microscópicas de muestras de deposiciones con y sin
+presencia parasitaria con la finalidad del entrenamiento del modelo. El
+conjunto de datos cumplió con las características de poseer tres clases de
+parásitos intestinales, así como también imágenes sin presencia alguna,
+haciendo una totalidad de 1217 imágenes de muestras.
 
-Se entrenó un modelo llamado \textit{Centernet} con la finalidad de hacerlo específico al
-reconocimiento y clasificación de especies de parásitos presentes en el sistema digestivo
-humano para la ayuda en el área de la tecnología médica, que es en donde se realizan los
-estudios médicos y se emplea el uso de las tecnologías existentes para facilitar y respaldar
-el diagnóstico médico.
+Luego para el objetivo específico 2; se entrenó un modelo llamado
+\textit{Centernet} con la finalidad de hacerlo específico al reconocimiento y
+clasificación de especies de parásitos presentes en el sistema digestivo humano
+para la ayuda en el área de la tecnología médica, que es en donde se realizan
+los estudios médicos y se emplea el uso de las tecnologías existentes para
+facilitar y respaldar el diagnóstico médico.
 
-Al analizar la calidad de las predicciones en la detección de parásitos se puede apreciar la
-gran precisión que logra el modelo dentro de las ventanas de tiempo y tamaños de muestras
-con las que se contó en el momento, esto muestra una gran ventana al desarrollo de la visión
-por computadora en el área de la medicina, más específico, al área del análisis de imágenes
-microscópicas.
+Finalmente, según el objetivo específico 3, analizar la calidad de las
+predicciones en la detección de parásitos, se puede apreciar la gran precisión
+que logra el modelo dentro de las ventanas de tiempo y tamaños de muestras con
+las que se contó en el momento, esto muestra una gran ventana al desarrollo de
+la visión por computadora en el área de la medicina, más específico, al área
+del análisis de imágenes microscópicas.
+
+Como trabajo futuro para este proyecto de título se puede considerar el
+recopilar o desarrollar un conjunto de datos más extenso tanto en cantidad de
+parásitos como clases diferentes de estos, así mismo, poder dedicar más tiempo
+al entrenamiento del modelo \textit{Centernet} para reducir los valores de
+error presentados y/o poder contar con comparativas de resultados con otros
+modelos de clasificación entrenados bajo el mismo conjunto de datos.
 
 %Se termina con un modelo de inteligencia artificial usando Centernet que tiene la capacidad
 %de detectar y clasificar tres clases de parásitos diferentes en imágenes microscópicas de
