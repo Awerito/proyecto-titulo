@@ -254,12 +254,16 @@ un modelo robusto y de altas prestación con gran capacidad de generalización p
 examen parasitologico seriado de deposiciones.
 
 % Continua que se verá (terminar esto)
-% TODO: actualizar a los nuevos capitulos
 En adelante, el documento se estructura de la siguiente manera. El capítulo
-\ref{teorico}, presenta los conocimientos básicos para entender el desarrollo de este
-proyecto de título. El capítulo \ref{formulación}, define los objetivos, metodología
-y planificación del proyecto. Finalmente, el capítulo \ref{conclusion}, entrega
-algunas ideas a desarrollar a futuro en el proyecto.
+\ref{teorico}, presenta los conocimientos básicos para entender el desarrollo
+de este proyecto de título. El capítulo \ref{formulación}, define los
+objetivos, metodología y planificación del proyecto. El capítulo
+\ref{clasificación}, muestra el conjunto de datos a utilizar, su proceso de
+limpieza y sus limitaciones. El capítulo \ref{entrenamiento} abarcará la
+configuración del modelo a utilizar y las características del entrenamiento a
+realizar. El capítulo \ref{resultados}, muestra los resultados obtenidos de
+todo el procedimiento realizado. Finalmente, el capítulo \ref{conclusion},
+entrega algunas ideas a desarrollar a futuro en el proyecto.
 
 \chapter{Marco Teórico}\label{teorico}
 
@@ -419,7 +423,7 @@ continuación:
     \item En caso de existir dudas sobre la observación de las muestras, se puede
         realizar una segunda observación.
 \end{itemize}
-%TODO agregar ejemplos de resultados
+%T ODO agregar ejemplos de resultados
 
 \section{Visión por Computadora}
 \subsection{Definición}
@@ -1049,7 +1053,7 @@ parásitos en el análisis parasitológico de seriado de deposiciones.
     \label{fig:gantt}
 \end{figure}
 
-\chapter{Modelo de Identificación y Clasificación de Parásitos}
+\chapter{Modelo de Identificación y Clasificación de Parásitos}\label{clasificación}
 
 En el presente capítulo, se describe el desarrollo de un modelo para indentificar y
 clasificar los parásitos contenidos en en conjunto de dato utilizado para el examen 
@@ -1163,7 +1167,10 @@ la lista de parásitos faltantes la siguiente:
 \end{tabular}
 
 \section{Modelo}
-% TODO: agregar párrafo con el criterio de elección de modelo pag 37 de observaciones
+Dado la similaridad en capacidad de especificidad de cada modelo visto, el
+principal criterio a considerar en la elección de uno de ellos es el tiempo
+medio de inferencia. Esto nace del objetivo de un modelo que agilice el proceso
+de análisis de muestras de deposiciones.
 
 Se revisaron las opciones de modelos; \textit{Faster RCNN Inception Resnet v2 (FRIR v2)} y
 \textit{Centernet} durante la face de investigación con el objetivo de un modelo general que
@@ -1193,7 +1200,7 @@ modelo de muy rápida inferencia y gran nivel de precisión en casos particulare
     \label{fig:centernet}
 \end{figure}
 
-\chapter{Entrenamiento}
+\chapter{Entrenamiento}\label{entrenamiento}
 \section{Configuración del Modelo}
 Las configuraciones a utilizar para el modelo \textit{Centernet} con el
 conjunto de datos de \textit{MALDD} se describen a continuación:
@@ -1227,8 +1234,9 @@ Se ocupó para la etapa de entrenamiento un computador con las siguientes caract
 
 Finalmente, el entrenamiento se lleva a cabo durante $10$ horas y $31$ minutos.
 
-\chapter{Resultados}
-% TODO: párrafo de presentación
+\chapter{Resultados}\label{resultados}
+A continuación se analizan los resultados obtenidos del proceso de
+entrenamiento y evaluación del modelo \textit{Centernet}.
 
 \section{Tensorflow API}
 
